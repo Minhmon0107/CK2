@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn Tập Tổng Hợp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #0f1525;
+    --panel: #141c2e;
+    --border: #1e2d4a;
+    --accent1: #4f9cf9;
+    --accent2: #7c5af0;
+    --accent3: #38d9a9;
+    --accent4: #f8961e;
+    --accent5: #e63946;
+    --accent6: #a8dadc;
+    --text: #e8edf5;
+    --text2: #8fa3c0;
+    --text3: #5a7291;
+
+    /* Subject accent colours */
+    --dia:   #38d9a9;  /* Địa lý   – teal */
+    --lich:  #f472b6;  /* Lịch sử  – pink */
+    --gdkt:  #facc15;  /* GDKT-PL  – amber */
+    --tin:   #4f9cf9;  /* Tin      – blue */
+    --phap:  #c084fc;  /* Pháp     – purple */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ─────────────────────────────────────── */
+  .hero {
+    text-align: center;
+    padding: 56px 24px 40px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 0%,
+      rgba(79,156,249,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(79,156,249,0.15), rgba(124,90,240,0.15));
+    border: 1px solid rgba(79,156,249,0.3);
+    color: var(--accent1);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #fff 0%, var(--accent1) 50%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    color: var(--text2);
+    font-size: 15px;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── SUBJECT GRID ─────────────────────────────── */
+  .subject-grid-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .grid-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 28px;
+  }
+
+  .subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 16px;
+  }
+
+  /* ── SUBJECT CARD ─────────────────────────────── */
+  .sub-card {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 32px 24px 28px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    transition: transform .22s, box-shadow .22s, border-color .22s;
+    overflow: hidden;
+  }
+  .sub-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% -10%,
+      var(--c-glow) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+  }
+  .sub-card:hover { transform: translateY(-5px); }
+  .sub-card:hover::before { opacity: 1; }
+
+  /* top accent bar */
+  .sub-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--c-grad);
+    border-radius: 22px 22px 0 0;
+  }
+
+  .sub-icon {
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    background: var(--c-icon-bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+    position: relative;
+    z-index: 1;
+    transition: transform .22s;
+  }
+  .sub-card:hover .sub-icon { transform: scale(1.08) rotate(-4deg); }
+
+  .sub-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sub-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--c-tag-bg);
+    color: var(--c-tag-txt);
+    border: 1px solid var(--c-tag-border);
+    position: relative;
+    z-index: 1;
+  }
+
+  .sub-arrow {
+    margin-top: auto;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    color: var(--text3);
+    transition: background .2s, border-color .2s, color .2s, transform .2s;
+    position: relative;
+    z-index: 1;
+  }
+  .sub-card:hover .sub-arrow {
+    background: var(--c-icon-bg);
+    border-color: var(--c-tag-txt);
+    color: var(--c-tag-txt);
+    transform: translateX(4px);
+  }
+
+  /* ── Per-subject colour tokens ─────────────────── */
+  .card-dia {
+    --c-glow:        rgba(56,217,169,0.18);
+    --c-grad:        linear-gradient(90deg, #38d9a9, #4f9cf9);
+    --c-icon-bg:     rgba(56,217,169,0.12);
+    --c-tag-bg:      rgba(56,217,169,0.08);
+    --c-tag-txt:     var(--dia);
+    --c-tag-border:  rgba(56,217,169,0.25);
+  }
+  .card-dia:hover { box-shadow: 0 0 0 1px rgba(56,217,169,0.35), 0 16px 48px rgba(56,217,169,0.12); border-color: rgba(56,217,169,0.35); }
+
+  .card-lich {
+    --c-glow:        rgba(244,114,182,0.18);
+    --c-grad:        linear-gradient(90deg, #f472b6, #fb7185);
+    --c-icon-bg:     rgba(244,114,182,0.12);
+    --c-tag-bg:      rgba(244,114,182,0.08);
+    --c-tag-txt:     var(--lich);
+    --c-tag-border:  rgba(244,114,182,0.25);
+  }
+  .card-lich:hover { box-shadow: 0 0 0 1px rgba(244,114,182,0.35), 0 16px 48px rgba(244,114,182,0.12); border-color: rgba(244,114,182,0.35); }
+
+  .card-gdkt {
+    --c-glow:        rgba(250,204,21,0.15);
+    --c-grad:        linear-gradient(90deg, #facc15, #fb923c);
+    --c-icon-bg:     rgba(250,204,21,0.1);
+    --c-tag-bg:      rgba(250,204,21,0.07);
+    --c-tag-txt:     var(--gdkt);
+    --c-tag-border:  rgba(250,204,21,0.22);
+  }
+  .card-gdkt:hover { box-shadow: 0 0 0 1px rgba(250,204,21,0.3), 0 16px 48px rgba(250,204,21,0.1); border-color: rgba(250,204,21,0.3); }
+
+  .card-tin {
+    --c-glow:        rgba(79,156,249,0.18);
+    --c-grad:        linear-gradient(90deg, #4f9cf9, #7c5af0);
+    --c-icon-bg:     rgba(79,156,249,0.12);
+    --c-tag-bg:      rgba(79,156,249,0.08);
+    --c-tag-txt:     var(--tin);
+    --c-tag-border:  rgba(79,156,249,0.25);
+  }
+  .card-tin:hover { box-shadow: 0 0 0 1px rgba(79,156,249,0.35), 0 16px 48px rgba(79,156,249,0.12); border-color: rgba(79,156,249,0.35); }
+
+  .card-phap {
+    --c-glow:        rgba(192,132,252,0.18);
+    --c-grad:        linear-gradient(90deg, #c084fc, #818cf8);
+    --c-icon-bg:     rgba(192,132,252,0.12);
+    --c-tag-bg:      rgba(192,132,252,0.08);
+    --c-tag-txt:     var(--phap);
+    --c-tag-border:  rgba(192,132,252,0.25);
+  }
+  .card-phap:hover { box-shadow: 0 0 0 1px rgba(192,132,252,0.35), 0 16px 48px rgba(192,132,252,0.12); border-color: rgba(192,132,252,0.35); }
+
+  /* ── DIVIDER ──────────────────────────────────── */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .divider hr {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── QUICK INFO STRIP ─────────────────────────── */
+  .info-strip {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .info-chip {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .info-chip .chip-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .info-chip .chip-text .chip-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 3px;
+  }
+  .info-chip .chip-text .chip-val {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ── FOOTER ───────────────────────────────────── */
+  .page-footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text3);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<div class="hero">
+  <div class="badge">📚 Cuối kì 2</div>
+  <h1>Ngân Hàng Câu Hỏi Ôn Tập</h1>
+  <p>Chọn môn học bên dưới để bắt đầu luyện tập — mỗi môn được chia theo dạng bài và bối cảnh</p>
+</div>
+
+<!-- ── SUBJECT GRID ───────────────────────────────────── -->
+<div class="subject-grid-wrap">
+  <div class="grid-label">Chọn môn học</div>
+
+  <div class="subject-grid">
+
+    <!-- Địa lý -->
+    <a class="sub-card card-dia" href="dia-ly.html">
+      <div class="sub-icon">🌏</div>
+      <div class="sub-name">Địa lý</div>
+      <div class="sub-tag">Geography</div>
+      <div class="sub-arrow">→</div>
+    </a>
+
+    <!-- Lịch sử -->
+    <a class="sub-card card-lich" href="lich-su.html">
+      <div class="sub-icon">📜</div>
+      <div class="sub-name">Lịch sử</div>
+      <div class="sub-tag">History</div>
+      <div class="sub-arrow">→</div>
+    </a>
+
+    <!-- GDKT-PL -->
+    <a class="sub-card card-gdkt" href="gdkt-pl.html">
+      <div class="sub-icon">⚖️</div>
+      <div class="sub-name">GDKT&nbsp;–&nbsp;PL</div>
+      <div class="sub-tag">Civic · Law</div>
+      <div class="sub-arrow">→</div>
+    </a>
+
+    <!-- Tin học -->
+    <a class="sub-card card-tin" href="tin.html">
+      <div class="sub-icon">💻</div>
+      <div class="sub-name">Tin học</div>
+      <div class="sub-tag">Informatics</div>
+      <div class="sub-arrow">→</div>
+    </a>
+
+    <!-- Tiếng Pháp -->
+    <a class="sub-card card-phap" href="phap.html">
+      <div class="sub-icon">🇫🇷</div>
+      <div class="sub-name">Tiếng Pháp</div>
+      <div class="sub-tag">Français</div>
+      <div class="sub-arrow">→</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── QUICK INFO ─────────────────────────────────────── -->
+<div class="divider"><hr></div>
+
+<div class="info-strip">
+  <div class="info-chip">
+    <div class="chip-icon">📂</div>
+    <div class="chip-text">
+      <div class="chip-label">Số môn</div>
+      <div class="chip-val">5 môn học</div>
+    </div>
+  </div>
+  <div class="info-chip">
+    <div class="chip-icon">🗂️</div>
+    <div class="chip-text">
+      <div class="chip-label">Dạng bài</div>
+      <div class="chip-val">Phân loại theo section</div>
+    </div>
+  </div>
+  <div class="info-chip">
+    <div class="chip-icon">🔗</div>
+    <div class="chip-text">
+      <div class="chip-label">Bối cảnh chung</div>
+      <div class="chip-val">Hỗ trợ 2 câu / đoạn</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<div class="page-footer">
+  THPT Phan Châu Trinh
+</div>
+
+</body>
+</html>
