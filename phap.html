@@ -493,6 +493,139 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
       <div class="score-bar" id="fp4-score"></div>
     </div>
 
+
+    <!-- EX FP-5 -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – Chia động từ tương lai gần (Bài tập bổ sung)
+          <small>Mettez les verbes entre parenthèses au futur proche</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkFP5()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('fp5')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('fp5')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="fp5">
+        <div class="fill-group"><label><span class="letter">a.</span> Est-ce que tu <input class="blank-input" id="fp5a" data-ans="vas partir" placeholder="..."> (partir) bientôt en vacances ?</label><span class="answer-hint" id="fp5a-h">→ vas partir</span></div>
+        <div class="fill-group"><label><span class="letter">b.</span> Demain, il <input class="blank-input" id="fp5b" data-ans="va faire" placeholder="..."> (faire) beau, alors nous irons à la plage.</label><span class="answer-hint" id="fp5b-h">→ va faire</span></div>
+        <div class="fill-group"><label><span class="letter">c.</span> Les enfants <input class="blank-input" id="fp5c" data-ans="vont visiter" placeholder="..."> (visiter) le musée avec leur professeur.</label><span class="answer-hint" id="fp5c-h">→ vont visiter</span></div>
+        <div class="fill-group"><label><span class="letter">d.</span> Nous <input class="blank-input" id="fp5d" data-ans="allons réserver" placeholder="..."> (réserver) une chambre d'hôtel pour nos vacances.</label><span class="answer-hint" id="fp5d-h">→ allons réserver</span></div>
+        <div class="fill-group"><label><span class="letter">e.</span> Vous <input class="blank-input" id="fp5e" data-ans="allez rencontrer" placeholder="..."> (rencontrer) des habitants accueillants au Laos.</label><span class="answer-hint" id="fp5e-h">→ allez rencontrer</span></div>
+        <div class="fill-group"><label><span class="letter">f.</span> Je <input class="blank-input" id="fp5f" data-ans="vais admirer" placeholder="..."> (admirer) le coucher du soleil sur la plage.</label><span class="answer-hint" id="fp5f-h">→ vais admirer</span></div>
+        <div class="fill-group"><label><span class="letter">g.</span> Ils ne <input class="blank-input" id="fp5g" data-ans="vont pas rester" placeholder="..."> (rester) longtemps, ils ont beaucoup de choses à faire.</label><span class="answer-hint" id="fp5g-h">→ vont pas rester</span></div>
+        <div class="fill-group"><label><span class="letter">h.</span> On <input class="blank-input" id="fp5h" data-ans="va prendre" placeholder="..."> (prendre) le tuk-tuk pour visiter la ville.</label><span class="answer-hint" id="fp5h-h">→ va prendre</span></div>
+      </div>
+      <div class="score-bar" id="fp5-score"></div>
+    </div>
+
+    <!-- EX FP-6 – Transformation présent → futur proche -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 6 – Chuyển sang tương lai gần
+          <small>Transformez les phrases du présent au futur proche</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('fp6')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="fp6">
+        <div class="ex-example"><strong>Exemple :</strong> Je <em>mange</em> une baguette. → Je <em>vais manger</em> une baguette.</div>
+        <div class="fill-group"><label><span class="letter">a.</span> Il <em>visite</em> Paris. → Il <textarea class="free-area" style="min-height:44px" placeholder="va visiter Paris."></textarea></label></div>
+        <div class="fill-group"><label><span class="letter">b.</span> Vous <em>faites</em> une randonnée. → Vous <textarea class="free-area" style="min-height:44px" placeholder="allez faire une randonnée."></textarea></label></div>
+        <div class="fill-group"><label><span class="letter">c.</span> Elles <em>découvrent</em> le Cambodge. → Elles <textarea class="free-area" style="min-height:44px" placeholder="vont découvrir le Cambodge."></textarea></label></div>
+        <div class="fill-group"><label><span class="letter">d.</span> Nous <em>partons</em> en vacances. → Nous <textarea class="free-area" style="min-height:44px" placeholder="allons partir en vacances."></textarea></label></div>
+        <div class="fill-group"><label><span class="letter">e.</span> Tu <em>réserves</em> des billets. → Tu <textarea class="free-area" style="min-height:44px" placeholder="vas réserver des billets."></textarea></label></div>
+        <div class="score-bar ok" style="display:flex;margin-top:8px;font-size:12px">
+          💡 Đáp án: a. va visiter · b. allez faire · c. vont découvrir · d. allons partir · e. vas réserver
+        </div>
+      </div>
+    </div>
+
+    <!-- EX FP-7 – Negation futur proche -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 7 – Phủ định tương lai gần
+          <small>Mettez les phrases au futur proche négatif</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkFP7()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('fp7')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('fp7')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="fp7">
+        <div class="ex-example"><strong>Exemple :</strong> Il va aller au Mexique. → Il <em>ne va pas aller</em> au Mexique.</div>
+        <div class="fill-group"><label><span class="letter">a.</span> Je vais partir à l'étranger. → Je <input class="blank-input" id="fp7a" data-ans="ne vais pas partir" placeholder="..."> à l'étranger.</label><span class="answer-hint" id="fp7a-h">→ ne vais pas partir</span></div>
+        <div class="fill-group"><label><span class="letter">b.</span> Nous allons visiter les grottes. → Nous <input class="blank-input" id="fp7b" data-ans="n'allons pas visiter" placeholder="..."> les grottes.</label><span class="answer-hint" id="fp7b-h">→ n'allons pas visiter</span></div>
+        <div class="fill-group"><label><span class="letter">c.</span> Elle va faire une randonnée. → Elle <input class="blank-input" id="fp7c" data-ans="ne va pas faire" placeholder="..."> de randonnée.</label><span class="answer-hint" id="fp7c-h">→ ne va pas faire</span></div>
+        <div class="fill-group"><label><span class="letter">d.</span> Ils vont prendre l'avion. → Ils <input class="blank-input" id="fp7d" data-ans="ne vont pas prendre" placeholder="..."> l'avion.</label><span class="answer-hint" id="fp7d-h">→ ne vont pas prendre</span></div>
+        <div class="fill-group"><label><span class="letter">e.</span> Vous allez réserver des billets. → Vous <input class="blank-input" id="fp7e" data-ans="n'allez pas réserver" placeholder="..."> de billets.</label><span class="answer-hint" id="fp7e-h">→ n'allez pas réserver</span></div>
+      </div>
+      <div class="score-bar" id="fp7-score"></div>
+    </div>
+
+    <!-- EX FP-8 – Questions futur proche -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 8 – Câu hỏi tương lai gần
+          <small>Formez des questions avec est-ce que… au futur proche</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('fp8')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="fp8">
+        <div class="ex-example"><strong>Exemple :</strong> tu / partir / au Vietnam → <em>Est-ce que tu vas partir au Vietnam ?</em></div>
+        <div class="fill-group"><label><span class="letter">a.</span> vous / visiter / le Laos</label><textarea class="free-area" style="min-height:48px" placeholder="Est-ce que vous allez visiter le Laos ?"></textarea></div>
+        <div class="fill-group"><label><span class="letter">b.</span> ils / faire / une randonnée à Sapa</label><textarea class="free-area" style="min-height:48px" placeholder="Est-ce qu'ils vont faire une randonnée à Sapa ?"></textarea></div>
+        <div class="fill-group"><label><span class="letter">c.</span> elle / réserver / une chambre d'hôtel</label><textarea class="free-area" style="min-height:48px" placeholder="Est-ce qu'elle va réserver une chambre d'hôtel ?"></textarea></div>
+        <div class="fill-group"><label><span class="letter">d.</span> nous / admirer / le coucher du soleil</label><textarea class="free-area" style="min-height:48px" placeholder="Est-ce que nous allons admirer le coucher du soleil ?"></textarea></div>
+        <div class="fill-group"><label><span class="letter">e.</span> tu / prendre / le train ou l'avion</label><textarea class="free-area" style="min-height:48px" placeholder="Est-ce que tu vas prendre le train ou l'avion ?"></textarea></div>
+      </div>
+    </div>
+
+    <!-- EX FP-9 – Contexte vacances (paragraph fill) -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 9 – Điền vào đoạn văn (Bài tập bổ sung)
+          <small>Complétez le texte avec le futur proche des verbes donnés</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkFP9()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('fp9')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('fp9')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="fp9">
+        <div class="context-box">
+          <div class="ctx-label">📖 Đoạn văn – điền dạng tương lai gần</div>
+          Cet été, ma famille et moi <input class="inline-blank" id="fp9-1" data-ans="allons partir" placeholder="..."> (partir) en vacances au Vietnam. Nous <input class="inline-blank" id="fp9-2" data-ans="allons prendre" placeholder="..."> (prendre) l'avion depuis Paris. D'abord, nous <input class="inline-blank" id="fp9-3" data-ans="allons visiter" placeholder="..."> (visiter) Hanoï pendant deux jours. Ensuite, mon frère <input class="inline-blank" id="fp9-4" data-ans="va faire" placeholder="..."> (faire) une randonnée à Sapa. Ma sœur et moi, nous <input class="inline-blank" id="fp9-5" data-ans="allons découvrir" placeholder="..."> (découvrir) la baie d'Along. Les habitants <input class="inline-blank" id="fp9-6" data-ans="vont être" placeholder="..."> (être) très accueillants, j'en suis sûr ! Le dernier jour, on <input class="inline-blank" id="fp9-7" data-ans="va admirer" placeholder="..."> (admirer) le coucher du soleil sur la mer.
+        </div>
+      </div>
+      <div class="score-bar" id="fp9-score"></div>
+    </div>
+
+    <!-- EX FP-10 – Réponse libre de dialogue -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 10 – Hỏi và trả lời về kỳ nghỉ
+          <small>Réponds aux questions sur tes projets de vacances en utilisant le futur proche</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('fp10')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="fp10">
+        <div class="ex-instruction">Dùng thì tương lai gần để trả lời các câu hỏi sau về kỳ nghỉ của bạn.</div>
+        <div class="fill-group"><label><strong>1.</strong> Qu'est-ce que tu vas faire pendant les prochaines vacances ?</label><textarea class="free-area" style="min-height:54px" placeholder="Je vais…"></textarea></div>
+        <div class="fill-group"><label><strong>2.</strong> Où est-ce que tu vas aller ?</label><textarea class="free-area" style="min-height:54px" placeholder="Je vais aller…"></textarea></div>
+        <div class="fill-group"><label><strong>3.</strong> Avec qui est-ce que tu vas voyager ?</label><textarea class="free-area" style="min-height:54px" placeholder="Je vais voyager avec…"></textarea></div>
+        <div class="fill-group"><label><strong>4.</strong> Quel moyen de transport est-ce que tu vas utiliser ?</label><textarea class="free-area" style="min-height:54px" placeholder="Je vais prendre…"></textarea></div>
+        <div class="fill-group"><label><strong>5.</strong> Qu'est-ce que tu vas visiter ou découvrir ?</label><textarea class="free-area" style="min-height:54px" placeholder="Je vais visiter / découvrir…"></textarea></div>
+      </div>
+    </div>
+
   </div><!-- end ex-fut -->
 
   <!-- ▸▸ ARTICLES PAYS ◂◂ -->
@@ -548,6 +681,109 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
         <div class="fill-group"><label><span class="letter">8.</span> Nous visitons <input class="blank-input" id="art2-8" data-ans="l'" placeholder="..."> Inde cet hiver.</label><span class="answer-hint" id="art2-8-h">→ l'</span></div>
       </div>
       <div class="score-bar" id="art2-score"></div>
+    </div>
+
+
+    <!-- EX ART-3 -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 3 – Điền mạo từ vào đoạn văn
+          <small>Complétez avec le, la, l', les ou Ø</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkART3()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('art3')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('art3')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="art3">
+        <div class="context-box">
+          <div class="ctx-label">📖 Đoạn văn</div>
+          Mon prof de géographie nous parle souvent des pays du monde. Il aime <input class="inline-blank" id="art3-1" data-ans="le" placeholder="..."> Brésil, <input class="inline-blank" id="art3-2" data-ans="l'" placeholder="..."> Égypte, et <input class="inline-blank" id="art3-3" data-ans="les" placeholder="..."> États-Unis. Sa femme préfère <input class="inline-blank" id="art3-4" data-ans="la" placeholder="..."> Thaïlande et <input class="inline-blank" id="art3-5" data-ans="Ø" placeholder="..."> Singapour. Ils habitent en <input class="inline-blank" id="art3-6" data-ans="Ø" placeholder="..."> France, à <input class="inline-blank" id="art3-7" data-ans="Ø" placeholder="..."> Lyon. Leur fille étudie <input class="inline-blank" id="art3-8" data-ans="l'" placeholder="..."> espagnol, car elle adore <input class="inline-blank" id="art3-9" data-ans="l'" placeholder="..."> Espagne et <input class="inline-blank" id="art3-10" data-ans="le" placeholder="..."> Mexique.
+        </div>
+      </div>
+      <div class="score-bar" id="art3-score"></div>
+    </div>
+
+    <!-- EX ART-4 -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 4 – Nhận biết: nước có mạo từ hay không?
+          <small>Classez les pays : avec article (le/la/l'/les) ou sans article (Ø)</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkART4()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('art4')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('art4')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="art4">
+        <p class="ex-instruction">Viết mạo từ thích hợp (le / la / l' / les) hoặc Ø trước mỗi tên nước.</p>
+        <div class="fill-group"><label><span class="letter">1.</span> <input class="blank-input" id="art4-1" data-ans="le" placeholder="..."> Portugal</label><span class="answer-hint" id="art4-1-h">→ le</span></div>
+        <div class="fill-group"><label><span class="letter">2.</span> <input class="blank-input" id="art4-2" data-ans="Ø" placeholder="..."> Haïti</label><span class="answer-hint" id="art4-2-h">→ Ø</span></div>
+        <div class="fill-group"><label><span class="letter">3.</span> <input class="blank-input" id="art4-3" data-ans="la" placeholder="..."> Grèce</label><span class="answer-hint" id="art4-3-h">→ la</span></div>
+        <div class="fill-group"><label><span class="letter">4.</span> <input class="blank-input" id="art4-4" data-ans="les" placeholder="..."> Pays-Bas</label><span class="answer-hint" id="art4-4-h">→ les</span></div>
+        <div class="fill-group"><label><span class="letter">5.</span> <input class="blank-input" id="art4-5" data-ans="Ø" placeholder="..."> Madagascar</label><span class="answer-hint" id="art4-5-h">→ Ø</span></div>
+        <div class="fill-group"><label><span class="letter">6.</span> <input class="blank-input" id="art4-6" data-ans="l'" placeholder="..."> Algérie</label><span class="answer-hint" id="art4-6-h">→ l'</span></div>
+        <div class="fill-group"><label><span class="letter">7.</span> <input class="blank-input" id="art4-7" data-ans="le" placeholder="..."> Pérou</label><span class="answer-hint" id="art4-7-h">→ le</span></div>
+        <div class="fill-group"><label><span class="letter">8.</span> <input class="blank-input" id="art4-8" data-ans="la" placeholder="..."> Colombie</label><span class="answer-hint" id="art4-8-h">→ la</span></div>
+        <div class="fill-group"><label><span class="letter">9.</span> <input class="blank-input" id="art4-9" data-ans="le" placeholder="..."> Cambodge</label><span class="answer-hint" id="art4-9-h">→ le</span></div>
+        <div class="fill-group"><label><span class="letter">10.</span> <input class="blank-input" id="art4-10" data-ans="Ø" placeholder="..."> Cuba</label><span class="answer-hint" id="art4-10-h">→ Ø</span></div>
+      </div>
+      <div class="score-bar" id="art4-score"></div>
+    </div>
+
+    <!-- EX ART-5 – giống đực / cái -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – Phân biệt giống đực / giống cái của tên nước
+          <small>Écrivez le ou la devant chaque pays</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkART5()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('art5')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('art5')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="art5">
+        <p class="ex-instruction">Chú ý: Nước tận cùng bằng <strong>-e</strong> thường là giống cái (la), nhưng có ngoại lệ!</p>
+        <div class="fill-group"><label><span class="letter">1.</span> <input class="blank-input" id="art5-1" data-ans="le" placeholder="..."> Mexique (ngoại lệ!)</label><span class="answer-hint" id="art5-1-h">→ le (ngoại lệ)</span></div>
+        <div class="fill-group"><label><span class="letter">2.</span> <input class="blank-input" id="art5-2" data-ans="la" placeholder="..."> Suisse</label><span class="answer-hint" id="art5-2-h">→ la</span></div>
+        <div class="fill-group"><label><span class="letter">3.</span> <input class="blank-input" id="art5-3" data-ans="le" placeholder="..."> Cambodge</label><span class="answer-hint" id="art5-3-h">→ le (ngoại lệ)</span></div>
+        <div class="fill-group"><label><span class="letter">4.</span> <input class="blank-input" id="art5-4" data-ans="la" placeholder="..."> Tunisie</label><span class="answer-hint" id="art5-4-h">→ la</span></div>
+        <div class="fill-group"><label><span class="letter">5.</span> <input class="blank-input" id="art5-5" data-ans="le" placeholder="..."> Mozambique</label><span class="answer-hint" id="art5-5-h">→ le (ngoại lệ)</span></div>
+        <div class="fill-group"><label><span class="letter">6.</span> <input class="blank-input" id="art5-6" data-ans="la" placeholder="..."> Norvège</label><span class="answer-hint" id="art5-6-h">→ la</span></div>
+        <div class="fill-group"><label><span class="letter">7.</span> <input class="blank-input" id="art5-7" data-ans="le" placeholder="..."> Zimbabwe</label><span class="answer-hint" id="art5-7-h">→ le (ngoại lệ)</span></div>
+        <div class="fill-group"><label><span class="letter">8.</span> <input class="blank-input" id="art5-8" data-ans="la" placeholder="..."> Turquie</label><span class="answer-hint" id="art5-8-h">→ la</span></div>
+      </div>
+      <div class="score-bar" id="art5-score"></div>
+    </div>
+
+    <!-- EX ART-6 – Phrases complètes -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 6 – Hoàn thành câu với mạo từ (Bài tập bổ sung)
+          <small>Complétez chaque phrase avec le bon article ou Ø</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkART6()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('art6')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('art6')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="art6">
+        <div class="fill-group"><label><span class="letter">1.</span> <input class="blank-input" id="art6-1" data-ans="la" placeholder="..."> Corée du Sud est connue pour sa cuisine.</label><span class="answer-hint" id="art6-1-h">→ la</span></div>
+        <div class="fill-group"><label><span class="letter">2.</span> Ils rêvent de visiter <input class="blank-input" id="art6-2" data-ans="le" placeholder="..."> Pérou.</label><span class="answer-hint" id="art6-2-h">→ le</span></div>
+        <div class="fill-group"><label><span class="letter">3.</span> J'adore <input class="blank-input" id="art6-3" data-ans="Ø" placeholder="..."> Singapour, c'est une ville moderne.</label><span class="answer-hint" id="art6-3-h">→ Ø</span></div>
+        <div class="fill-group"><label><span class="letter">4.</span> <input class="blank-input" id="art6-4" data-ans="les" placeholder="..."> Seychelles sont de belles îles de l'océan Indien.</label><span class="answer-hint" id="art6-4-h">→ les</span></div>
+        <div class="fill-group"><label><span class="letter">5.</span> Tu connais <input class="blank-input" id="art6-5" data-ans="l'" placeholder="..."> Ouzbékistan ?</label><span class="answer-hint" id="art6-5-h">→ l'</span></div>
+        <div class="fill-group"><label><span class="letter">6.</span> <input class="blank-input" id="art6-6" data-ans="le" placeholder="..."> Sénégal est un pays d'Afrique de l'Ouest.</label><span class="answer-hint" id="art6-6-h">→ le</span></div>
+        <div class="fill-group"><label><span class="letter">7.</span> Elle a visité <input class="blank-input" id="art6-7" data-ans="la" placeholder="..."> Nouvelle-Zélande l'année dernière.</label><span class="answer-hint" id="art6-7-h">→ la</span></div>
+        <div class="fill-group"><label><span class="letter">8.</span> <input class="blank-input" id="art6-8" data-ans="Ø" placeholder="..."> Taiwan est une île de l'Asie de l'Est.</label><span class="answer-hint" id="art6-8-h">→ Ø</span></div>
+        <div class="fill-group"><label><span class="letter">9.</span> Nous avons traversé <input class="blank-input" id="art6-9" data-ans="l'" placeholder="..."> Himalaya à vélo.</label><span class="answer-hint" id="art6-9-h">→ l'</span></div>
+        <div class="fill-group"><label><span class="letter">10.</span> <input class="blank-input" id="art6-10" data-ans="la" placeholder="..."> Suède est magnifique en été.</label><span class="answer-hint" id="art6-10-h">→ la</span></div>
+      </div>
+      <div class="score-bar" id="art6-score"></div>
     </div>
 
   </div><!-- end ex-art -->
@@ -631,6 +867,103 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
       <div class="score-bar" id="prep3-score"></div>
     </div>
 
+
+    <!-- EX PREP-4 – Paragraphe à trous -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 4 – Điền giới từ vào đoạn văn du lịch
+          <small>Complétez avec au / en / aux / à / de / du / des</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkPREP4()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('prep4')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('prep4')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="prep4">
+        <div class="context-box">
+          <div class="ctx-label">📖 Đoạn văn – bài 4 & 5 cùng chủ đề du lịch gia đình</div>
+          Bonjour ! Je m'appelle Sophie. Cet été, je vais voyager avec ma famille. D'abord, nous allons <input class="inline-blank" id="prep4-1" data-ans="en" placeholder="..."> Italie, <input class="inline-blank" id="prep4-2" data-ans="à" placeholder="..."> Rome. Ensuite, nous allons <input class="inline-blank" id="prep4-3" data-ans="en" placeholder="..."> Grèce, <input class="inline-blank" id="prep4-4" data-ans="à" placeholder="..."> Athènes. Mon frère préfère aller <input class="inline-blank" id="prep4-5" data-ans="au" placeholder="..."> Portugal, mais moi je rêve <input class="inline-blank" id="prep4-6" data-ans="du" placeholder="..."> Japon. L'année prochaine, nous pensons aller <input class="inline-blank" id="prep4-7" data-ans="aux" placeholder="..."> Philippines ou <input class="inline-blank" id="prep4-8" data-ans="à" placeholder="..."> Singapour.
+        </div>
+      </div>
+      <div class="score-bar" id="prep4-score"></div>
+    </div>
+
+    <!-- EX PREP-5 – même contexte famille Sophie -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – Giới từ + tên nước/thành phố (Bài tập bổ sung)
+          <small>Complétez avec la bonne préposition ou article prépositionnel</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkPREP5()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('prep5')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('prep5')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="prep5">
+        <p class="ex-instruction">Chú ý: Bài này tiếp tục ngữ cảnh gia đình Sophie từ Bài 4.</p>
+        <div class="fill-group"><label><span class="letter">1.</span> Sophie parle souvent <input class="blank-input" id="prep5-1" data-ans="de l'" placeholder="..."> Italie à ses amis.</label><span class="answer-hint" id="prep5-1-h">→ de l'</span></div>
+        <div class="fill-group"><label><span class="letter">2.</span> Ses parents reviennent <input class="blank-input" id="prep5-2" data-ans="du" placeholder="..."> Portugal.</label><span class="answer-hint" id="prep5-2-h">→ du (de + le)</span></div>
+        <div class="fill-group"><label><span class="letter">3.</span> Son frère est rentré <input class="blank-input" id="prep5-3" data-ans="des" placeholder="..."> États-Unis hier.</label><span class="answer-hint" id="prep5-3-h">→ des (de + les)</span></div>
+        <div class="fill-group"><label><span class="letter">4.</span> Elle a des souvenirs <input class="blank-input" id="prep5-4" data-ans="de" placeholder="..."> Cuba.</label><span class="answer-hint" id="prep5-4-h">→ de (sans article)</span></div>
+        <div class="fill-group"><label><span class="letter">5.</span> Il revient <input class="blank-input" id="prep5-5" data-ans="de" placeholder="..."> France la semaine prochaine.</label><span class="answer-hint" id="prep5-5-h">→ de (féminin, pas d'article)</span></div>
+        <div class="fill-group"><label><span class="letter">6.</span> Je suis originaire <input class="blank-input" id="prep5-6" data-ans="du" placeholder="..."> Vietnam.</label><span class="answer-hint" id="prep5-6-h">→ du</span></div>
+        <div class="fill-group"><label><span class="letter">7.</span> Nous arrivons <input class="blank-input" id="prep5-7" data-ans="du" placeholder="..."> Maroc ce soir.</label><span class="answer-hint" id="prep5-7-h">→ du</span></div>
+      </div>
+      <div class="score-bar" id="prep5-score"></div>
+    </div>
+
+    <!-- EX PREP-6 – Erreurs à corriger -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 6 – Sửa lỗi giới từ (Bài tập bổ sung)
+          <small>Corrigez les erreurs dans les phrases suivantes</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('prep6')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="prep6">
+        <div class="ex-instruction">Mỗi câu có một lỗi về giới từ hoặc mạo từ. Viết lại câu đúng.</div>
+        <div class="fill-group"><label><span class="letter">a.</span> ❌ Elle habite <em>à la</em> France.</label><textarea class="free-area" style="min-height:44px" placeholder="✅ Elle habite en France."></textarea></div>
+        <div class="fill-group"><label><span class="letter">b.</span> ❌ Nous allons <em>en</em> Japon cet été.</label><textarea class="free-area" style="min-height:44px" placeholder="✅ Nous allons au Japon cet été."></textarea></div>
+        <div class="fill-group"><label><span class="letter">c.</span> ❌ Il vient <em>au</em> Cuba.</label><textarea class="free-area" style="min-height:44px" placeholder="✅ Il vient de Cuba."></textarea></div>
+        <div class="fill-group"><label><span class="letter">d.</span> ❌ Ils habitent <em>au</em> États-Unis.</label><textarea class="free-area" style="min-height:44px" placeholder="✅ Ils habitent aux États-Unis."></textarea></div>
+        <div class="fill-group"><label><span class="letter">e.</span> ❌ Je vais <em>en le</em> Sénégal.</label><textarea class="free-area" style="min-height:44px" placeholder="✅ Je vais au Sénégal."></textarea></div>
+        <div class="score-bar ok" style="display:flex;margin-top:8px;font-size:12px">
+          💡 Đáp án: a. en France · b. au Japon · c. de Cuba · d. aux États-Unis · e. au Sénégal
+        </div>
+      </div>
+    </div>
+
+    <!-- EX PREP-7 – Choisir la bonne préposition -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 7 – Chọn giới từ đúng (Bài tập bổ sung)
+          <small>Choisissez la préposition correcte</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkPREP7()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('prep7')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('prep7')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="prep7">
+        <div class="fill-group"><label><span class="letter">1.</span> Je pars <input class="blank-input" id="prep7-1" data-ans="en" placeholder="..."> Corée du Sud la semaine prochaine.</label><span class="answer-hint" id="prep7-1-h">→ en</span></div>
+        <div class="fill-group"><label><span class="letter">2.</span> Elle habite <input class="blank-input" id="prep7-2" data-ans="au" placeholder="..."> Sénégal depuis 3 ans.</label><span class="answer-hint" id="prep7-2-h">→ au</span></div>
+        <div class="fill-group"><label><span class="letter">3.</span> Nous allons <input class="blank-input" id="prep7-3" data-ans="à" placeholder="..."> Madrid pour le week-end.</label><span class="answer-hint" id="prep7-3-h">→ à</span></div>
+        <div class="fill-group"><label><span class="letter">4.</span> Tu vas souvent <input class="blank-input" id="prep7-4" data-ans="aux" placeholder="..."> Maldives ?</label><span class="answer-hint" id="prep7-4-h">→ aux</span></div>
+        <div class="fill-group"><label><span class="letter">5.</span> Ils partent <input class="blank-input" id="prep7-5" data-ans="au" placeholder="..."> Cambodge demain.</label><span class="answer-hint" id="prep7-5-h">→ au</span></div>
+        <div class="fill-group"><label><span class="letter">6.</span> Elle travaille <input class="blank-input" id="prep7-6" data-ans="en" placeholder="..."> Allemagne, à Berlin.</label><span class="answer-hint" id="prep7-6-h">→ en</span></div>
+        <div class="fill-group"><label><span class="letter">7.</span> Je vais <input class="blank-input" id="prep7-7" data-ans="à" placeholder="..."> Phnom Penh visiter des temples.</label><span class="answer-hint" id="prep7-7-h">→ à</span></div>
+        <div class="fill-group"><label><span class="letter">8.</span> On revient <input class="blank-input" id="prep7-8" data-ans="du" placeholder="..."> Vietnam avec plein de souvenirs.</label><span class="answer-hint" id="prep7-8-h">→ du</span></div>
+        <div class="fill-group"><label><span class="letter">9.</span> Ils habitent <input class="blank-input" id="prep7-9" data-ans="en" placeholder="..."> Iran depuis 2019.</label><span class="answer-hint" id="prep7-9-h">→ en</span></div>
+        <div class="fill-group"><label><span class="letter">10.</span> Nous rêvons de partir <input class="blank-input" id="prep7-10" data-ans="à" placeholder="..."> Cuba un jour.</label><span class="answer-hint" id="prep7-10-h">→ à</span></div>
+      </div>
+      <div class="score-bar" id="prep7-score"></div>
+    </div>
+
   </div><!-- end ex-prep -->
 
   <!-- ▸▸ PARTIR ◂◂ -->
@@ -707,6 +1040,95 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
       <div class="score-bar" id="par3-score"></div>
     </div>
 
+
+    <!-- EX PAR-4 – Texte à trous PARTIR -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 4 – Điền PARTIR vào đoạn văn (Bài tập bổ sung)
+          <small>Conjuguez le verbe PARTIR au présent</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkPAR4()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('par4')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('par4')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="par4">
+        <div class="context-box">
+          <div class="ctx-label">📖 Đoạn văn – Bài 4 & 5 dùng chung bối cảnh</div>
+          Chaque été, toute la famille <input class="inline-blank" id="par4-1" data-ans="part" placeholder="..."> en vacances. Le père <input class="inline-blank" id="par4-2" data-ans="part" placeholder="..."> toujours le premier. Les enfants <input class="inline-blank" id="par4-3" data-ans="partent" placeholder="..."> avec leur mère. « Vous <input class="inline-blank" id="par4-4" data-ans="partez" placeholder="..."> sans moi ? » demande le grand-père. « Non, nous <input class="inline-blank" id="par4-5" data-ans="partons" placeholder="..."> tous ensemble ! » répond la mère. Moi, je <input class="inline-blank" id="par4-6" data-ans="pars" placeholder="..."> toujours le dernier parce que je ferme la maison.
+        </div>
+      </div>
+      <div class="score-bar" id="par4-score"></div>
+    </div>
+
+    <!-- EX PAR-5 – PARTIR / POUVOIR / VOULOIR -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – PARTIR, POUVOIR, VOULOIR (Bài tập bổ sung)
+          <small>Choisissez le bon verbe et conjuguez-le au présent</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkPAR5()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('par5')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('par5')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="par5">
+        <p class="ex-instruction">Bối cảnh: cùng gia đình từ bài 4. Chọn và chia đúng: partir / pouvoir / vouloir.</p>
+        <div class="fill-group"><label><span class="letter">a.</span> – Tu <input class="blank-input" id="par5a" data-ans="veux" placeholder="..."> (vouloir) partir en Corse ? – Oui, j'adore les îles !</label><span class="answer-hint" id="par5a-h">→ veux</span></div>
+        <div class="fill-group"><label><span class="letter">b.</span> Ils ne <input class="blank-input" id="par5b" data-ans="peuvent" placeholder="..."> (pouvoir) pas venir, ils ont du travail.</label><span class="answer-hint" id="par5b-h">→ peuvent</span></div>
+        <div class="fill-group"><label><span class="letter">c.</span> Vous <input class="blank-input" id="par5c" data-ans="partez" placeholder="..."> (partir) en avion ou en train ?</label><span class="answer-hint" id="par5c-h">→ partez</span></div>
+        <div class="fill-group"><label><span class="letter">d.</span> Nous <input class="blank-input" id="par5d" data-ans="voulons" placeholder="..."> (vouloir) découvrir le Laos cet hiver.</label><span class="answer-hint" id="par5d-h">→ voulons</span></div>
+        <div class="fill-group"><label><span class="letter">e.</span> Est-ce qu'on <input class="blank-input" id="par5e" data-ans="peut" placeholder="..."> (pouvoir) visiter le temple aujourd'hui ?</label><span class="answer-hint" id="par5e-h">→ peut</span></div>
+        <div class="fill-group"><label><span class="letter">f.</span> Je <input class="blank-input" id="par5f" data-ans="pars" placeholder="..."> (partir) à 7h demain matin.</label><span class="answer-hint" id="par5f-h">→ pars</span></div>
+      </div>
+      <div class="score-bar" id="par5-score"></div>
+    </div>
+
+    <!-- EX PAR-6 – Production courte avec PARTIR -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 6 – Viết câu với PARTIR (Bài tập bổ sung)
+          <small>Écrivez des phrases complètes en utilisant le verbe PARTIR</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('par6')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="par6">
+        <div class="ex-example"><strong>Exemple :</strong> Je / 6h / à la mer → <em>Je pars à 6h pour aller à la mer.</em></div>
+        <div class="fill-group"><label><span class="letter">a.</span> Nous / dimanche / en montagne</label><textarea class="free-area" style="min-height:46px" placeholder="Nous partons dimanche en montagne."></textarea></div>
+        <div class="fill-group"><label><span class="letter">b.</span> Ils / ne pas / cette année / en vacances</label><textarea class="free-area" style="min-height:46px" placeholder="Ils ne partent pas en vacances cette année."></textarea></div>
+        <div class="fill-group"><label><span class="letter">c.</span> Tu / à quelle heure / pour l'aéroport ?</label><textarea class="free-area" style="min-height:46px" placeholder="Tu pars à quelle heure pour l'aéroport ?"></textarea></div>
+        <div class="fill-group"><label><span class="letter">d.</span> Elle / avec ses amis / pour Paris</label><textarea class="free-area" style="min-height:46px" placeholder="Elle part avec ses amis pour Paris."></textarea></div>
+        <div class="fill-group"><label><span class="letter">e.</span> Vous / souvent / à l'étranger ?</label><textarea class="free-area" style="min-height:46px" placeholder="Vous partez souvent à l'étranger ?"></textarea></div>
+      </div>
+    </div>
+
+    <!-- EX PAR-7 – Trouver et corriger l'erreur -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 7 – Tìm lỗi sai trong câu (Bài tập bổ sung)
+          <small>Corrigez la forme incorrecte du verbe PARTIR</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkPAR7()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('par7')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('par7')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="par7">
+        <p class="ex-instruction">Câu dưới đây chứa dạng sai của PARTIR. Hãy điền dạng đúng.</p>
+        <div class="fill-group"><label><span class="letter">a.</span> ❌ Vous <em>partez</em> → ✅ Nous <input class="blank-input" id="par7a" data-ans="partons" placeholder="..."> pour la plage.</label><span class="answer-hint" id="par7a-h">→ partons</span></div>
+        <div class="fill-group"><label><span class="letter">b.</span> ❌ Ils <em>partent</em> demain → sửa "Ils" thành "Tu" → ✅ Tu <input class="blank-input" id="par7b" data-ans="pars" placeholder="..."> demain.</label><span class="answer-hint" id="par7b-h">→ pars</span></div>
+        <div class="fill-group"><label><span class="letter">c.</span> ❌ Je <em>part</em> à 8h → ✅ Je <input class="blank-input" id="par7c" data-ans="pars" placeholder="..."> à 8h.</label><span class="answer-hint" id="par7c-h">→ pars</span></div>
+        <div class="fill-group"><label><span class="letter">d.</span> ❌ Elle <em>partons</em> en vacances → ✅ Elle <input class="blank-input" id="par7d" data-ans="part" placeholder="..."> en vacances.</label><span class="answer-hint" id="par7d-h">→ part</span></div>
+        <div class="fill-group"><label><span class="letter">e.</span> ❌ Ils <em>pars</em> tôt → ✅ Ils <input class="blank-input" id="par7e" data-ans="partent" placeholder="..."> tôt.</label><span class="answer-hint" id="par7e-h">→ partent</span></div>
+      </div>
+      <div class="score-bar" id="par7-score"></div>
+    </div>
+
   </div><!-- end ex-partir -->
 
   <!-- ▸▸ TRANSPORT ◂◂ -->
@@ -759,6 +1181,100 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
         <div class="fill-group"><label><span class="letter">e.</span> Paris, la <input class="blank-input" id="dest-e" data-ans="capitale" placeholder="..."> de la France est une destination où tout le monde aime y aller une fois dans la vie.</label><span class="answer-hint" id="dest-e-h">→ capitale</span></div>
       </div>
       <div class="score-bar" id="dest-score"></div>
+    </div>
+
+
+    <!-- EX TRANS-4 – Moyens de transport au quotidien -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 4 – Phương tiện di chuyển hàng ngày (Bài tập bổ sung)
+          <small>Complétez les phrases avec le bon moyen de transport</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkTRANS4()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('trans4')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('trans4')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="trans4">
+        <p style="font-size:12px;color:var(--text3);margin-bottom:12px;font-style:italic">Phương tiện: le vélo · le bus · le métro · l'avion · le bateau · la moto · le train · le taxi · à pied · la voiture</p>
+        <div class="fill-group"><label><span class="letter">a.</span> Pour traverser la Méditerranée, on prend <input class="blank-input" id="trans4-a" data-ans="le bateau" placeholder="...">.</label><span class="answer-hint" id="trans4-a-h">→ le bateau</span></div>
+        <div class="fill-group"><label><span class="letter">b.</span> La ville est petite, Thomas va à l'école <input class="blank-input" id="trans4-b" data-ans="à pied" placeholder="...">.</label><span class="answer-hint" id="trans4-b-h">→ à pied</span></div>
+        <div class="fill-group"><label><span class="letter">c.</span> À Paris, les gens utilisent beaucoup <input class="blank-input" id="trans4-c" data-ans="le métro" placeholder="..."> pour éviter les embouteillages.</label><span class="answer-hint" id="trans4-c-h">→ le métro</span></div>
+        <div class="fill-group"><label><span class="letter">d.</span> Pour aller de Paris à Londres rapidement, on peut prendre <input class="blank-input" id="trans4-d" data-ans="le train" placeholder="..."> (Eurostar).</label><span class="answer-hint" id="trans4-d-h">→ le train</span></div>
+        <div class="fill-group"><label><span class="letter">e.</span> Il fait beau, je préfère aller au marché <input class="blank-input" id="trans4-e" data-ans="à vélo" placeholder="...">.</label><span class="answer-hint" id="trans4-e-h">→ à vélo / en vélo</span></div>
+        <div class="fill-group"><label><span class="letter">f.</span> Pour un voyage de Hanoï à Ho Chi Minh Ville en 2 heures, on prend <input class="blank-input" id="trans4-f" data-ans="l'avion" placeholder="...">.</label><span class="answer-hint" id="trans4-f-h">→ l'avion</span></div>
+      </div>
+      <div class="score-bar" id="trans4-score"></div>
+    </div>
+
+    <!-- EX TRANS-5 – Caractériser les destinations -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – Địa điểm + Hoạt động phù hợp
+          <small>Associez chaque destination avec une activité</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkTRANS5()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('trans5')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('trans5')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="trans5">
+        <p class="ex-instruction">Điền địa điểm phù hợp nhất với hoạt động được đề cập (la mer / la montagne / la campagne / la forêt / la ville / l'île).</p>
+        <div class="fill-group"><label><span class="letter">a.</span> Pour faire du ski, on va <input class="blank-input" id="trans5-a" data-ans="à la montagne" placeholder="...">.</label><span class="answer-hint" id="trans5-a-h">→ à la montagne</span></div>
+        <div class="fill-group"><label><span class="letter">b.</span> Pour faire de la natation et bronzer, on va <input class="blank-input" id="trans5-b" data-ans="à la mer" placeholder="..."> ou <input class="blank-input" id="trans5-b2" data-ans="à la plage" placeholder="...">.</label><span class="answer-hint" id="trans5-b-h">→ à la mer / à la plage</span></div>
+        <div class="fill-group"><label><span class="letter">c.</span> Pour faire une randonnée parmi les arbres, on va <input class="blank-input" id="trans5-c" data-ans="dans la forêt" placeholder="...">.</label><span class="answer-hint" id="trans5-c-h">→ dans la forêt</span></div>
+        <div class="fill-group"><label><span class="letter">d.</span> Pour visiter des musées et des monuments, on va <input class="blank-input" id="trans5-d" data-ans="en ville" placeholder="...">.</label><span class="answer-hint" id="trans5-d-h">→ en ville</span></div>
+        <div class="fill-group"><label><span class="letter">e.</span> Pour faire de l'équitation et profiter du calme, on va <input class="blank-input" id="trans5-e" data-ans="à la campagne" placeholder="...">.</label><span class="answer-hint" id="trans5-e-h">→ à la campagne</span></div>
+        <div class="fill-group"><label><span class="letter">f.</span> Pour être entouré(e) d'eau et profiter des récifs coralliens, on va <input class="blank-input" id="trans5-f" data-ans="sur une île" placeholder="...">.</label><span class="answer-hint" id="trans5-f-h">→ sur une île</span></div>
+      </div>
+      <div class="score-bar" id="trans5-score"></div>
+    </div>
+
+    <!-- EX TRANS-6 – Répondre à des questions pratiques -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 6 – Trả lời câu hỏi về phương tiện (Bài tập bổ sung)
+          <small>Répondez aux questions en utilisant les bonnes prépositions de transport</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('trans6')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="trans6">
+        <div class="ex-instruction">Lưu ý: dùng <strong>en</strong> trước xe cộ (en voiture, en avion, en train…) nhưng <strong>à</strong> trước vélo và pied (à vélo, à pied).</div>
+        <div class="fill-group"><label><strong>1.</strong> Comment vas-tu à l'école chaque matin ?</label><textarea class="free-area" style="min-height:50px" placeholder="Je vais à l'école à pied / en bus / en vélo…"></textarea></div>
+        <div class="fill-group"><label><strong>2.</strong> Comment ton père va-t-il au travail ?</label><textarea class="free-area" style="min-height:50px" placeholder="Mon père va au travail en…"></textarea></div>
+        <div class="fill-group"><label><strong>3.</strong> Comment préfères-tu voyager entre deux pays lointains ?</label><textarea class="free-area" style="min-height:50px" placeholder="Je préfère voyager en avion parce que…"></textarea></div>
+        <div class="fill-group"><label><strong>4.</strong> Pour aller de ton lycée à la plage la plus proche, quel moyen de transport utilises-tu ?</label><textarea class="free-area" style="min-height:50px" placeholder="Pour aller à la plage, je prends…"></textarea></div>
+      </div>
+    </div>
+
+    <!-- EX TRANS-7 – Prepositions de transport QCM -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 7 – Giới từ trước phương tiện (Bài tập bổ sung)
+          <small>EN ou À ? Complétez avec la bonne préposition</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkTRANS7()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('trans7')">↺ Đặt lại</button>
+          <button class="btn-show" onclick="showAnswers('trans7')">Xem đáp án</button>
+        </div>
+      </div>
+      <div id="trans7">
+        <div class="rule-box" style="margin-bottom:14px"><p><strong>Quy tắc:</strong> Dùng <strong>en</strong> trước phương tiện kín (en voiture, en avion, en train, en bus, en métro, en bateau) · Dùng <strong>à</strong> trước phương tiện không kín (à vélo, à moto, à pied, à cheval)</p></div>
+        <div class="fill-group"><label><span class="letter">1.</span> Il va au bureau <input class="blank-input" id="trans7-1" data-ans="en" placeholder="..."> voiture.</label><span class="answer-hint" id="trans7-1-h">→ en</span></div>
+        <div class="fill-group"><label><span class="letter">2.</span> Je vais à l'école <input class="blank-input" id="trans7-2" data-ans="à" placeholder="..."> vélo.</label><span class="answer-hint" id="trans7-2-h">→ à</span></div>
+        <div class="fill-group"><label><span class="letter">3.</span> Nous voyageons <input class="blank-input" id="trans7-3" data-ans="en" placeholder="..."> train.</label><span class="answer-hint" id="trans7-3-h">→ en</span></div>
+        <div class="fill-group"><label><span class="letter">4.</span> Elle se promène <input class="blank-input" id="trans7-4" data-ans="à" placeholder="..."> cheval dans la campagne.</label><span class="answer-hint" id="trans7-4-h">→ à</span></div>
+        <div class="fill-group"><label><span class="letter">5.</span> Les touristes visitent la ville <input class="blank-input" id="trans7-5" data-ans="en" placeholder="..."> bus.</label><span class="answer-hint" id="trans7-5-h">→ en</span></div>
+        <div class="fill-group"><label><span class="letter">6.</span> Elle revient de l'aéroport <input class="blank-input" id="trans7-6" data-ans="en" placeholder="..."> taxi.</label><span class="answer-hint" id="trans7-6-h">→ en</span></div>
+        <div class="fill-group"><label><span class="letter">7.</span> Ils vont <input class="blank-input" id="trans7-7" data-ans="à" placeholder="..."> moto au marché.</label><span class="answer-hint" id="trans7-7-h">→ à</span></div>
+        <div class="fill-group"><label><span class="letter">8.</span> Le week-end, on traverse la baie <input class="blank-input" id="trans7-8" data-ans="en" placeholder="..."> bateau.</label><span class="answer-hint" id="trans7-8-h">→ en</span></div>
+      </div>
+      <div class="score-bar" id="trans7-score"></div>
     </div>
 
   </div><!-- end ex-transport -->
@@ -878,6 +1394,167 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
       <div class="score-bar" id="qcm2-score"></div>
     </div>
 
+
+    <!-- EX QCM-3 – Vacances vocab QCM -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 3 – Trắc nghiệm từ vựng kỳ nghỉ (Bài tập bổ sung)
+          <small>Choisissez la bonne réponse</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkQCM3()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('qcm3')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="qcm3">
+        <div id="qv1" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>1.</strong> Pour visiter des sites naturels à Quảng Bình, on visite _____.</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qv1','pagodes')"><div class="mc-letter">A</div> des pagodes</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv1','grottes')"><div class="mc-letter">B</div> des grottes</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv1','rizières')"><div class="mc-letter">C</div> des rizières</div>
+          </div>
+        </div>
+        <div id="qv2" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>2.</strong> « Le coucher du soleil » signifie :</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qv2','lever')"><div class="mc-letter">A</div> Bình minh</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv2','hoang hon')"><div class="mc-letter">B</div> Hoàng hôn</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv2','ban dem')"><div class="mc-letter">C</div> Ban đêm</div>
+          </div>
+        </div>
+        <div id="qv3" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>3.</strong> « Accueillant » signifie :</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qv3','nui')"><div class="mc-letter">A</div> Đẹp như tranh</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv3','hieu khach')"><div class="mc-letter">B</div> Thân thiện, hiếu khách</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv3','to')"><div class="mc-letter">C</div> Rộng lớn</div>
+          </div>
+        </div>
+        <div id="qv4" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>4.</strong> Pour aller à Phnom Penh, Nitha recommande de prendre :</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qv4','bus')"><div class="mc-letter">A</div> Le bus</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv4','tuktuk')"><div class="mc-letter">B</div> Le tuk-tuk</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv4','metro')"><div class="mc-letter">C</div> Le métro</div>
+          </div>
+        </div>
+        <div id="qv5" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>5.</strong> « Faire une randonnée » signifie :</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qv5','leo')"><div class="mc-letter">A</div> Đi bộ đường dài / leo núi</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv5','dat')"><div class="mc-letter">B</div> Đặt phòng khách sạn</div>
+            <div class="mc-opt" onclick="selectMC(this,'qv5','cuoi')"><div class="mc-letter">C</div> Cưỡi ngựa</div>
+          </div>
+        </div>
+      </div>
+      <div class="score-bar" id="qcm3-score"></div>
+    </div>
+
+    <!-- EX QCM-4 – Grammaire générale -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 4 – Trắc nghiệm ngữ pháp tổng hợp (Bài tập bổ sung)
+          <small>Choisissez la bonne réponse grammaticale</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkQCM4()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('qcm4')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="qcm4">
+        <div id="qg1" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>1.</strong> Comment dit-on « Chúng tôi sắp đi Pháp » en français ?</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qg1','allons')"><div class="mc-letter">A</div> Nous allons aller en France.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg1','partons')"><div class="mc-letter">B</div> Nous partons aller en France.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg1','voulons')"><div class="mc-letter">C</div> Nous voulons aller la France.</div>
+          </div>
+        </div>
+        <div id="qg2" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>2.</strong> Quelle phrase est correcte ?</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qg2','err1')"><div class="mc-letter">A</div> Je vais en le Japon.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg2','correct')"><div class="mc-letter">B</div> Je vais au Japon.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg2','err2')"><div class="mc-letter">C</div> Je vais à le Japon.</div>
+          </div>
+        </div>
+        <div id="qg3" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>3.</strong> « Tu pars quand ? » — Quelle est la réponse correcte ?</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qg3','err3')"><div class="mc-letter">A</div> Je part demain.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg3','err4')"><div class="mc-letter">B</div> Je partez demain.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg3','pars')"><div class="mc-letter">C</div> Je pars demain.</div>
+          </div>
+        </div>
+        <div id="qg4" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>4.</strong> Quelle préposition utilise-t-on avant « Philippines » ?</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qg4','aux')"><div class="mc-letter">A</div> aux</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg4','au')"><div class="mc-letter">B</div> au</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg4','en')"><div class="mc-letter">C</div> en</div>
+          </div>
+        </div>
+        <div id="qg5" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>5.</strong> Laquelle de ces phrases est au futur proche négatif ?</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qg5','err5')"><div class="mc-letter">A</div> Je ne pars pas demain.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg5','neg')"><div class="mc-letter">B</div> Je ne vais pas partir demain.</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg5','err6')"><div class="mc-letter">C</div> Je ne vais pas partais demain.</div>
+          </div>
+        </div>
+        <div id="qg6" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>6.</strong> Quel article précède « Cuba » ?</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qg6','la')"><div class="mc-letter">A</div> la</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg6','le')"><div class="mc-letter">B</div> le</div>
+            <div class="mc-opt" onclick="selectMC(this,'qg6','rien')"><div class="mc-letter">C</div> Ø (pas d'article)</div>
+          </div>
+        </div>
+      </div>
+      <div class="score-bar" id="qcm4-score"></div>
+    </div>
+
+    <!-- EX QCM-5 – Interail listening (Leçon 3 Pour aller plus loin) -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – Câu hỏi về Interrail Pass (Leçon 3 – Pour aller plus loin I)
+          <small>Questions de compréhension sur l'Interrail</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkQCM5()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('qcm5')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="qcm5">
+        <div id="qi1" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>1.</strong> L'Interrail permet de voyager en :</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qi1','avion')"><div class="mc-letter">A</div> Avion</div>
+            <div class="mc-opt" onclick="selectMC(this,'qi1','train')"><div class="mc-letter">B</div> Train</div>
+            <div class="mc-opt" onclick="selectMC(this,'qi1','bus')"><div class="mc-letter">C</div> Bus</div>
+          </div>
+        </div>
+        <div id="qi2" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>2.</strong> Mathilde prépare un voyage avec :</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qi2','famille')"><div class="mc-letter">A</div> Sa famille</div>
+            <div class="mc-opt" onclick="selectMC(this,'qi2','amis')"><div class="mc-letter">B</div> Des amis</div>
+            <div class="mc-opt" onclick="selectMC(this,'qi2','frere')"><div class="mc-letter">C</div> Son frère</div>
+          </div>
+        </div>
+        <div id="qi3" class="fill-group" style="margin-bottom:18px">
+          <label style="font-size:13px;color:var(--text)"><strong>3.</strong> Où Mathilde va publier les photographies de son voyage ?</label>
+          <div class="mc-options">
+            <div class="mc-opt" onclick="selectMC(this,'qi3','blog')"><div class="mc-letter">A</div> Dans un blog</div>
+            <div class="mc-opt" onclick="selectMC(this,'qi3','journal')"><div class="mc-letter">B</div> Dans un journal de voyage</div>
+            <div class="mc-opt" onclick="selectMC(this,'qi3','facebook')"><div class="mc-letter">C</div> Sur Facebook</div>
+          </div>
+        </div>
+      </div>
+      <div class="score-bar" id="qcm5-score"></div>
+    </div>
+
   </div><!-- end ex-qcm -->
 
   <!-- ▸▸ VRAI/FAUX ◂◂ -->
@@ -987,6 +1664,201 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
       </div>
     </div>
 
+
+    <!-- EX VF-3 – Comprendre un message de Julia -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 3 – Đọc hiểu tin nhắn của Julia (Leçon 3 – Ex.2)
+          <small>Lis le message et réponds Vrai ou Faux</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkVF3()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('vf3')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="vf3">
+        <div class="context-box">
+          <div class="ctx-label">📖 Message de Julia – Bài 3 & 4 dùng chung tin nhắn này</div>
+          Coucou ! Je suis en vacances chez une amie à Nice. Il fait un temps magnifique ! Lundi, Nadia et moi, on va prendre le bus pour aller à la plage. J'adore les spécialités locales : la socca, c'est délicieux ! Je rentre chez moi dimanche soir. Tu as un avis sur un bon restaurant à Nice ? Bisous, Julia.
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">a. Julia est en vacances dans sa famille.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-a','V')" data-id="vf3-a" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-a','F')" data-id="vf3-a" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">b. Le temps est mauvais à Nice.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-b','V')" data-id="vf3-b" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-b','F')" data-id="vf3-b" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">c. Julia et Nadia vont prendre le bus pour aller à la plage.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-c','V')" data-id="vf3-c" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-c','F')" data-id="vf3-c" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">d. Julia rentre chez elle lundi.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-d','V')" data-id="vf3-d" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-d','F')" data-id="vf3-d" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">e. Julia demande un avis sur un restaurant.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-e','V')" data-id="vf3-e" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf3-e','F')" data-id="vf3-e" data-val="F">Faux</button>
+        </div>
+      </div>
+      <div class="score-bar" id="vf3-score"></div>
+      <div class="score-bar ok" style="display:flex;font-size:12px;margin-top:8px">
+        💡 Đáp án: a-F (chez une amie) · b-F (temps magnifique) · c-V · d-F (dimanche soir) · e-V
+      </div>
+    </div>
+
+    <!-- EX VF-4 – Questions sur le même message Julia -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 4 – Câu hỏi bổ sung về tin nhắn Julia (Bài tập bổ sung)
+          <small>Vrai ou Faux – même contexte que Bài 3</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkVF4()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('vf4')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="vf4">
+        <div class="tf-row">
+          <div class="tf-stmt">a. Julia est à Nice.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-a','V')" data-id="vf4-a" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-a','F')" data-id="vf4-a" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">b. Julia mange une spécialité qui s'appelle la socca.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-b','V')" data-id="vf4-b" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-b','F')" data-id="vf4-b" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">c. Julia demande un avis sur un film.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-c','V')" data-id="vf4-c" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-c','F')" data-id="vf4-c" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">d. Julia voyage seule.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-d','V')" data-id="vf4-d" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-d','F')" data-id="vf4-d" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">e. La plage se trouve loin, Julia et Nadia prennent le bus.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-e','V')" data-id="vf4-e" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf4-e','F')" data-id="vf4-e" data-val="F">Faux</button>
+        </div>
+      </div>
+      <div class="score-bar" id="vf4-score"></div>
+      <div class="score-bar ok" style="display:flex;font-size:12px;margin-top:8px">
+        💡 Đáp án: a-V · b-V · c-F (restaurant) · d-F (avec Nadia) · e-V (inférence raisonnable)
+      </div>
+    </div>
+
+    <!-- EX VF-5 – Leçon 2 compréhension voyage -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – Hiểu biết về chương trình du lịch (Leçon 2 – Ex.2)
+          <small>Vrai ou Faux – Programme de voyage au Laos</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkVF5()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('vf5')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="vf5">
+        <div class="context-box">
+          <div class="ctx-label">📖 Programme de voyage</div>
+          Jour 1 : arrivée à Vientiane, visite du Pha That Luang et du stade national. Jour 2 : prise du bateau pour aller à Luang Prabang, visite des temples. Jour 3 : excursion dans les rizières et découverte des grottes de Pak Ou. Découverte des spécialités : le lap, le khao lam, le tam mak hung.
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">a. Le 1er jour, on visite le Pha That Luang.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-a','V')" data-id="vf5-a" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-a','F')" data-id="vf5-a" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">b. Le 2ème jour, on prend l'avion pour Luang Prabang.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-b','V')" data-id="vf5-b" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-b','F')" data-id="vf5-b" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">c. On découvre les rizières au 3ème jour.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-c','V')" data-id="vf5-c" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-c','F')" data-id="vf5-c" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">d. Le lap et le khao lam sont des spécialités laotiennes.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-d','V')" data-id="vf5-d" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-d','F')" data-id="vf5-d" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">e. Le programme dure 5 jours.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-e','V')" data-id="vf5-e" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf5-e','F')" data-id="vf5-e" data-val="F">Faux</button>
+        </div>
+      </div>
+      <div class="score-bar" id="vf5-score"></div>
+      <div class="score-bar ok" style="display:flex;font-size:12px;margin-top:8px">
+        💡 Đáp án: a-V · b-F (bateau) · c-V · d-V · e-F (3 jours)
+      </div>
+    </div>
+
+    <!-- EX VF-6 – Règles de grammaire V/F -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 6 – Đúng / Sai về quy tắc ngữ pháp (Bài tập ôn tổng hợp)
+          <small>Ces affirmations grammaticales sont-elles vraies ou fausses ?</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-check" onclick="checkVF6()">Kiểm tra</button>
+          <button class="btn-reset" onclick="resetEx('vf6')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="vf6">
+        <div class="tf-row">
+          <div class="tf-stmt">1. Le futur proche se forme avec AVOIR + infinitif.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-1','V')" data-id="vf6-1" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-1','F')" data-id="vf6-1" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">2. On dit « en France » et « au Cambodge ».</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-2','V')" data-id="vf6-2" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-2','F')" data-id="vf6-2" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">3. On utilise « à » devant les noms de villes en général.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-3','V')" data-id="vf6-3" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-3','F')" data-id="vf6-3" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">4. PARTIR est un verbe du 2e groupe (régulier en -ir).</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-4','V')" data-id="vf6-4" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-4','F')" data-id="vf6-4" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">5. « Ils ne vont pas partir » est la forme négative correcte du futur proche.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-5','V')" data-id="vf6-5" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-5','F')" data-id="vf6-5" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">6. Les Philippines prennent l'article « les » → aux Philippines.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-6','V')" data-id="vf6-6" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-6','F')" data-id="vf6-6" data-val="F">Faux</button>
+        </div>
+        <div class="tf-row">
+          <div class="tf-stmt">7. On utilise « en » avec les pays masculins : en Japon.</div>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-7','V')" data-id="vf6-7" data-val="V">Vrai</button>
+          <button class="tf-btn" onclick="selectTF(this,'vf6-7','F')" data-id="vf6-7" data-val="F">Faux</button>
+        </div>
+      </div>
+      <div class="score-bar" id="vf6-score"></div>
+      <div class="score-bar ok" style="display:flex;font-size:12px;margin-top:8px">
+        💡 Đáp án: 1-F (ALLER+inf) · 2-V · 3-V · 4-F (3e groupe) · 5-V · 6-V · 7-F (au Japon, masculin)
+      </div>
+    </div>
+
   </div><!-- end ex-vf -->
 
   <!-- ▸▸ PRODUCTION ◂◂ -->
@@ -1056,6 +1928,99 @@ body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-se
         <div class="fill-group"><label><span class="letter">b.</span> Vous admirez des <input class="blank-input" id="prod3b" data-ans="magnifiques" placeholder="..."> monuments historiques.</label><span class="answer-hint" id="prod3b-h">→ magnifiques</span></div>
         <div class="fill-group"><label><span class="letter">c.</span> Les touristes participent à des escalades aux grottes <input class="blank-input" id="prod3c" data-ans="pittoresques" placeholder="..."> en Corse.</label><span class="answer-hint" id="prod3c-h">→ pittoresques / célèbres</span></div>
         <div class="fill-group"><label><span class="letter">d.</span> Les pagodes sont les lieux <input class="blank-input" id="prod3d" data-ans="sacrés" placeholder="..."> pour les bouddhistes.</label><span class="answer-hint" id="prod3d-h">→ sacrés</span></div>
+      </div>
+    </div>
+
+
+    <!-- EX PROD-4 – Carte postale -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 4 – Viết bưu thiếp từ kỳ nghỉ (Bài tập bổ sung)
+          <small>Écris une carte postale depuis ta destination de vacances (60–80 mots)</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('prod4')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="prod4">
+        <div class="ex-instruction">Imagine que tu es en vacances au Laos / en France / au Vietnam. Écris une carte postale à ton ami(e) en décrivant : où tu es, le temps qu'il fait, ce que tu vas faire, une spécialité que tu vas goûter.</div>
+        <div class="context-box" style="font-style:normal;">
+          <div class="ctx-label">🗂️ Cấu trúc gợi ý</div>
+          <p style="font-size:12px;color:var(--text2);line-height:2">
+            <strong>Salutation :</strong> Coucou [nom] ! / Bonjour [nom] !<br>
+            <strong>Lieu :</strong> Je suis en vacances à / en / au…<br>
+            <strong>Temps :</strong> Il fait beau / chaud / …<br>
+            <strong>Activités (futur proche) :</strong> Je vais visiter… / Je vais goûter…<br>
+            <strong>Clôture :</strong> Bisous ! / À bientôt !
+          </p>
+        </div>
+        <textarea class="free-area" style="min-height:180px" placeholder="Coucou [nom] !&#10;Je suis en vacances à…&#10;Il fait…&#10;Demain, je vais…&#10;&#10;Bisous !&#10;[Ton prénom]"></textarea>
+      </div>
+    </div>
+
+    <!-- EX PROD-5 – Décrire un programme -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 5 – Lập chương trình du lịch 3 ngày (Bài tập bổ sung)
+          <small>Écris un programme de 3 jours pour visiter une ville ou un pays</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('prod5')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="prod5">
+        <div class="ex-instruction">Sử dụng thì tương lai gần. Đặt tên cho mỗi ngày và viết 2–3 hoạt động cho mỗi ngày.</div>
+        <div class="fill-group">
+          <label><strong>🗓️ Jour 1 :</strong></label>
+          <textarea class="free-area" style="min-height:70px" placeholder="Le matin, on va… / L'après-midi, nous allons…"></textarea>
+        </div>
+        <div class="fill-group">
+          <label><strong>🗓️ Jour 2 :</strong></label>
+          <textarea class="free-area" style="min-height:70px" placeholder="D'abord, on va… / Ensuite, nous allons…"></textarea>
+        </div>
+        <div class="fill-group">
+          <label><strong>🗓️ Jour 3 :</strong></label>
+          <textarea class="free-area" style="min-height:70px" placeholder="Le matin… / Le soir, on va…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- EX PROD-6 – Parler de sa région -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 6 – Giới thiệu địa phương của bạn cho khách du lịch (Bài tập bổ sung)
+          <small>Présente ta ville / ta province à un touriste francophone (60–80 mots)</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('prod6')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="prod6">
+        <div class="ex-instruction">Réponds aux questions pour guider ta rédaction.</div>
+        <div class="fill-group"><label><strong>1.</strong> Comment s'appelle ta ville / ta province ?</label><textarea class="free-area" style="min-height:46px" placeholder="J'habite à…"></textarea></div>
+        <div class="fill-group"><label><strong>2.</strong> Qu'est-ce qu'il y a à voir ou à faire ?</label><textarea class="free-area" style="min-height:60px" placeholder="Il y a… / On peut visiter…"></textarea></div>
+        <div class="fill-group"><label><strong>3.</strong> Quelles sont les spécialités ?</label><textarea class="free-area" style="min-height:46px" placeholder="On peut goûter…"></textarea></div>
+        <div class="fill-group"><label><strong>4.</strong> Comment se déplacer dans ta ville ?</label><textarea class="free-area" style="min-height:46px" placeholder="On peut prendre… / Il y a…"></textarea></div>
+        <div class="fill-group"><label>✍️ <strong>Texte final :</strong></label><textarea class="free-area" style="min-height:160px" placeholder="Bienvenue dans ma ville ! J'habite à… Il y a beaucoup de choses à voir…"></textarea></div>
+      </div>
+    </div>
+
+    <!-- EX PROD-7 – Répondre au message d'un(e) ami(e) -->
+    <div class="exercise-card">
+      <div class="ex-header">
+        <div class="ex-title">Bài 7 – Trả lời email từ bạn bè (Bài tập bổ sung)
+          <small>Réponds au message d'un ami qui te demande des conseils pour visiter le Vietnam</small>
+        </div>
+        <div class="ex-actions">
+          <button class="btn-reset" onclick="resetEx('prod7')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div id="prod7">
+        <div class="context-box">
+          <div class="ctx-label">📧 Message reçu</div>
+          <em>Salut ! Je vais voyager au Vietnam pour la première fois cet été. Est-ce que tu peux me donner des renseignements ? Qu'est-ce qu'il y a à voir ? Comment se déplacer ? Quelles spécialités goûter ? Merci ! — Antoine</em>
+        </div>
+        <div class="fill-group"><label><strong>✍️ Ta réponse à Antoine (80–100 mots) :</strong></label><textarea class="free-area" style="min-height:200px" placeholder="Salut Antoine !&#10;Quelle bonne idée ! Le Vietnam est un pays magnifique.&#10;Pour les endroits à visiter, tu peux…&#10;Pour te déplacer, il y a…&#10;N'oublie pas de goûter…&#10;&#10;À bientôt !&#10;[Ton prénom]"></textarea></div>
       </div>
     </div>
 
@@ -1320,7 +2285,95 @@ function resetEx(groupId){
   });
 }
 
-/* ═══════════════════ SCORE BAR ═══════════════════ */
+/* ═══ NEW MC ANSWERS ═══ */
+Object.assign(mcAnswers, {
+  // QCM3
+  qv1:'grottes', qv2:'hoang hon', qv3:'hieu khach', qv4:'tuktuk', qv5:'leo',
+  // QCM4
+  qg1:'allons', qg2:'correct', qg3:'pars', qg4:'aux', qg5:'neg', qg6:'rien',
+  // QCM5
+  qi1:'train', qi2:'famille', qi3:'blog'
+});
+
+/* ═══ NEW TF ANSWERS ═══ */
+const tfAnswers3 = {'vf3-a':'F','vf3-b':'F','vf3-c':'V','vf3-d':'F','vf3-e':'V'};
+const tfAnswers4 = {'vf4-a':'V','vf4-b':'V','vf4-c':'F','vf4-d':'F','vf4-e':'V'};
+const tfAnswers5 = {'vf5-a':'V','vf5-b':'F','vf5-c':'V','vf5-d':'V','vf5-e':'F'};
+const tfAnswers6 = {'vf6-1':'F','vf6-2':'V','vf6-3':'V','vf6-4':'F','vf6-5':'V','vf6-6':'V','vf6-7':'F'};
+
+function checkVF3(){ checkTFSet(Object.keys(tfAnswers3), tfAnswers3, 'vf3-score'); }
+function checkVF4(){ checkTFSet(Object.keys(tfAnswers4), tfAnswers4, 'vf4-score'); }
+function checkVF5(){ checkTFSet(Object.keys(tfAnswers5), tfAnswers5, 'vf5-score'); }
+function checkVF6(){ checkTFSet(Object.keys(tfAnswers6), tfAnswers6, 'vf6-score'); }
+
+/* ═══ NEW FILL-IN CHECK FUNCTIONS ═══ */
+function checkFP5(){ checkInputSet(['fp5a','fp5b','fp5c','fp5d','fp5e','fp5f','fp5g','fp5h'],'fp5-score'); }
+function checkFP7(){ checkInputSet(['fp7a','fp7b','fp7c','fp7d','fp7e'],'fp7-score'); }
+function checkFP9(){ checkInputSet(['fp9-1','fp9-2','fp9-3','fp9-4','fp9-5','fp9-6','fp9-7'],'fp9-score'); }
+
+function checkART3(){ checkInputSet(['art3-1','art3-2','art3-3','art3-4','art3-5','art3-6','art3-7','art3-8','art3-9','art3-10'],'art3-score'); }
+function checkART4(){ checkInputSet(['art4-1','art4-2','art4-3','art4-4','art4-5','art4-6','art4-7','art4-8','art4-9','art4-10'],'art4-score'); }
+function checkART5(){ checkInputSet(['art5-1','art5-2','art5-3','art5-4','art5-5','art5-6','art5-7','art5-8'],'art5-score'); }
+function checkART6(){ checkInputSet(['art6-1','art6-2','art6-3','art6-4','art6-5','art6-6','art6-7','art6-8','art6-9','art6-10'],'art6-score'); }
+
+function checkPREP4(){ checkInputSet(['prep4-1','prep4-2','prep4-3','prep4-4','prep4-5','prep4-6','prep4-7','prep4-8'],'prep4-score'); }
+function checkPREP5(){ checkInputSet(['prep5-1','prep5-2','prep5-3','prep5-4','prep5-5','prep5-6','prep5-7'],'prep5-score'); }
+function checkPREP7(){ checkInputSet(['prep7-1','prep7-2','prep7-3','prep7-4','prep7-5','prep7-6','prep7-7','prep7-8','prep7-9','prep7-10'],'prep7-score'); }
+
+function checkPAR4(){ checkInputSet(['par4-1','par4-2','par4-3','par4-4','par4-5','par4-6'],'par4-score'); }
+function checkPAR5(){ checkInputSet(['par5a','par5b','par5c','par5d','par5e','par5f'],'par5-score'); }
+function checkPAR7(){ checkInputSet(['par7a','par7b','par7c','par7d','par7e'],'par7-score'); }
+
+function checkTRANS4(){ checkInputSet(['trans4-a','trans4-b','trans4-c','trans4-d','trans4-e','trans4-f'],'trans4-score'); }
+function checkTRANS5(){ checkInputSet(['trans5-a','trans5-b','trans5-b2','trans5-c','trans5-d','trans5-e','trans5-f'],'trans5-score'); }
+function checkTRANS7(){ checkInputSet(['trans7-1','trans7-2','trans7-3','trans7-4','trans7-5','trans7-6','trans7-7','trans7-8'],'trans7-score'); }
+
+function checkQCM3(){
+  const qids=['qv1','qv2','qv3','qv4','qv5']; let correct=0;
+  qids.forEach(qid=>{
+    const opts=document.querySelectorAll(`#${qid} .mc-opt`);
+    const sel=mcSelected[qid]; const ans=mcAnswers[qid];
+    opts.forEach(o=>{
+      o.classList.remove('correct','wrong');
+      const oVal=o.onclick?.toString().match(/'([^']+)'\)$/)?.[1]||'';
+      if(oVal===ans) o.classList.add('correct');
+      else if(sel&&oVal===sel&&sel!==ans) o.classList.add('wrong');
+    });
+    if(sel===ans) correct++;
+  });
+  showScore('qcm3-score',correct,qids.length);
+}
+function checkQCM4(){
+  const qids=['qg1','qg2','qg3','qg4','qg5','qg6']; let correct=0;
+  qids.forEach(qid=>{
+    const opts=document.querySelectorAll(`#${qid} .mc-opt`);
+    const sel=mcSelected[qid]; const ans=mcAnswers[qid];
+    opts.forEach(o=>{
+      o.classList.remove('correct','wrong');
+      const oVal=o.onclick?.toString().match(/'([^']+)'\)$/)?.[1]||'';
+      if(oVal===ans) o.classList.add('correct');
+      else if(sel&&oVal===sel&&sel!==ans) o.classList.add('wrong');
+    });
+    if(sel===ans) correct++;
+  });
+  showScore('qcm4-score',correct,qids.length);
+}
+function checkQCM5(){
+  const qids=['qi1','qi2','qi3']; let correct=0;
+  qids.forEach(qid=>{
+    const opts=document.querySelectorAll(`#${qid} .mc-opt`);
+    const sel=mcSelected[qid]; const ans=mcAnswers[qid];
+    opts.forEach(o=>{
+      o.classList.remove('correct','wrong');
+      const oVal=o.onclick?.toString().match(/'([^']+)'\)$/)?.[1]||'';
+      if(oVal===ans) o.classList.add('correct');
+      else if(sel&&oVal===sel&&sel!==ans) o.classList.add('wrong');
+    });
+    if(sel===ans) correct++;
+  });
+  showScore('qcm5-score',correct,qids.length);
+}
+
 function showScore(scoreId, correct, total){
   const el = document.getElementById(scoreId);
   if(!el) return;
