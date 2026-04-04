@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tin học – Ôn tập CK2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0e1a; --bg2:#0f1525; --panel:#141c2e; --border:#1e2d4a;
+  --accent1:#4f9cf9; --accent2:#7c5af0; --accent3:#38d9a9;
+  --accent4:#f8961e; --accent5:#e63946; --text:#e8edf5;
+  --text2:#8fa3c0; --text3:#5a7291;
+  --correct:#38d9a9; --wrong:#e63946;
+  --tin:#4f9cf9; --eict:#7c5af0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-serif;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;}
+code,.code-tag{font-family:'JetBrains Mono',monospace;background:rgba(79,156,249,.12);color:var(--accent1);padding:1px 6px;border-radius:5px;font-size:.85em;}
+
+/* ── TOP BAR ── */
+.topbar{position:sticky;top:0;z-index:200;background:rgba(10,14,26,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;padding:11px 24px;height:56px;}
+.back-btn{display:inline-flex;align-items:center;gap:7px;background:var(--panel);border:1px solid var(--border);color:var(--text2);text-decoration:none;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;transition:.2s;white-space:nowrap;letter-spacing:.3px;}
+.back-btn:hover{border-color:var(--accent1);color:var(--accent1);}
+.topbar-title{font-size:15px;font-weight:800;flex:1;}
+.topbar-chip{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:6px;background:rgba(79,156,249,.1);color:var(--tin);border:1px solid rgba(79,156,249,.25);}
+
+/* ── LAYOUT ── */
+.layout{display:flex;flex:1;max-width:1360px;width:100%;margin:0 auto;}
+
+/* ── SIDEBAR ── */
+.sidebar{width:252px;flex-shrink:0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;padding:20px 0 60px;border-right:1px solid var(--border);}
+.sidebar::-webkit-scrollbar{width:4px;} .sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+.sb-group{padding:16px 16px 6px;}
+.sb-label{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;padding:0 4px;}
+.sb-link{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:8px;text-decoration:none;color:var(--text3);font-size:12px;font-weight:600;transition:.18s;margin-bottom:1px;}
+.sb-link:hover{background:var(--panel);color:var(--text2);}
+.sb-link.active{background:rgba(79,156,249,.12);color:var(--accent1);}
+.sb-dot{width:5px;height:5px;border-radius:50%;background:var(--border);flex-shrink:0;transition:.18s;}
+.sb-link:hover .sb-dot,.sb-link.active .sb-dot{background:currentColor;}
+
+/* ── CONTENT ── */
+.content{flex:1;padding:36px 44px 80px;overflow-x:hidden;min-width:0;}
+.content::-webkit-scrollbar{width:5px;} .content::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+
+/* ── TOPIC HEADER ── */
+.topic-hdr{margin-bottom:36px;}
+.topic-hdr-inner{display:flex;align-items:center;gap:16px;padding:24px 28px;border-radius:18px;border:1px solid var(--border);background:var(--panel);position:relative;overflow:hidden;}
+.topic-hdr-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 0% 50%,var(--c-glow) 0%,transparent 65%);pointer-events:none;}
+.topic-hdr-inner::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--c-grad);border-radius:18px 18px 0 0;}
+.topic-icon{font-size:38px;position:relative;z-index:1;}
+.topic-meta{position:relative;z-index:1;}
+.topic-badge-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;opacity:.8;}
+.topic-hdr h1{font-size:22px;font-weight:800;}
+.topic-hdr p{font-size:13px;color:var(--text2);margin-top:4px;}
+.topic-divider{border:none;border-top:2px solid var(--border);margin:56px 0;}
+
+/* ── LESSON ── */
+.lesson-section{margin-bottom:52px;scroll-margin-top:72px;}
+.lesson-hdr{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.lesson-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:6px;}
+.lesson-hdr h2{font-size:18px;font-weight:800;}
+
+/* ── EXERCISE BLOCK ── */
+.ex-block{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:18px;}
+.ex-hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
+.ex-hdr-left{display:flex;align-items:center;gap:10px;}
+.ex-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.ex-title{font-size:13px;font-weight:800;}
+.ex-count{font-size:11px;color:var(--text3);font-weight:500;}
+.ex-btns{display:flex;gap:7px;align-items:center;}
+.btn-check{background:var(--accent1);color:#fff;border:none;padding:6px 15px;border-radius:8px;font-size:11px;font-weight:800;cursor:pointer;transition:.18s;font-family:inherit;letter-spacing:.3px;}
+.btn-check:hover{filter:brightness(1.12);}
+.btn-reset{background:transparent;color:var(--text3);border:1px solid var(--border);padding:6px 13px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;transition:.18s;font-family:inherit;}
+.btn-reset:hover{border-color:var(--text2);color:var(--text2);}
+.score-row{padding:9px 20px;background:rgba(56,217,169,.06);border-bottom:1px solid var(--border);font-size:12px;font-weight:700;display:none;}
+.score-row.show{display:flex;align-items:center;gap:8px;}
+
+/* ── MC ── */
+.mc-list{padding:18px 20px;display:flex;flex-direction:column;gap:16px;}
+.q-item{padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg2);transition:border-color .2s;}
+.q-item.q-correct{border-color:rgba(56,217,169,.45);}
+.q-item.q-wrong{border-color:rgba(230,57,70,.45);}
+.q-top{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;}
+.q-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:800;padding:3px 8px;border-radius:5px;background:var(--border);color:var(--text3);flex-shrink:0;margin-top:2px;}
+.q-text{font-size:13px;line-height:1.65;}
+.q-opts{display:flex;flex-direction:column;gap:7px;}
+.q-opt{display:flex;align-items:flex-start;gap:9px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:12px;line-height:1.55;transition:.18s;}
+.q-opt:hover{border-color:var(--accent1);background:rgba(79,156,249,.05);}
+.q-opt input{margin-top:2px;flex-shrink:0;accent-color:var(--accent1);}
+.q-opt.opt-correct{border-color:var(--correct);background:rgba(56,217,169,.08);color:var(--correct);}
+.q-opt.opt-wrong{border-color:var(--wrong);background:rgba(230,57,70,.08);color:var(--wrong);}
+.q-opt.opt-correct input,.q-opt.opt-wrong input{pointer-events:none;}
+.q-fb{margin-top:9px;font-size:11px;font-weight:700;display:none;}
+.q-fb.show{display:flex;align-items:center;gap:5px;}
+.q-fb.fb-ok{color:var(--correct);}
+.q-fb.fb-no{color:var(--wrong);}
+
+/* ── T/F ── */
+.tf-list{padding:18px 20px;display:flex;flex-direction:column;gap:20px;}
+.tf-set{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.tf-ctx{padding:14px 16px;background:var(--bg2);border-bottom:1px solid var(--border);font-size:12px;line-height:1.7;color:var(--text2);}
+.tf-ctx strong{color:var(--text);display:block;margin-bottom:5px;}
+.tf-subs{}
+.tf-sub{padding:11px 14px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--border);transition:background .15s;}
+.tf-sub:last-child{border-bottom:none;}
+.tf-sub.sub-ok{background:rgba(56,217,169,.06);}
+.tf-sub.sub-no{background:rgba(230,57,70,.06);}
+.tf-letter{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:800;color:var(--text3);flex-shrink:0;margin-top:2px;min-width:16px;}
+.tf-text{flex:1;font-size:12px;line-height:1.65;}
+.tf-btns{display:flex;gap:5px;flex-shrink:0;margin-left:10px;}
+.tf-btn{padding:4px 11px;border-radius:6px;font-size:11px;font-weight:800;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text3);transition:.18s;font-family:inherit;}
+.tf-btn:hover{border-color:var(--text2);color:var(--text);}
+.tf-btn.sel-d{background:rgba(56,217,169,.15);border-color:var(--correct);color:var(--correct);}
+.tf-btn.sel-s{background:rgba(230,57,70,.15);border-color:var(--wrong);color:var(--wrong);}
+.tf-icon{font-size:13px;flex-shrink:0;margin-top:1px;display:none;}
+.tf-sub.sub-ok .tf-icon,.tf-sub.sub-no .tf-icon{display:block;}
+
+/* ── ESSAY ── */
+.essay-list{padding:18px 20px;display:flex;flex-direction:column;gap:16px;}
+.essay-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.essay-q{padding:16px;}
+.essay-pts{font-size:10px;font-weight:800;color:var(--accent4);margin-bottom:6px;font-family:'JetBrains Mono',monospace;}
+.essay-qtext{font-size:13px;line-height:1.7;}
+.essay-toggle{width:100%;padding:10px 16px;background:transparent;border:none;border-top:1px solid var(--border);color:var(--accent1);font-size:11px;font-weight:800;cursor:pointer;text-align:left;display:flex;align-items:center;gap:6px;transition:background .18s;font-family:inherit;}
+.essay-toggle:hover{background:rgba(79,156,249,.05);}
+.essay-ans{padding:16px;border-top:1px solid var(--border);background:rgba(56,217,169,.04);display:none;}
+.essay-ans.show{display:block;}
+.essay-step{font-size:12px;line-height:1.7;color:var(--text2);padding-left:12px;border-left:2px solid var(--correct);margin-bottom:10px;}
+.essay-step:last-child{margin-bottom:0;}
+.essay-step strong{color:var(--correct);font-size:11px;}
+
+/* ── EMPTY ── */
+.empty{text-align:center;padding:28px 20px;color:var(--text3);font-size:12px;}
+
+/* ── FOOTER ── */
+.page-footer{text-align:center;padding:22px;color:var(--text3);font-size:11px;border-top:1px solid var(--border);margin-top:auto;}
+
+@media(max-width:900px){
+  .sidebar{display:none;}
+  .content{padding:20px 18px 60px;}
+}
+@media(max-width:520px){
+  .topbar{padding:10px 14px;}
+  .topbar-chip{display:none;}
+  .tf-btns{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ─────────────────────────────────── -->
+<div class="topbar">
+  <a href="index.html" class="back-btn">← Trang chủ</a>
+  <div class="topbar-title">💻 Tin học 12 – Ôn tập Cuối Kỳ II</div>
+  <div class="topbar-chip">Informatics</div>
+</div>
+
+<!-- ── LAYOUT ──────────────────────────────────── -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-group">
+      <div class="sb-label">Chủ đề F – HTML &amp; CSS</div>
+      <a class="sb-link" href="#f8"><span class="sb-dot"></span>Bài 8 · Giới thiệu HTML</a>
+      <a class="sb-link" href="#f9"><span class="sb-dot"></span>Bài 9 · Cấu trúc trang HTML</a>
+      <a class="sb-link" href="#f10"><span class="sb-dot"></span>Bài 10 · Thẻ HTML thông dụng</a>
+      <a class="sb-link" href="#f11"><span class="sb-dot"></span>Bài 11 · CSS cơ bản</a>
+      <a class="sb-link" href="#f12"><span class="sb-dot"></span>Bài 12 · External CSS</a>
+    </div>
+    <div class="sb-group">
+      <div class="sb-label">Chủ đề E<sup>ICT</sup> – Mobirise</div>
+      <a class="sb-link" href="#eict1"><span class="sb-dot"></span>Bài 1 · Giới thiệu phần mềm</a>
+      <a class="sb-link" href="#eict2"><span class="sb-dot"></span>Bài 2 · Tạo website mới</a>
+      <a class="sb-link" href="#eict3"><span class="sb-dot"></span>Bài 3 · Thanh điều hướng</a>
+      <a class="sb-link" href="#eict4"><span class="sb-dot"></span>Bài 4 · Nội dung văn bản</a>
+      <a class="sb-link" href="#eict5"><span class="sb-dot"></span>Bài 5 · Hình ảnh và video</a>
+      <a class="sb-link" href="#eict6"><span class="sb-dot"></span>Bài 6 · Xuất bản website</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT (rendered by JS) -->
+  <main class="content" id="root"></main>
+</div>
+
+<div class="page-footer">THPT Phan Châu Trinh – Tổ Tin học</div>
+
+<script>
+// ════════════════════════════════════════════════
+//  QUESTION DATA
+// ════════════════════════════════════════════════
+const TOPICS = [
+{
+  id:'f', label:'Chủ đề F', title:'HTML & CSS',
+  color:'#4f9cf9', rgb:'79,156,249', emoji:'🌐',
+  desc:'Ngôn ngữ HTML – cấu trúc nội dung trang web; CSS – định dạng và trình bày giao diện.',
+  lessons:[
+  {
+    id:'f8', num:'Bài 8', title:'Giới thiệu về HTML',
+    mc:[
+      { q:'HTML là viết tắt của cụm từ nào?',
+        opts:['HyperText Machine Language','HighText Markup Language','HyperText Markup Language','HyperLinks and Text Markup Language'], ans:2 },
+      { q:'Tệp HTML thường có phần mở rộng (extension) nào?',
+        opts:['.css','.js','.html hoặc .htm','.xml'], ans:2 },
+      { q:'Thẻ nào là thẻ gốc bao ngoài toàn bộ nội dung của một tài liệu HTML?',
+        opts:['<code>&lt;html&gt;</code>','<code>&lt;head&gt;</code>','<code>&lt;body&gt;</code>','<code>&lt;main&gt;</code>'], ans:0 },
+      { q:'Chức năng của trình duyệt web (Chrome, Firefox, …) khi gặp tệp HTML là gì?',
+        opts:['Biên dịch mã HTML thành ngôn ngữ máy.','Đọc và hiển thị nội dung trang web từ mã HTML.','Lưu trữ tệp HTML lên máy chủ.','Kiểm tra lỗi chính tả trong HTML.'], ans:1 },
+      { q:'Đặc điểm chung của các thẻ (tag) trong HTML là gì?',
+        opts:['Thẻ được đặt trong dấu ngoặc vuông [ ].','Thẻ được đặt trong dấu ngoặc nhọn { }.','Thẻ được đặt trong dấu ngoặc đơn ( ).','Thẻ được đặt trong cặp dấu &lt; và &gt;.'], ans:3 }
+    ],
+    tf:[{
+      ctx:'Một học sinh đang tìm hiểu HTML để bắt đầu học thiết kế web. Các nhận định sau được đưa ra:',
+      subs:[
+        { t:'HTML là ngôn ngữ lập trình mạnh mẽ dùng để xử lý dữ liệu và thực hiện phép tính phức tạp, giống như Python hay Java.', a:false },
+        { t:'HTML là ngôn ngữ đánh dấu (markup language) dùng để cấu trúc và định nghĩa nội dung hiển thị trên trang web.', a:true },
+        { t:'Một tệp HTML có thể được mở và chỉnh sửa bằng bất kỳ trình soạn thảo văn bản nào như Notepad, VS Code.', a:true },
+        { t:'Trình duyệt web chỉ hiển thị đúng khi tệp HTML được đặt trên máy chủ (server) kết nối Internet; không thể xem từ ổ đĩa cứng cục bộ.', a:false }
+      ]
+    }],
+    essay:[]
+  },
+  {
+    id:'f9', num:'Bài 9', title:'Cấu trúc trang web HTML',
+    mc:[
+      { q:'Phần <code>&lt;head&gt;</code> trong tài liệu HTML thường chứa những gì?',
+        opts:['Nội dung chính hiển thị trực tiếp trên trang.','Thông tin về tài liệu (tiêu đề, mã hóa ký tự) và liên kết đến CSS, JavaScript.','Phần chân trang (footer) của website.','Các hình ảnh và bảng biểu của trang.'], ans:1 },
+      { q:'Thẻ <code>&lt;title&gt;</code> trong HTML dùng để làm gì?',
+        opts:['Tạo tiêu đề lớn hiển thị ở đầu nội dung trang.','Định nghĩa bộ mã ký tự cho trang web.','Xác định tiêu đề hiển thị trên tab/thanh tiêu đề của trình duyệt.','Thêm chú thích cho hình ảnh.'], ans:2 },
+      { q:'Nội dung trực tiếp hiển thị trên trang web phải được đặt trong thẻ nào?',
+        opts:['<code>&lt;body&gt;</code>','<code>&lt;head&gt;</code>','<code>&lt;main&gt;</code>','<code>&lt;section&gt;</code>'], ans:0 },
+      { q:'Cú pháp khai báo doctype cho HTML5 là gì?',
+        opts:['<code>&lt;!DOCTYPE HTML5&gt;</code>','<code>&lt;!DOCTYPE htm&gt;</code>','<code>&lt;DOCTYPE html&gt;</code>','<code>&lt;!DOCTYPE html&gt;</code>'], ans:3 }
+    ],
+    tf:[{
+      ctx:'Khi học về cấu trúc cơ bản của tài liệu HTML, một nhóm học sinh đưa ra nhận định:',
+      subs:[
+        { t:'Thẻ <meta charset="UTF-8"> trong phần <head> giúp trang web hiển thị đúng tiếng Việt và các ký tự đặc biệt.', a:true },
+        { t:'Có thể đặt nội dung văn bản và hình ảnh trực tiếp trong thẻ <head> để chúng hiển thị lên màn hình.', a:false },
+        { t:'Trong HTML, đoạn chú thích (comment) được viết theo cú pháp <!-- nội dung --> và không được trình duyệt hiển thị ra.', a:true },
+        { t:'Một tài liệu HTML bắt buộc phải có đủ cả 4 thẻ: <!DOCTYPE html>, <html>, <head>, <body> thì mới hoạt động được.', a:false }
+      ]
+    }],
+    essay:[]
+  },
+  {
+    id:'f10', num:'Bài 10', title:'Một số thẻ HTML thông dụng',
+    mc:[
+      { q:'Trong HTML, thẻ nào được sử dụng để tạo một danh sách <strong>có thứ tự</strong> (đánh số 1, 2, 3…)?',
+        opts:['<code>&lt;ul&gt;</code>','<code>&lt;li&gt;</code>','<code>&lt;ol&gt;</code>','<code>&lt;list&gt;</code>'], ans:2 },
+      { q:'Thuộc tính <code>href</code> trong thẻ <code>&lt;a&gt;</code> dùng để làm gì?',
+        opts:['Định dạng font chữ cho liên kết.','Quy định màu sắc khi di chuột qua.','Xác định địa chỉ (URL) của trang web hoặc tài liệu mà liên kết trỏ đến.','Tạo tiêu đề cho hình ảnh trong trang.'], ans:2 },
+      { q:'Thẻ nào tạo danh sách <strong>không có thứ tự</strong> (dấu chấm tròn)?',
+        opts:['<code>&lt;ol&gt;</code>','<code>&lt;ul&gt;</code>','<code>&lt;list&gt;</code>','<code>&lt;dl&gt;</code>'], ans:1 },
+      { q:'Thẻ nào dùng để tạo một <strong>hàng</strong> trong bảng HTML?',
+        opts:['<code>&lt;table&gt;</code>','<code>&lt;td&gt;</code>','<code>&lt;th&gt;</code>','<code>&lt;tr&gt;</code>'], ans:3 },
+      { q:'Thuộc tính <code>src</code> trong thẻ <code>&lt;img&gt;</code> dùng để làm gì?',
+        opts:['Xác định đường dẫn đến tệp hình ảnh cần hiển thị.','Quy định kích thước của hình ảnh.','Thêm chú thích thay thế cho hình ảnh.','Tạo hiệu ứng chuyển động cho ảnh.'], ans:0 }
+    ],
+    tf:[{
+      ctx:'Khi tìm hiểu về việc xây dựng cấu trúc và định dạng trang web bằng HTML và CSS, một học sinh đưa ra các nhận định sau:',
+      subs:[
+        { t:'Ngôn ngữ HTML sử dụng hệ thống các thẻ (tags) để cấu trúc nội dung, trong đó thẻ <h1> thường được dùng để định nghĩa tiêu đề chính lớn nhất của trang.', a:true },
+        { t:'Để tạo một siêu liên kết (hyperlink) chuyển hướng người dùng sang trang khác, ta dùng thẻ <a> kết hợp với thuộc tính src để chứa địa chỉ liên kết.', a:false },
+        { t:'CSS (Cascading Style Sheets) là ngôn ngữ kết hợp với HTML nhằm định dạng, trang trí màu sắc, phông chữ và bố cục giao diện trang web.', a:true },
+        { t:'Khi muốn chèn hình ảnh vào trang web, ta dùng thẻ <img> và thẻ này bắt buộc phải có thẻ đóng </img> đi kèm.', a:false }
+      ]
+    }],
+    essay:[]
+  },
+  {
+    id:'f11', num:'Bài 11', title:'Định dạng trang web với CSS',
+    mc:[
+      { q:'Để định nghĩa kiểu CSS cho tất cả các đoạn văn <code>&lt;p&gt;</code> có màu chữ là xanh lam, cú pháp nào sau đây là đúng?',
+        opts:['<code>p {color: blue;}</code>','<code>p: color=blue;</code>','<code>&lt;p style="color: blue;"&gt;</code>','<code>all.p {color: blue;}</code>'], ans:0 },
+      { q:'CSS nội tuyến (inline CSS) được thêm vào bằng thuộc tính nào của thẻ HTML?',
+        opts:['<code>style</code>','<code>css</code>','<code>class</code>','<code>format</code>'], ans:0 },
+      { q:'CSS nội bộ (internal CSS) được viết trong thẻ nào và đặt ở phần nào của tài liệu?',
+        opts:['<code>&lt;css&gt;</code> trong <code>&lt;body&gt;</code>','<code>&lt;link&gt;</code> trong <code>&lt;head&gt;</code>','<code>&lt;style&gt;</code> trong <code>&lt;head&gt;</code>','<code>&lt;script&gt;</code> trong <code>&lt;body&gt;</code>'], ans:2 },
+      { q:'Cú pháp CSS để chọn tất cả phần tử có <code>class="highlight"</code> là gì?',
+        opts:['<code>#highlight { }</code>','<code>.highlight { }</code>','<code>*highlight { }</code>','<code>highlight { }</code>'], ans:1 },
+      { q:'Thuộc tính CSS nào dùng để thay đổi <strong>màu nền</strong> của một phần tử?',
+        opts:['<code>color</code>','<code>text-color</code>','<code>font-color</code>','<code>background-color</code>'], ans:3 }
+    ],
+    tf:[{
+      ctx:'Một nhóm học sinh thảo luận về CSS và cách áp dụng cho trang web:',
+      subs:[
+        { t:'CSS (Cascading Style Sheets) là ngôn ngữ bổ sung cho HTML, chuyên dùng để định dạng giao diện và bố cục trang web, tách biệt phần trình bày khỏi nội dung.', a:true },
+        { t:'Thuộc tính color trong CSS dùng để thay đổi màu nền (background) của phần tử.', a:false },
+        { t:'Trong CSS, selector dạng .myClass áp dụng kiểu dáng cho tất cả phần tử có thuộc tính class="myClass".', a:true },
+        { t:'Inline CSS (viết trực tiếp trong thuộc tính style) luôn bị ghi đè bởi CSS bên ngoài (external CSS) vì external CSS có độ ưu tiên cao hơn.', a:false }
+      ]
+    }],
+    essay:[]
+  },
+  {
+    id:'f12', num:'Bài 12', title:'Kết nối CSS bên ngoài với HTML',
+    mc:[
+      { q:'Khi sử dụng CSS bên ngoài (External CSS), ta cần sử dụng thẻ nào đặt trong phần <code>&lt;head&gt;</code> để kết nối tệp .css với tệp HTML?',
+        opts:['<code>&lt;script&gt;</code>','<code>&lt;link&gt;</code>','<code>&lt;style&gt;</code>','<code>&lt;anchor&gt;</code>'], ans:1 },
+      { q:'Thuộc tính <code>rel</code> trong thẻ <code>&lt;link&gt;</code> khi liên kết tệp CSS phải có giá trị là gì?',
+        opts:['"css"','"style"','"stylesheet"','"text/css"'], ans:2 },
+      { q:'Cú pháp CSS để chọn phần tử có <code>id="main-title"</code> là gì?',
+        opts:['<code>#main-title { }</code>','<code>.main-title { }</code>','<code>@main-title { }</code>','<code>*main-title { }</code>'], ans:0 },
+      { q:'Ưu điểm chính của External CSS so với Inline CSS là gì?',
+        opts:['Inline CSS chạy nhanh hơn nên được ưu tiên hơn.','External CSS cho phép áp dụng cùng một kiểu dáng cho nhiều trang, dễ bảo trì.','External CSS không thể điều chỉnh màu sắc, chỉ điều chỉnh bố cục.','Inline CSS không thể sử dụng với HTML5.'], ans:1 }
+    ],
+    tf:[{
+      ctx:'Khi thiết kế website nhiều trang, nhóm học sinh thảo luận về cách dùng CSS bên ngoài hiệu quả:',
+      subs:[
+        { t:'Khi dùng External CSS, mọi thay đổi trong tệp .css sẽ tự động áp dụng cho tất cả các trang HTML đã liên kết đến tệp đó.', a:true },
+        { t:'Một tệp HTML chỉ có thể liên kết với tối đa một tệp CSS bên ngoài.', a:false },
+        { t:'Thứ tự ưu tiên áp dụng CSS từ cao đến thấp: Inline CSS > Internal CSS > External CSS.', a:true },
+        { t:'CSS Responsive Design (sử dụng @media queries) yêu cầu phải có kết nối Internet để hoạt động.', a:false }
+      ]
+    }],
+    essay:[]
+  }
+  ]
+},
+{
+  id:'eict', label:'Chủ đề EICT', title:'Thiết kế website với Mobirise',
+  color:'#7c5af0', rgb:'124,90,240', emoji:'🖥️',
+  desc:'Sử dụng phần mềm Mobirise để tạo, chỉnh sửa và xuất bản website không cần lập trình.',
+  lessons:[
+  {
+    id:'eict1', num:'Bài 1', title:'Giới thiệu về phần mềm tạo website',
+    mc:[
+      { q:'Mobirise là loại phần mềm thiết kế website nào?',
+        opts:['Phần mềm tạo website trực tuyến hoàn toàn.','Phần mềm tạo website ngoại tuyến (offline) dựa trên các khối (blocks).','Phần mềm yêu cầu lập trình code từ đầu (code editor).','Phần mềm quản lý cơ sở dữ liệu.'], ans:1 },
+      { q:'Điểm khác biệt lớn nhất giữa phần mềm tạo website ngoại tuyến (như Mobirise) và phần mềm trực tuyến (như Google Sites) là gì?',
+        opts:['Phần mềm ngoại tuyến cần biết lập trình HTML, trực tuyến thì không.','Phần mềm ngoại tuyến có thể thiết kế web mà không cần kết nối Internet.','Phần mềm ngoại tuyến không thể chèn hình ảnh vào trang web.','Phần mềm trực tuyến không thể xuất bản website lên mạng.'], ans:1 },
+      { q:'Mobirise sử dụng phương pháp thiết kế web nào?',
+        opts:['Viết code HTML/CSS từ đầu.','Dùng cơ sở dữ liệu động.','Kéo thả các khối (drag & drop blocks) đã được thiết kế sẵn.','Tạo website bằng các lệnh terminal.'], ans:2 },
+      { q:'Phần mềm tạo website nào trong các lựa chọn sau là phần mềm trực tuyến (online) miễn phí?',
+        opts:['Google Sites','Adobe Dreamweaver','Mobirise','Microsoft FrontPage'], ans:0 }
+    ],
+    tf:[{
+      ctx:'Khi tìm hiểu về phần mềm thiết kế website Mobirise, một nhóm học sinh đưa ra các nhận định:',
+      subs:[
+        { t:'Mobirise là phần mềm cho phép tạo website bằng thao tác kéo thả (drag & drop) mà không cần viết code.', a:true },
+        { t:'Để cài đặt và sử dụng Mobirise, máy tính bắt buộc phải luôn kết nối với Internet trong suốt quá trình thiết kế.', a:false },
+        { t:'Các trang web tạo bởi Mobirise có tính năng Responsive, nghĩa là giao diện tự động thích ứng với nhiều kích thước màn hình.', a:true },
+        { t:'Phần mềm Mobirise không cho phép người dùng xem trước (Preview) giao diện trang web trên trình duyệt trước khi xuất bản.', a:false }
+      ]
+    }],
+    essay:[]
+  },
+  {
+    id:'eict2', num:'Bài 2', title:'Tạo trang web mới với Mobirise',
+    mc:[
+      { q:'Cấu trúc cơ bản của một trang web được tạo bằng Mobirise bao gồm việc ghép nối các thành phần nào?',
+        opts:['Các khối (blocks) đã được thiết kế sẵn.','Các tệp tin PDF và Word.','Các đoạn mã C++.','Các thư mục dữ liệu hệ thống.'], ans:0 },
+      { q:'Khi bắt đầu tạo một dự án (Project) mới trong Mobirise, bước đầu tiên người dùng thường làm là gì?',
+        opts:['Nhập ngay nội dung văn bản cho toàn bộ trang web.','Xuất bản website lên Internet.','Lựa chọn giao diện (Theme/Template) phù hợp cho trang web.','Chèn các video từ YouTube.'], ans:2 },
+      { q:'Để thêm một khối mới vào trang trong Mobirise, người dùng thực hiện thao tác nào?',
+        opts:['Nhấn Ctrl+N trên bàn phím.','Vào menu File → Add Block.','Nhấn vào dấu Cộng (+) màu đỏ trên giao diện trang.','Kéo thả tệp HTML từ bên ngoài vào.'], ans:2 },
+      { q:'Trong Mobirise, để xem trước (preview) giao diện trang web trên trình duyệt, người dùng làm gì?',
+        opts:['Xuất bản website lên Internet trước rồi mới xem.','Lưu tệp HTML ra máy tính rồi mở bằng trình duyệt.','Nhấn nút Preview trên giao diện Mobirise.','Chỉ có thể xem trên điện thoại.'], ans:2 }
+    ],
+    tf:[{
+      ctx:'Một trường THPT đang hướng đến kỷ niệm 50 năm ngày thành lập. Tại trang chủ có poster thông tin về thời gian, địa điểm tổ chức. Tại trang "Giới thiệu" đăng một video về lịch sử hình thành. Phía dưới video có liên kết đến các trang về Ban giám hiệu, Thành tích, Đội ngũ giáo viên và Cơ sở vật chất. Các ý kiến về xây dựng website:',
+      subs:[
+        { t:'Các phần mềm thiết kế website miễn phí đều cho phép đưa hình ảnh dạng poster vào trang chủ.', a:true },
+        { t:'Poster về lễ kỷ niệm cần được thiết kế bởi một phần mềm khác, sau đó chèn vào nội dung trang chủ của website.', a:true },
+        { t:'Video đã được tải lên YouTube và liên kết video được chèn vào trang "Giới thiệu". Người xây dựng website không thể thiết lập để video tự động phát vì các phần mềm làm website miễn phí không hỗ trợ tính năng này.', a:false },
+        { t:'Tại trang chủ, Ban giám hiệu muốn chèn liên kết đến tệp .pdf về kế hoạch tổ chức lễ kỷ niệm. Các phần mềm thiết kế website có tính năng đính kèm tệp như vậy.', a:true }
+      ]
+    }],
+    essay:[{
+      pts:'1,0 điểm – Vận dụng EICT Bài 2',
+      q:'Nêu các bước cơ bản để tạo mới một website (Create a New Site) bằng phần mềm Mobirise và thêm một khối (block) Giới thiệu vào trang trống đó.',
+      steps:[
+        '<strong>Bước 1 (0,5đ):</strong> Mở Mobirise → Click biểu tượng Menu ngang (góc trái) → Chọn <em>Sites</em> → Click nút <em>Create New Site</em>.',
+        '<strong>Bước 2 (0,25đ):</strong> Đặt tên cho trang web, chọn một Giao diện (Theme) phù hợp và nhấn OK để tạo.',
+        '<strong>Bước 3 (0,25đ):</strong> Tại giao diện trang trống, nhấn vào dấu Cộng đỏ (+) ở góc dưới bên phải để mở danh sách các khối (Blocks). Tìm nhóm <em>Intro</em> hoặc <em>Header</em>, chọn khối phù hợp và nhấp vào để thả vào trang.'
+      ]
+    }]
+  },
+  {
+    id:'eict3', num:'Bài 3', title:'Thanh điều hướng (Navigation)',
+    mc:[
+      { q:'Thanh điều hướng (Navigation bar / Menu) thường được đặt ở vị trí nào để người dùng dễ quan sát và thao tác nhất?',
+        opts:['Dưới cùng của trang web (Footer).','Ở phần đầu của trang web (Header).','Ẩn bên trong một hình ảnh.','Nằm ngẫu nhiên giữa các đoạn văn bản.'], ans:1 },
+      { q:'Ý nghĩa chính của việc tạo thanh điều hướng cho trang web là gì?',
+        opts:['Giúp trang web hiển thị nhiều hình ảnh hơn.','Bảo mật dữ liệu người truy cập.','Giúp người dùng dễ dàng định vị và di chuyển nhanh đến các nội dung/trang con khác nhau.','Tăng tốc độ tải trang (loading speed).'], ans:2 },
+      { q:'Để tạo liên kết neo (anchor link) trong Mobirise giúp cuộn trang đến một khối cụ thể, cần thực hiện thao tác nào?',
+        opts:['Nhập URL đầy đủ của trang web vào trường liên kết.','Chọn tab "Page / Block" trong cửa sổ Link và chọn đúng khối đích.','Tạo một tệp HTML mới và liên kết đến tệp đó.','Dùng JavaScript để xử lý sự kiện cuộn trang.'], ans:1 },
+      { q:'Trong Mobirise, để tạo menu điều hướng nhiều cấp (submenu/subpage), người dùng sử dụng tính năng nào?',
+        opts:['Add Subpage hoặc Add Submenu','Duplicate Page','Copy Block','Import HTML'], ans:0 }
+    ],
+    tf:[{
+      ctx:'Một nhóm học sinh muốn tạo website như sổ nhật ký lưu các sự kiện của lớp trong những năm cuối cấp THPT. Trên thanh điều hướng, nhóm muốn có bảng chọn chứa liên kết đến các chủ đề con ứng với mỗi năm học, có liên kết phân cấp đến các trang con tương ứng với từng sự kiện. Các ý kiến của nhóm:',
+      subs:[
+        { t:'Các phần mềm tạo website không có sẵn các mẫu (templates hoặc themes) phù hợp theo mong muốn trên.', a:false },
+        { t:'Website nên có thanh điều hướng chứa các liên kết đến các chủ đề con tương ứng với mỗi năm học.', a:true },
+        { t:'Sử dụng các mẫu điều hướng có sẵn hoặc tính năng Add Subpage / Add Submenu trong phần mềm để tạo thanh điều hướng nhiều cấp.', a:true },
+        { t:'Để tạo trang tương ứng với mỗi sự kiện dạng băng chuyền ảnh, cần xác định vị trí từng ảnh, nhập chú thích rồi mới tải ảnh vào đúng vị trí đó.', a:false }
+      ]
+    }],
+    essay:[{
+      pts:'1,0 điểm – Vận dụng EICT Bài 3',
+      q:'Thanh điều hướng (Menu) rất quan trọng đối với website. Hãy trình bày thao tác tạo liên kết nội bộ (neo / anchor link) trên thanh menu trong Mobirise sao cho: Khi người dùng nhấp vào mục "Liên hệ" trên thanh menu, trang web sẽ tự động cuộn xuống đúng khối chứa thông tin liên hệ ở cuối trang.',
+      steps:[
+        '<strong>Bước 1 (0,25đ):</strong> Nhấp vào khối (Block) chứa thông tin liên hệ ở dưới trang. Ghi nhớ tên khối hoặc cài đặt Block anchor ở biểu tượng bánh răng (Settings).',
+        '<strong>Bước 2 (0,25đ):</strong> Kéo lên phần đầu trang, nhấp trực tiếp vào chữ "Liên hệ" trên thanh Menu để mở thanh công cụ. Nhấp vào biểu tượng Link (Liên kết).',
+        '<strong>Bước 3 (0,25đ):</strong> Trong cửa sổ Link hiện ra, chọn tab <em>Page / Block</em>.',
+        '<strong>Bước 4 (0,25đ):</strong> Ở phần Block, xổ danh sách xuống và chọn đúng tên khối Thông tin liên hệ đã xác định ở Bước 1. Nhấn <em>Insert Link</em> để lưu lại.'
+      ]
+    }]
+  },
+  {
+    id:'eict4', num:'Bài 4', title:'Văn bản trong trang web',
+    mc:[
+      { q:'Khối (block) nào thường chứa nội dung chính dạng bài viết văn bản dài trong phần mềm tạo website?',
+        opts:['Khối Menu (Thanh điều hướng).','Khối Article / Text (Văn bản).','Khối Image Gallery (Thư viện ảnh).','Khối Form (Biểu mẫu).'], ans:1 },
+      { q:'Phần chân trang (Footer) của một website thường được sử dụng để chứa nội dung nào?',
+        opts:['Nội dung bài viết chi tiết của tin tức nổi bật.','Thanh điều hướng chính của website.','Hình ảnh minh họa sản phẩm lớn nhất.','Thông tin liên hệ, bản quyền và các liên kết hỗ trợ.'], ans:3 },
+      { q:'Trong Mobirise, để chỉnh sửa nội dung văn bản trong một khối, người dùng thực hiện thao tác nào?',
+        opts:['Nhấp đúp (double-click) trực tiếp vào phần văn bản muốn chỉnh sửa.','Xuất tệp HTML ra rồi chỉnh sửa bằng Notepad.','Vào menu Edit → Edit Text.','Tạo khối mới và viết lại từ đầu.'], ans:0 },
+      { q:'Để chèn liên kết (hyperlink) vào một đoạn văn bản trong khối Mobirise, người dùng thực hiện thao tác nào?',
+        opts:['Nhập URL trực tiếp vào phần văn bản.','Bôi đen đoạn văn bản, sau đó nhấn biểu tượng liên kết (Link) trên thanh công cụ.','Tạo một nút (button) mới thay thế văn bản.','Chèn hình ảnh có liên kết thay thế.'], ans:1 }
+    ],
+    tf:[{
+      ctx:'Khi tạo nội dung văn bản cho trang web bằng Mobirise, một học sinh đưa ra các nhận định sau:',
+      subs:[
+        { t:'Có thể chỉnh sửa trực tiếp nội dung văn bản ngay trên giao diện các khối của Mobirise.', a:true },
+        { t:'Phần mềm Mobirise không hỗ trợ việc định dạng văn bản (in đậm, in nghiêng, đổi màu chữ).', a:false },
+        { t:'Người dùng có thể bôi đen một đoạn văn bản và chèn liên kết (Hyperlink) để khi click vào sẽ chuyển hướng sang trang web khác.', a:true },
+        { t:'Bắt buộc phải chuyển toàn bộ văn bản thành file ảnh (.jpg hoặc .png) thì mới có thể đưa lên website.', a:false }
+      ]
+    }],
+    essay:[]
+  },
+  {
+    id:'eict5', num:'Bài 5', title:'Hình ảnh và video trong trang web',
+    mc:[
+      { q:'Trong Mobirise, khối nào cho phép trình chiếu nhiều hình ảnh tự động theo dạng băng chuyền?',
+        opts:['Khối Article (Văn bản).','Khối Slider (Thanh trượt).','Khối Form (Biểu mẫu).','Khối Footer (Chân trang).'], ans:1 },
+      { q:'Để chèn video từ YouTube vào trang web Mobirise, người dùng thực hiện thao tác nào?',
+        opts:['Tải video từ YouTube về máy rồi đính kèm.','Chèn liên kết (URL) của video YouTube vào khối video.','Xuất bản website trước rồi mới chèn video.','Sao chép nội dung video và dán vào khối text.'], ans:1 },
+      { q:'Tính năng Overlay (lớp phủ) trên hình nền trong Mobirise có tác dụng gì?',
+        opts:['Tạo hiệu ứng chuyển động cho hình ảnh.','Tự động cắt xén hình ảnh.','Tăng độ phân giải hình ảnh.','Tạo lớp phủ màu mờ lên ảnh nền giúp chữ đọc dễ hơn.'], ans:3 },
+      { q:'Để tối ưu tốc độ tải trang web, người dùng nên làm gì với hình ảnh trước khi đưa lên website?',
+        opts:['Tăng độ phân giải ảnh lên tối đa.','Giảm kích thước và nén dung lượng ảnh phù hợp.','Chuyển đổi tất cả ảnh sang định dạng .bmp.','Giữ nguyên ảnh gốc để đảm bảo chất lượng.'], ans:1 }
+    ],
+    tf:[{
+      ctx:'Về việc chèn hình ảnh và video cho trang web tạo bằng Mobirise, các nhận định sau được đưa ra:',
+      subs:[
+        { t:'Người thiết kế có thể sử dụng các khối thư viện ảnh (Gallery) hoặc thanh trượt (Slider) để trình chiếu nhiều ảnh.', a:true },
+        { t:'Không thể chèn các đoạn video trực tuyến (từ YouTube, Vimeo) vào trang web được tạo bằng Mobirise.', a:false },
+        { t:'Khi chọn một hình ảnh làm hình nền (Background image) cho một khối, ta có thể kích hoạt lớp phủ mờ (Overlay) để chữ viết đè lên ảnh dễ đọc hơn.', a:true },
+        { t:'Để website có tốc độ tải nhanh nhất, ta nên giữ nguyên những bức ảnh gốc có dung lượng siêu lớn (hàng chục MB) đăng lên mà không cần tối ưu.', a:false }
+      ]
+    }],
+    essay:[]
+  },
+  {
+    id:'eict6', num:'Bài 6', title:'Xuất bản website (Publish)',
+    mc:[
+      { q:'Trong Mobirise, để bắt đầu quá trình xuất bản (publish) website, người dùng nhấn vào đâu?',
+        opts:['Nút Publish ở góc trên bên phải màn hình Mobirise.','Menu File → Save As HTML.','Biểu tượng chia sẻ (Share) trên giao diện.','Phím tắt Ctrl+P.'], ans:0 },
+      { q:'Khi chọn xuất bản website về máy tính (Local Drive) trong Mobirise, các tệp được tạo ra bao gồm?',
+        opts:['Chỉ một tệp .exe duy nhất có thể chạy trực tiếp.','Tệp .html và thư mục assets chứa CSS, JS và hình ảnh.','Tệp .docx có thể mở bằng Microsoft Word.','Tệp .pdf để đăng tải lên website.'], ans:1 },
+      { q:'Nền tảng nào sau đây cho phép hosting (lưu trữ) miễn phí các tệp HTML tĩnh (static HTML)?',
+        opts:['Microsoft Word Online.','Google Docs.','GitHub Pages hoặc Netlify.','Adobe Photoshop.'], ans:2 },
+      { q:'Sau khi đã xuất bản website Mobirise lên Internet, nếu muốn cập nhật nội dung, người dùng cần làm gì?',
+        opts:['Liên hệ nhà cung cấp hosting để họ cập nhật hộ.','Tạo một website mới hoàn toàn từ đầu.','Chỉnh sửa trực tiếp các tệp HTML bằng Notepad.','Chỉnh sửa trong Mobirise rồi xuất bản (Publish) lại.'], ans:3 }
+    ],
+    tf:[{
+      ctx:'Đoàn thanh niên phát động cuộc thi "Giải cứu Trái Đất". Ban tổ chức muốn xây dựng website màu xanh lá. Trang chủ có poster phát động và liên kết tệp .pdf thể lệ. Thanh điều hướng gồm 3 mục hình thức dự thi và mục "Ý kiến" để nhận ý kiến đóng góp gồm nhiều đoạn văn bản. Các ý kiến của ban tổ chức:',
+      subs:[
+        { t:'Một số phần mềm thiết kế website miễn phí cũng có sẵn mẫu web tông màu xanh lá cây.', a:true },
+        { t:'Thanh điều hướng có thể thiết kế được các mục "Giới thiệu", "Tranh vẽ", "Video", "Bài viết" và "Ý kiến".', a:true },
+        { t:'Tại trang chủ, nếu đã dùng tính năng chèn ảnh để đưa poster phát động, khi đó không thể chèn thêm liên kết mở tệp .pdf nữa. Do đó thể lệ cần chèn vào trang web khác.', a:false },
+        { t:'Để nhận ý kiến đóng góp nhiều đoạn văn bản, ô nhập ý kiến cần là ô văn bản dài (textarea) cho phép nhập nhiều dòng, khác với ô nhập họ tên là ô văn bản ngắn một dòng.', a:true }
+      ]
+    }],
+    essay:[{
+      pts:'1,0 điểm – Vận dụng EICT Bài 6',
+      q:'Sau khi hoàn thành thiết kế trang web trên Mobirise, người dùng có thể xuất bản (Publish) website dưới dạng tập tin HTML. Hãy nêu cách xuất bản website lưu vào ổ cứng máy tính (Local Drive) và kể tên một nền tảng trực tuyến cho phép tải các tập tin HTML này lên Internet để hosting miễn phí.',
+      steps:[
+        '<strong>Cách xuất bản về máy (0,5đ):</strong> Nhấp vào nút <em>Publish</em> ở góc trên bên phải màn hình Mobirise.',
+        'Tích chọn mục <em>Local drive folder</em> (Lưu vào thư mục máy tính). Nhấn <em>Browse</em> để chọn thư mục lưu trữ, sau đó nhấn nút <em>Publish</em>. Kết quả tạo ra các tệp .html và thư mục assets.',
+        '<strong>Nền tảng hosting miễn phí (0,5đ):</strong> Ví dụ: <em>GitHub Pages</em> (pages.github.com) hoặc <em>Netlify</em> (netlify.com) – đều cho phép tải tệp HTML tĩnh lên để chạy web online miễn phí.'
+      ]
+    }]
+  }
+  ]
+}
+];
+
+// ════════════════════════════════════════════════
+//  RENDER
+// ════════════════════════════════════════════════
+function esc(s){ return s; } // already safe HTML strings in data
+
+function renderAll(){
+  let html='';
+  TOPICS.forEach((topic,ti)=>{
+    if(ti>0) html+='<hr class="topic-divider">';
+    html+=renderTopic(topic);
+  });
+  document.getElementById('root').innerHTML=html;
+  bindAll();
+  initSidebar();
+}
+
+function renderTopic(t){
+  const glow=`rgba(${t.rgb},.18)`;
+  const grad=`linear-gradient(90deg,${t.color},${t.id==='f'?'#7c5af0':'#818cf8'})`;
+  let html=`
+  <div class="topic-hdr" id="topic-${t.id}">
+    <div class="topic-hdr-inner" style="--c-glow:${glow};--c-grad:${grad};">
+      <div class="topic-icon">${t.emoji}</div>
+      <div class="topic-meta">
+        <div class="topic-badge-label" style="color:${t.color}">${t.label}</div>
+        <h1>${t.title}</h1>
+        <p>${t.desc}</p>
+      </div>
+    </div>
+  </div>`;
+  t.lessons.forEach(l=>{html+=renderLesson(l,t.color,t.rgb);});
+  return html;
+}
+
+function renderLesson(l,color,rgb){
+  const mcCount=l.mc.length;
+  const tfCount=l.tf.reduce((a,s)=>a+s.subs.length,0);
+  const esCount=l.essay.length;
+  let html=`<div class="lesson-section" id="${l.id}">
+  <div class="lesson-hdr">
+    <span class="lesson-num" style="background:rgba(${rgb},.15);color:${color}">${l.num}</span>
+    <h2>${l.title}</h2>
+  </div>`;
+
+  // MC block
+  html+=`<div class="ex-block" id="block-mc-${l.id}">
+    <div class="ex-hdr">
+      <div class="ex-hdr-left">
+        <div class="ex-icon" style="background:rgba(${rgb},.12)">📝</div>
+        <div>
+          <div class="ex-title">Trắc nghiệm nhiều phương án lựa chọn</div>
+          <div class="ex-count">${mcCount} câu hỏi</div>
+        </div>
+      </div>
+      <div class="ex-btns">
+        <button class="btn-check" onclick="checkMC('${l.id}')">Kiểm tra</button>
+        <button class="btn-reset" onclick="resetMC('${l.id}')">↺ Đặt lại</button>
+      </div>
+    </div>
+    <div class="score-row" id="score-mc-${l.id}"></div>
+    <div class="mc-list">`;
+  l.mc.forEach((q,qi)=>{
+    html+=`<div class="q-item" id="qi-${l.id}-${qi}">
+      <div class="q-top">
+        <span class="q-badge">Câu ${qi+1}</span>
+        <div class="q-text">${q.q}</div>
+      </div>
+      <div class="q-opts">`;
+    const letters=['A','B','C','D'];
+    q.opts.forEach((o,oi)=>{
+      html+=`<label class="q-opt" id="opt-${l.id}-${qi}-${oi}">
+        <input type="radio" name="mc-${l.id}-${qi}" value="${oi}">
+        <span>${letters[oi]}. ${o}</span>
+      </label>`;
+    });
+    html+=`</div>
+      <div class="q-fb" id="fb-${l.id}-${qi}"></div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  // T/F block
+  html+=`<div class="ex-block" id="block-tf-${l.id}">
+    <div class="ex-hdr">
+      <div class="ex-hdr-left">
+        <div class="ex-icon" style="background:rgba(${rgb},.12)">☑️</div>
+        <div>
+          <div class="ex-title">Trắc nghiệm Đúng / Sai</div>
+          <div class="ex-count">${l.tf.length} câu – ${tfCount} ý</div>
+        </div>
+      </div>
+      <div class="ex-btns">
+        <button class="btn-check" onclick="checkTFLesson('${l.id}')">Kiểm tra</button>
+        <button class="btn-reset" onclick="resetTFLesson('${l.id}')">↺ Đặt lại</button>
+      </div>
+    </div>
+    <div class="score-row" id="score-tf-${l.id}"></div>
+    <div class="tf-list">`;
+  l.tf.forEach((set,si)=>{
+    html+=`<div class="tf-set" id="tfset-${l.id}-${si}">
+      <div class="tf-ctx"><strong>Bối cảnh:</strong>${set.ctx}</div>
+      <div class="tf-subs">`;
+    const subLetters=['a','b','c','d'];
+    set.subs.forEach((sub,subI)=>{
+      html+=`<div class="tf-sub" id="tfsub-${l.id}-${si}-${subI}" data-ans="${sub.a}">
+        <span class="tf-letter">${subLetters[subI]})</span>
+        <span class="tf-text">${sub.t}</span>
+        <div class="tf-btns">
+          <button class="tf-btn" onclick="selectTF(this,'D','${l.id}-${si}-${subI}')">Đúng</button>
+          <button class="tf-btn" onclick="selectTF(this,'S','${l.id}-${si}-${subI}')">Sai</button>
+        </div>
+        <span class="tf-icon" id="tficon-${l.id}-${si}-${subI}"></span>
+      </div>`;
+    });
+    html+=`</div></div>`;
+  });
+  html+=`</div></div>`;
+
+  // Essay block
+  if(esCount>0){
+    html+=`<div class="ex-block" id="block-es-${l.id}">
+      <div class="ex-hdr">
+        <div class="ex-hdr-left">
+          <div class="ex-icon" style="background:rgba(${rgb},.12)">✏️</div>
+          <div>
+            <div class="ex-title">Tự luận / Thực hành</div>
+            <div class="ex-count">${esCount} câu hỏi</div>
+          </div>
+        </div>
+        <div class="ex-btns">
+          <button class="btn-reset" onclick="resetEssay('${l.id}')">↺ Đặt lại</button>
+        </div>
+      </div>
+      <div class="essay-list">`;
+    l.essay.forEach((e,ei)=>{
+      html+=`<div class="essay-item">
+        <div class="essay-q">
+          <div class="essay-pts">${e.pts}</div>
+          <div class="essay-qtext">${e.q}</div>
+        </div>
+        <button class="essay-toggle" id="etog-${l.id}-${ei}" onclick="toggleEssay('${l.id}',${ei})">
+          <span>▶ Xem đáp án gợi ý</span>
+        </button>
+        <div class="essay-ans" id="eans-${l.id}-${ei}">`;
+      e.steps.forEach(s=>{html+=`<div class="essay-step">${s}</div>`;});
+      html+=`</div></div>`;
+    });
+    html+=`</div></div>`;
+  } else {
+    html+=`<div class="ex-block" id="block-es-${l.id}">
+      <div class="ex-hdr">
+        <div class="ex-hdr-left">
+          <div class="ex-icon" style="background:rgba(${rgb},.12)">✏️</div>
+          <div>
+            <div class="ex-title">Tự luận / Thực hành</div>
+            <div class="ex-count">Không có câu hỏi tự luận trong bài này</div>
+          </div>
+        </div>
+      </div>
+      <div class="empty">Tự luận tập trung ở các bài EICT 2, 3, 6.</div>
+    </div>`;
+  }
+
+  html+=`</div>`;
+  return html;
+}
+
+// ════════════════════════════════════════════════
+//  INTERACTIVE
+// ════════════════════════════════════════════════
+function findLesson(id){
+  for(const t of TOPICS) for(const l of t.lessons) if(l.id===id) return l;
+  return null;
+}
+
+function checkMC(lid){
+  const l=findLesson(lid);
+  if(!l) return;
+  let correct=0,answered=0;
+  l.mc.forEach((q,qi)=>{
+    const sel=document.querySelector(`input[name="mc-${lid}-${qi}"]:checked`);
+    const item=document.getElementById(`qi-${lid}-${qi}`);
+    const fb=document.getElementById(`fb-${lid}-${qi}`);
+    if(!sel){ fb.textContent=''; fb.className='q-fb'; item.className='q-item'; return; }
+    answered++;
+    const chosen=parseInt(sel.value);
+    // highlight options
+    for(let i=0;i<q.opts.length;i++){
+      const opt=document.getElementById(`opt-${lid}-${qi}-${i}`);
+      opt.className='q-opt';
+      if(i===q.ans) opt.classList.add('opt-correct');
+      else if(i===chosen && chosen!==q.ans) opt.classList.add('opt-wrong');
+    }
+    if(chosen===q.ans){
+      correct++;
+      item.className='q-item q-correct';
+      fb.innerHTML='✓ Chính xác!';
+      fb.className='q-fb show fb-ok';
+    } else {
+      item.className='q-item q-wrong';
+      fb.innerHTML=`✗ Sai. Đáp án đúng: <strong>${['A','B','C','D'][q.ans]}</strong>`;
+      fb.className='q-fb show fb-no';
+    }
+  });
+  const scoreEl=document.getElementById(`score-mc-${lid}`);
+  if(answered>0){
+    scoreEl.innerHTML=`📊 Kết quả: <strong>${correct}/${answered}</strong> câu đúng`;
+    scoreEl.className='score-row show';
+  }
+}
+
+function resetMC(lid){
+  const l=findLesson(lid);
+  if(!l) return;
+  l.mc.forEach((_,qi)=>{
+    document.querySelectorAll(`input[name="mc-${lid}-${qi}"]`).forEach(r=>r.checked=false);
+    for(let i=0;i<4;i++){
+      const opt=document.getElementById(`opt-${lid}-${qi}-${i}`);
+      if(opt) opt.className='q-opt';
+    }
+    const item=document.getElementById(`qi-${lid}-${qi}`);
+    if(item) item.className='q-item';
+    const fb=document.getElementById(`fb-${lid}-${qi}`);
+    if(fb){ fb.textContent=''; fb.className='q-fb'; }
+  });
+  const sc=document.getElementById(`score-mc-${lid}`);
+  if(sc) sc.className='score-row';
+}
+
+function selectTF(btn,val,key){
+  const btns=btn.parentElement.querySelectorAll('.tf-btn');
+  btns.forEach(b=>{ b.className='tf-btn'; });
+  btn.className=`tf-btn ${val==='D'?'sel-d':'sel-s'}`;
+  btn._val=val;
+  // store selection
+  const sub=document.getElementById('tfsub-'+key);
+  if(sub) sub.dataset.sel=val;
+}
+
+function checkTFLesson(lid){
+  const l=findLesson(lid);
+  if(!l) return;
+  let correct=0,total=0;
+  l.tf.forEach((set,si)=>{
+    set.subs.forEach((sub,subI)=>{
+      total++;
+      const subEl=document.getElementById(`tfsub-${lid}-${si}-${subI}`);
+      const iconEl=document.getElementById(`tficon-${lid}-${si}-${subI}`);
+      if(!subEl) return;
+      const sel=subEl.dataset.sel;
+      const correct_ans=sub.a?'D':'S';
+      if(!sel){ subEl.className='tf-sub'; iconEl.textContent=''; return; }
+      const isRight=sel===correct_ans;
+      if(isRight){
+        correct++;
+        subEl.className='tf-sub sub-ok';
+        iconEl.textContent='✓';
+        iconEl.style.color='var(--correct)';
+      } else {
+        subEl.className='tf-sub sub-no';
+        iconEl.textContent='✗ ('+correct_ans+')';
+        iconEl.style.color='var(--wrong)';
+      }
+    });
+  });
+  const sc=document.getElementById(`score-tf-${lid}`);
+  if(sc){
+    sc.innerHTML=`📊 Kết quả: <strong>${correct}/${total}</strong> ý đúng`;
+    sc.className='score-row show';
+  }
+}
+
+function resetTFLesson(lid){
+  const l=findLesson(lid);
+  if(!l) return;
+  l.tf.forEach((set,si)=>{
+    set.subs.forEach((_,subI)=>{
+      const subEl=document.getElementById(`tfsub-${lid}-${si}-${subI}`);
+      if(subEl){ subEl.className='tf-sub'; delete subEl.dataset.sel; }
+      const iconEl=document.getElementById(`tficon-${lid}-${si}-${subI}`);
+      if(iconEl) iconEl.textContent='';
+      const btns=subEl?.querySelectorAll('.tf-btn');
+      if(btns) btns.forEach(b=>{ b.className='tf-btn'; delete b._val; });
+    });
+  });
+  const sc=document.getElementById(`score-tf-${lid}`);
+  if(sc) sc.className='score-row';
+}
+
+function toggleEssay(lid,ei){
+  const ans=document.getElementById(`eans-${lid}-${ei}`);
+  const tog=document.getElementById(`etog-${lid}-${ei}`);
+  const open=ans.classList.toggle('show');
+  tog.querySelector('span').textContent=(open?'▼ Ẩn đáp án':'▶ Xem đáp án gợi ý');
+}
+
+function resetEssay(lid){
+  const l=findLesson(lid);
+  if(!l) return;
+  l.essay.forEach((_,ei)=>{
+    const ans=document.getElementById(`eans-${lid}-${ei}`);
+    const tog=document.getElementById(`etog-${lid}-${ei}`);
+    if(ans) ans.classList.remove('show');
+    if(tog) tog.querySelector('span').textContent='▶ Xem đáp án gợi ý';
+  });
+}
+
+// ════════════════════════════════════════════════
+//  SIDEBAR ACTIVE + BIND
+// ════════════════════════════════════════════════
+function bindAll(){
+  // nothing extra needed; onclick already in HTML
+}
+
+function initSidebar(){
+  const links=document.querySelectorAll('.sb-link');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id;
+        links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  TOPICS.forEach(t=>t.lessons.forEach(l=>{
+    const el=document.getElementById(l.id);
+    if(el) observer.observe(el);
+  }));
+}
+
+// ── INIT ──
+renderAll();
+</script>
+</body>
+</html>
