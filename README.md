@@ -62,19 +62,6 @@ CK2/
 
 ---
 
-## 🛠 Công nghệ sử dụng
-
-| Layer | Chi tiết |
-|-------|----------|
-| **Markup** | HTML5 thuần – không framework |
-| **Styling** | CSS3 + CSS Variables – không Tailwind, không preprocessor |
-| **Logic** | Vanilla JavaScript (ES2020+) – không jQuery |
-| **Font** | Google Fonts CDN (Be Vietnam Pro + JetBrains Mono) |
-| **Hosting** | GitHub Pages (static, free) |
-| **Build** | Không cần – mở thẳng file HTML trong trình duyệt |
-
----
-
 ## 🚀 Cách chạy trên máy cục bộ
 
 ```bash
@@ -93,28 +80,6 @@ python -m http.server 8080
 # Cách 3 – Mở thẳng file
 # Kéo index.html vào trình duyệt (một số tính năng có thể bị giới hạn do CORS)
 ```
-
----
-
-## 📐 Hướng dẫn sử dụng `shared.css`
-
-Để tránh lặp code giữa các file, thêm dòng này vào `<head>` của mỗi trang **trước** `<style>` nội bộ:
-
-```html
-<link rel="stylesheet" href="shared.css">
-```
-
-`shared.css` cung cấp:
-- CSS variables (màu sắc, font, breakpoint)
-- Global reset (`*`, `html`, `body`)
-- Nút back/home (`.back-btn`, `.back-link`)
-- Page header/hero wrapper
-- Footer (`.page-footer`)
-- Reset button (`.reset-btn`)
-- Scrollbar styling
-- Responsive helpers
-
-Các style đặc thù của từng trang (layout sidebar, câu hỏi, animation...) vẫn nằm trong `<style>` nội bộ của mỗi file.
 
 ---
 
@@ -185,8 +150,3 @@ Cảnh báo    #fbbf24   ██  Yellow
 4. Push và mở Pull Request
 
 ---
-
-## 📄 License
-
-Tài liệu học tập nội bộ – **THPT Phan Châu Trinh**, Đà Nẵng.  
-Không sử dụng cho mục đích thương mại.
