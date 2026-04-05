@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn Tập Lịch Sử 12 – Cuối Kỳ 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0e1a; --bg2: #0f1525; --panel: #141c2e;
+  --border: #1e2d4a; --accent: #f472b6; --accent2: #fb7185;
+  --accent3: #fda4af; --text: #e8edf5; --text2: #8fa3c0; --text3: #5a7291;
+  --ok: #34d399; --err: #f87171; --warn: #fbbf24; --info: #60a5fa;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* ── BACK BUTTON ── */
+.back-btn{
+  position:fixed;top:16px;left:16px;z-index:200;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(20,28,46,0.9);border:1px solid var(--border);
+  color:var(--text2);font-size:12px;font-weight:600;letter-spacing:.5px;
+  padding:8px 14px;border-radius:100px;text-decoration:none;
+  backdrop-filter:blur(8px);transition:.2s;
+}
+.back-btn:hover{color:var(--accent);border-color:var(--accent);background:rgba(244,114,182,0.08)}
+
+/* ── HEADER ── */
+.page-header{
+  text-align:center;padding:56px 24px 32px;position:relative;
+}
+.page-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(244,114,182,0.13) 0%,transparent 70%);
+  pointer-events:none;
+}
+.page-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,rgba(244,114,182,0.15),rgba(251,113,133,0.15));
+  border:1px solid rgba(244,114,182,0.3);color:var(--accent);
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 14px;border-radius:100px;margin-bottom:18px;
+}
+.page-header h1{
+  font-size:clamp(26px,5vw,48px);font-weight:800;line-height:1.15;
+  background:linear-gradient(135deg,#fff 0%,var(--accent) 55%,var(--accent2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:10px;
+}
+.page-header p{color:var(--text2);font-size:14px;max-width:520px;margin:0 auto;line-height:1.6}
+
+/* ── LAYOUT ── */
+.layout{display:flex;gap:0;max-width:1280px;margin:0 auto;padding:0 0 80px}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:240px;flex-shrink:0;padding:24px 16px;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-track{background:transparent}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.sidebar-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:12px;padding-left:4px}
+.nav-lesson{margin-bottom:20px}
+.nav-lesson-title{
+  font-size:12px;font-weight:700;color:var(--accent);
+  padding:6px 10px 6px 10px;border-left:2px solid var(--accent);
+  margin-bottom:6px;cursor:pointer;
+}
+.nav-sub{
+  display:block;font-size:11px;font-weight:500;color:var(--text3);
+  padding:5px 10px 5px 20px;border-radius:6px;
+  text-decoration:none;transition:.15s;cursor:pointer;
+}
+.nav-sub:hover,.nav-sub.active{color:var(--accent3);background:rgba(244,114,182,0.07)}
+
+/* ── MAIN CONTENT ── */
+.main{flex:1;padding:24px 32px 24px 24px;min-width:0}
+
+/* ── LESSON BLOCK ── */
+.lesson-block{margin-bottom:56px}
+.lesson-header{
+  display:flex;align-items:center;gap:16px;margin-bottom:28px;
+  padding-bottom:18px;border-bottom:1px solid var(--border);
+}
+.lesson-num{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+  background:linear-gradient(135deg,rgba(244,114,182,0.2),rgba(251,113,133,0.2));
+  border:1px solid rgba(244,114,182,0.3);color:var(--accent);
+  padding:4px 10px;border-radius:8px;white-space:nowrap;
+}
+.lesson-title-text{font-size:17px;font-weight:700;color:var(--text);line-height:1.4}
+
+/* ── SECTION HEADING ── */
+.section-heading{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;
+}
+.section-title{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--text2);
+}
+.section-title-icon{
+  width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.icon-mc{background:rgba(96,165,250,0.15);color:var(--info)}
+.icon-tf{background:rgba(251,191,36,0.15);color:var(--warn)}
+.icon-essay{background:rgba(52,211,153,0.15);color:var(--ok)}
+
+.reset-btn{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  color:var(--text3);border:1px solid var(--border);background:transparent;
+  padding:5px 12px;border-radius:8px;cursor:pointer;transition:.15s;
+}
+.reset-btn:hover{color:var(--accent);border-color:var(--accent);background:rgba(244,114,182,0.06)}
+
+.section-block{margin-bottom:40px}
+
+/* ── MC QUESTION ── */
+.mc-item{
+  background:var(--panel);border:1px solid var(--border);border-radius:16px;
+  padding:20px 22px;margin-bottom:14px;transition:.2s;
+}
+.mc-item.answered{border-color:rgba(244,114,182,0.2)}
+.mc-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:8px}
+.mc-q{font-size:14px;font-weight:500;color:var(--text);line-height:1.6;margin-bottom:14px}
+.mc-opts{display:flex;flex-direction:column;gap:7px}
+.mc-opt{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:9px 14px;border-radius:10px;border:1px solid var(--border);
+  background:transparent;color:var(--text2);cursor:pointer;
+  font-family:'Be Vietnam Pro',sans-serif;font-size:13px;text-align:left;
+  transition:.15s;width:100%;
+}
+.mc-opt:hover:not(:disabled){border-color:var(--accent3);color:var(--text);background:rgba(244,114,182,0.06)}
+.mc-opt.correct{border-color:var(--ok)!important;background:rgba(52,211,153,0.1)!important;color:var(--ok)!important}
+.mc-opt.wrong{border-color:var(--err)!important;background:rgba(248,113,113,0.1)!important;color:var(--err)!important}
+.mc-opt.reveal{border-color:var(--ok)!important;background:rgba(52,211,153,0.05)!important;color:var(--ok)!important}
+.mc-opt:disabled{cursor:default}
+.opt-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;flex-shrink:0;margin-top:1px}
+.mc-feedback{margin-top:8px;font-size:12px;padding:6px 10px;border-radius:8px;display:none}
+.mc-feedback.show{display:block}
+.mc-feedback.ok{background:rgba(52,211,153,0.1);color:var(--ok)}
+.mc-feedback.fail{background:rgba(248,113,113,0.1);color:var(--err)}
+
+/* ── TF QUESTION ── */
+.tf-item{
+  background:var(--panel);border:1px solid var(--border);border-radius:16px;
+  padding:22px 24px;margin-bottom:16px;
+}
+.tf-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:6px}
+.tf-passage{
+  font-size:13px;color:var(--text2);line-height:1.7;
+  background:rgba(30,45,74,0.5);border-left:3px solid var(--accent);
+  padding:14px 16px;border-radius:0 10px 10px 0;margin-bottom:18px;
+  font-style:italic;
+}
+.tf-passage strong{color:var(--accent3);font-style:normal}
+.tf-sub-list{display:flex;flex-direction:column;gap:10px}
+.tf-sub{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(10,14,26,0.4);border-radius:10px;border:1px solid var(--border)}
+.tf-sub-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--accent);flex-shrink:0;margin-top:2px}
+.tf-sub-text{font-size:13px;color:var(--text2);line-height:1.5;flex:1}
+.tf-btns{display:flex;gap:6px;flex-shrink:0;margin-top:2px}
+.tf-btn{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  padding:4px 10px;border-radius:6px;cursor:pointer;border:1px solid var(--border);
+  background:transparent;color:var(--text3);transition:.15s;
+}
+.tf-btn:hover:not(:disabled){border-color:var(--warn);color:var(--warn)}
+.tf-btn.correct{background:rgba(52,211,153,0.15);border-color:var(--ok);color:var(--ok)}
+.tf-btn.wrong{background:rgba(248,113,113,0.15);border-color:var(--err);color:var(--err)}
+.tf-btn.reveal{background:rgba(52,211,153,0.08);border-color:var(--ok);color:var(--ok)}
+.tf-btn:disabled{cursor:default}
+
+/* ── TABLE PASSAGE (for câu 7) ── */
+.tf-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}
+.tf-table th,.tf-table td{border:1px solid var(--border);padding:8px 12px;text-align:left;color:var(--text2)}
+.tf-table th{background:rgba(30,45,74,0.6);color:var(--accent3);font-weight:600}
+.tf-table tr:hover td{background:rgba(30,45,74,0.3)}
+
+/* ── ESSAY ── */
+.essay-item{
+  background:var(--panel);border:1px solid var(--border);border-radius:16px;
+  margin-bottom:14px;overflow:hidden;
+}
+.essay-q{
+  display:flex;align-items:flex-start;gap:12px;padding:18px 22px;cursor:pointer;
+  transition:.15s;
+}
+.essay-q:hover{background:rgba(244,114,182,0.04)}
+.essay-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ok);flex-shrink:0;margin-top:2px}
+.essay-q-text{font-size:13.5px;font-weight:500;color:var(--text);line-height:1.6;flex:1}
+.essay-arrow{color:var(--text3);font-size:14px;flex-shrink:0;margin-top:2px;transition:.2s}
+.essay-item.open .essay-arrow{transform:rotate(90deg);color:var(--ok)}
+.essay-answer{
+  display:none;padding:0 22px 20px 44px;
+  border-top:1px solid var(--border);padding-top:16px;
+}
+.essay-item.open .essay-answer{display:block}
+.essay-answer-content{font-size:13px;color:var(--text2);line-height:1.8}
+.essay-answer-content h4{color:var(--ok);font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin:14px 0 6px}
+.essay-answer-content ul{list-style:none;padding:0}
+.essay-answer-content ul li{padding:3px 0 3px 14px;position:relative}
+.essay-answer-content ul li::before{content:'›';position:absolute;left:0;color:var(--accent)}
+.essay-answer-content strong{color:var(--accent3)}
+
+/* ── DIVIDER ── */
+.lesson-divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+
+/* ── SCORE CHIP ── */
+.score-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;
+  color:var(--text3);padding:4px 12px;border-radius:100px;
+  background:rgba(30,45,74,0.5);border:1px solid var(--border);
+  margin-left:12px;
+}
+
+/* ── SCROLL OFFSET ── */
+.lesson-block, .section-block {
+  scroll-margin-top: 72px;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:800px){
+  .sidebar{display:none}
+  .main{padding:16px}
+  .layout{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<a class="back-btn" href="index.html">← Về trang chủ</a>
+
+<div class="page-header">
+  <div class="page-badge">📜 Cuối kì 2 · Lịch Sử</div>
+  <h1>Ôn Tập Lịch Sử 12</h1>
+  <p>Bài 12–15 · Đối ngoại Việt Nam &amp; Hồ Chí Minh · Bộ Cánh Diều</p>
+</div>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-label">Điều hướng</div>
+
+    <div class="nav-lesson">
+      <div class="nav-lesson-title" onclick="scrollToSection('bai12')">Bài 12</div>
+      <a class="nav-sub" href="#bai12-mc" onclick="scrollToSection('bai12-mc');return false;">▸ Trắc nghiệm MC</a>
+      <a class="nav-sub" href="#bai12-essay" onclick="scrollToSection('bai12-essay');return false;">▸ Tự luận</a>
+    </div>
+
+    <div class="nav-lesson">
+      <div class="nav-lesson-title" onclick="scrollToSection('bai13')">Bài 13</div>
+      <a class="nav-sub" href="#bai13-mc" onclick="scrollToSection('bai13-mc');return false;">▸ Trắc nghiệm MC</a>
+      <a class="nav-sub" href="#bai13-essay" onclick="scrollToSection('bai13-essay');return false;">▸ Tự luận</a>
+    </div>
+
+    <div class="nav-lesson">
+      <div class="nav-lesson-title" onclick="scrollToSection('bai14')">Bài 14</div>
+      <a class="nav-sub" href="#bai14-mc" onclick="scrollToSection('bai14-mc');return false;">▸ Trắc nghiệm MC</a>
+      <a class="nav-sub" href="#bai14-tf" onclick="scrollToSection('bai14-tf');return false;">▸ Trắc nghiệm Đúng–Sai</a>
+      <a class="nav-sub" href="#bai14-essay" onclick="scrollToSection('bai14-essay');return false;">▸ Tự luận</a>
+    </div>
+
+    <div class="nav-lesson">
+      <div class="nav-lesson-title" onclick="scrollToSection('bai15')">Bài 15</div>
+      <a class="nav-sub" href="#bai15-mc" onclick="scrollToSection('bai15-mc');return false;">▸ Trắc nghiệm MC</a>
+      <a class="nav-sub" href="#bai15-tf" onclick="scrollToSection('bai15-tf');return false;">▸ Trắc nghiệm Đúng–Sai</a>
+      <a class="nav-sub" href="#bai15-essay" onclick="scrollToSection('bai15-essay');return false;">▸ Tự luận</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main" id="main-content"></main>
+</div>
+
+<script>
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ═══════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════ */
+
+const LABELS = ['A','B','C','D'];
+
+/* ── BÀI 12 ── */
+const bai12_mc = [
+  {q:'Nội dung nào sau đây là hoạt động đối ngoại của Phan Bội Châu đầu thế kỉ XX?',opts:['Tổ chức phong trào Đông du.','Sáng lập Hội Liên hiệp thuộc địa.','Gia nhập Quốc tế Cộng sản.','Gia nhập Đảng Xã hội Pháp.'],ans:0},
+  {q:'Năm 1908, Phan Bội Châu đã tham gia thành lập tổ chức nào sau đây?',opts:['Hội liên hiệp thuộc địa.','Điền – Quế – Việt liên minh.','Liên minh Việt – Miên – Lào.','Mặt trận tổ quốc Việt Nam.'],ans:1},
+  {q:'Năm 1911, Phan Bội Châu hoạt động tại',opts:['Việt Nam.','Liên Xô.','Trung Quốc.','Thái Lan.'],ans:2},
+  {q:'Mục đích thực hiện các hoạt động đối ngoại của Phan Chu Trinh là',opts:['vận động cải cách và duy tân.','tiến hành khởi nghĩa vũ trang.','tập hợp lực lượng cách mạng.','xin viện trợ các nước châu Âu.'],ans:0},
+  {q:'Nội dung nào sau đây là một trong những hoạt động đối ngoại của chí sỹ Phan Châu Trinh đầu thế kỷ XX?',opts:['Sáng lập hội liên hiệp các dân tộc bị áp bức ở Á Đông.','Thành lập và phát triển các hoạt động của Việt Nam Quang phục hội.','Tham gia sáng lập Đảng Cộng sản và Đảng Xã hội Pháp.','Viết báo, diễn thuyết để thức tỉnh dư luận Pháp về tình hình Việt Nam.'],ans:3},
+  {q:'Quốc gia nào sau đây là một trong những địa điểm diễn ra các hoạt động đối ngoại của Phan Châu Trinh năm 1912?',opts:['Pháp.','Ấn Độ.','Liên Xô.','Ba Lan.'],ans:0},
+  {q:'Đầu thế kỉ XX, Phan Bội Châu, Phan Châu Trinh, Nguyễn Ái Quốc là những nhà yêu nước Việt Nam tiêu biểu thực hiện',opts:['những hoạt động đối ngoại bước đầu.','những hoạt động ngoại giao chính thức.','các hoạt động ngoại giao với các nước.','các hoạt động đối ngoại chính thức.'],ans:0},
+  {q:'Trong giai đoạn 1941 – 1945, chủ trương và chính sách đối ngoại của Đảng Cộng sản Đông Dương được thể hiện chủ yếu thông qua tổ chức nào sau đây?',opts:['Ban Chỉ huy hải ngoại.','Mặt trận Liên Việt.','Quốc tế Cộng sản.','Mặt trận Việt Minh.'],ans:3}
+];
+
+const bai12_essays = [
+  {q:'Trình bày các hoạt động đối ngoại tiêu biểu của Việt Nam từ đầu thế kỉ XX đến năm 1945.',
+   ans:`<h4>1. Giai đoạn đầu thế kỉ XX đến 1919</h4><ul>
+<li><strong>Phan Bội Châu:</strong> Phát động phong trào Đông du (1905–1909) – đưa thanh niên sang Nhật học tập; năm 1908 thành lập Điền – Quế – Việt liên minh tại Trung Quốc; năm 1912 thành lập Việt Nam Quang phục hội.</li>
+<li><strong>Phan Châu Trinh:</strong> Sang Pháp năm 1911, viết báo và diễn thuyết vận động cải cách dân chủ, thức tỉnh dư luận Pháp về tình hình Việt Nam.</li>
+<li><strong>Mục đích:</strong> Tranh thủ sự ủng hộ của quốc tế nhằm giành lại độc lập dân tộc.</li>
+</ul>
+<h4>2. Giai đoạn 1919–1930 (Nguyễn Ái Quốc)</h4><ul>
+<li>Năm 1919: Thay mặt người Việt Nam yêu nước tại Pháp gửi <strong>Yêu sách của nhân dân An Nam</strong> đến Hội nghị Vécxai.</li>
+<li>Năm 1921: Tham gia thành lập <strong>Hội Liên hiệp các dân tộc thuộc địa</strong> ở Pa-ri.</li>
+<li>Năm 1923–1924: Hoạt động tại Liên Xô, dự Đại hội V Quốc tế Cộng sản và Hội nghị Quốc tế Nông dân.</li>
+<li>Năm 1925: Thành lập <strong>Hội Việt Nam Cách mạng Thanh niên</strong> tại Quảng Châu; xuất bản báo Thanh Niên và tác phẩm Đường Kách mệnh.</li>
+</ul>
+<h4>3. Giai đoạn 1930–1945</h4><ul>
+<li>Chính sách đối ngoại tập trung qua <strong>Mặt trận Việt Minh</strong> (thành lập 19/5/1941).</li>
+<li>Tranh thủ sự ủng hộ của các lực lượng chống phát xít trong Chiến tranh thế giới thứ hai.</li>
+<li>Hợp tác có giới hạn với lực lượng Đồng minh (Mỹ, Trung Hoa Dân Quốc) để giành thời cơ cách mạng.</li>
+</ul>`},
+  {q:'Chứng minh: Đến đầu thế kỉ XX, sự nghiệp cứu nước và giải phóng dân tộc Việt Nam "lâm vào tình hình đen tối tưởng như không có đường ra".',
+   ans:`<h4>1. Hoàn cảnh lịch sử</h4><ul>
+<li>Cuối thế kỉ XIX, thực dân Pháp hoàn thành việc xâm lược và đặt ách cai trị trên toàn lãnh thổ Việt Nam.</li>
+<li>Nhân dân mất độc lập, chịu cảnh áp bức bóc lột nặng nề.</li>
+</ul>
+<h4>2. Sự thất bại của các phong trào yêu nước</h4><ul>
+<li><strong>Phong trào Cần Vương (1885–1896):</strong> Thất bại vì theo khuynh hướng phong kiến lỗi thời, không có tổ chức chặt chẽ, bị thực dân đàn áp.</li>
+<li><strong>Phong trào Đông du (1905–1909):</strong> Bị Nhật – Pháp cấu kết, Phan Bội Châu bị trục xuất, phong trào tan rã.</li>
+<li><strong>Phan Châu Trinh:</strong> Hoạt động bị hạn chế, không tạo được lực lượng đủ mạnh; phong trào duy tân bị đàn áp.</li>
+<li><strong>Việt Nam Quang phục hội (1912):</strong> Bị cô lập và tan rã sau nhiều tổn thất.</li>
+<li><strong>Việt Nam Quốc dân đảng:</strong> Khởi nghĩa Yên Bái (1930) thất bại, tổ chức bị tiêu diệt hoàn toàn.</li>
+</ul>
+<h4>3. Nguyên nhân dẫn đến "đen tối"</h4><ul>
+<li>Thiếu một đường lối cách mạng khoa học, phù hợp với xu thế thời đại.</li>
+<li>Chưa có tổ chức lãnh đạo cách mạng vững mạnh, chưa tập hợp được sức mạnh toàn dân.</li>
+<li>Các khuynh hướng cứu nước tư sản và phong kiến đều không giải quyết được mâu thuẫn cơ bản của xã hội Việt Nam.</li>
+<li>Thực dân Pháp đủ mạnh để đàn áp mọi cuộc nổi dậy.</li>
+</ul>
+<h4>4. Kết luận</h4><ul>
+<li>Sự nghiệp giải phóng dân tộc đứng trước khủng hoảng sâu sắc về đường lối và tổ chức lãnh đạo.</li>
+<li>Yêu cầu lịch sử đặt ra: cần có con đường cứu nước mới và lãnh tụ đủ tầm nhìn để tìm ra con đường đó.</li>
+</ul>`}
+];
+
+/* ── BÀI 13 ── */
+const bai13_mc = [
+  {q:'Trong giai đoạn (1975 - 1985), Việt Nam thực hiện hoạt động đối ngoại nào sau đây?',opts:['Cải thiện quan hệ với các nước Đông Nam Á.','Đẩy mạnh hợp tác toàn diện với các nước châu Phi.','Tham gia tổ chức Thương mại thế giới.','Bình thường hóa quan hệ ngoại giao với Mĩ.'],ans:0},
+  {q:'Nội dung nào sau đây là biểu hiện của quan hệ hợp tác toàn diện giữa Việt Nam và Liên Xô trong giai đoạn 1975 – 1986?',opts:['chấm dứt bao vây, cấm vận nền kinh tế Việt Nam.','nhiều hiệp ước trên nhiều lĩnh vực được kí kết.','phát triển quan hệ đối tác chiến lược toàn diện.','phối hợp, giúp đỡ Campuchia chống Khơ-me Đỏ.'],ans:1},
+  {q:'Quốc gia nào sau đây có quan hệ đối tác chiến lược toàn diện với Việt Nam?',opts:['Indonesia.','Mông cổ.','Campuchia.','Đức.'],ans:0}
+];
+
+const bai13_essays = [
+  {q:'Trình bày và đánh giá những hoạt động đối ngoại chủ yếu của Việt Nam từ năm 1975 đến nay.',
+   ans:`<h4>1. Giai đoạn 1975–1985</h4><ul>
+<li>Năm 1977: Việt Nam gia nhập <strong>Liên hợp quốc</strong>.</li>
+<li>Thiết lập và củng cố quan hệ hợp tác toàn diện với <strong>Liên Xô và các nước XHCN</strong> (ký nhiều hiệp ước hợp tác kinh tế, kỹ thuật).</li>
+<li>Cải thiện quan hệ với các nước <strong>Đông Nam Á</strong>, bước đầu xúc tiến đàm phán để bình thường hóa quan hệ với ASEAN.</li>
+<li>Hợp tác, phối hợp với Liên Xô và các nước XHCN giải quyết vấn đề Campuchia.</li>
+<li>Khó khăn: Bị Mỹ bao vây cấm vận; quan hệ với Trung Quốc và nhiều nước phương Tây căng thẳng.</li>
+</ul>
+<h4>2. Giai đoạn 1986 đến nay (sau Đổi mới)</h4><ul>
+<li>Chính sách: <strong>đa dạng hóa, đa phương hóa</strong> quan hệ đối ngoại; muốn là bạn, là đối tác tin cậy của tất cả các nước.</li>
+<li>Năm 1991: Bình thường hóa quan hệ với Trung Quốc.</li>
+<li>Năm 1995: Bình thường hóa quan hệ ngoại giao với <strong>Hoa Kỳ</strong>; gia nhập <strong>ASEAN</strong>.</li>
+<li>Năm 1998: Gia nhập <strong>APEC</strong>.</li>
+<li>Năm 2007: Gia nhập <strong>WTO</strong>.</li>
+<li>Thiết lập quan hệ đối tác chiến lược và đối tác chiến lược toàn diện với nhiều cường quốc (Mỹ, Nga, Trung Quốc, Nhật Bản, Ấn Độ, Indonesia…).</li>
+</ul>
+<h4>3. Đánh giá</h4><ul>
+<li>Hoạt động đối ngoại đã phá thế bao vây cấm vận, tạo môi trường hòa bình để xây dựng đất nước.</li>
+<li>Góp phần nâng cao vị thế, uy tín của Việt Nam trên trường quốc tế.</li>
+<li>Việt Nam từ một nước bị cô lập trở thành thành viên tích cực của cộng đồng quốc tế.</li>
+</ul>`}
+];
+
+/* ── BÀI 14 ── */
+const bai14_mc = [
+  {q:'Nội dung nào sau đây là nhiệm vụ cấp bách nhất đặt ra cho dân tộc Việt Nam trong những năm cuối thế kỉ XIX đầu thế kỉ XX?',opts:['Giành độc lập dân tộc.','Đòi dân sinh dân chủ.','Giành ruộng đất cho dân cày.','Đòi quyền tự do bầu cử.'],ans:0},
+  {q:'Nhân tố nào tạo ra điều kiện thuận lợi để nhân dân Nghệ An tiếp thu những tư tưởng mới của thời đại trong những năm đầu thế kỉ XX?',opts:['Có điều kiện tự nhiên khắc nghiệt nhất trong cả nước.','Có trung tâm công nghiệp, buôn bán lớn ở miền Trung.','Cuộc sống của người dân khó khăn hơn các vùng khác.','Có truyền thống đấu tranh vũ trang bất khuất, kiên cường.'],ans:1},
+  {q:'Chủ tịch Hồ Chí Minh xuất thân trong một gia đình',opts:['nhà nho yêu nước.','tiểu tư sản trí thức.','bần cố nông.','tư sản dân tộc.'],ans:0},
+  {q:'Ngôi trường nào sau đây là nơi Nguyễn Tất Thành từng theo học trong những năm 1908-1909?',opts:['Quân sự Hoàng Phố.','Trường Bưởi.','Quốc Tử giám.','Quốc học Huế.'],ans:3},
+  {q:'Năm 1910, Nguyễn Tất Thành đã tham gia dạy học tại trường',opts:['Tiểu học Pháp – Việt Đông Ba.','Quốc học Huế.','Dục Thanh.','Chu Văn An.'],ans:2},
+  {q:'Trong hành trình tìm đường cứu nước, từ năm 1923 đến năm 1925, Nguyễn Ái Quốc đặt chân đến quốc gia nào sau đây?',opts:['Anh.','Liên xô.','Nhật Bản.','Thái Lan.'],ans:1},
+  {q:'Nguyễn Tất Thành tham gia hoạt động trong tổ chức nào sau đây ở Pháp năm 1918?',opts:['Đảng Xã hội Pháp.','Đảng Cộng hòa.','Đảng Dân chủ.','Đảng Cộng sản Pháp.'],ans:0},
+  {q:'Văn kiện nào sau đây được Nguyễn Ái Quốc thay mặt những người Việt Nam yêu nước ở Pháp gửi đến Hội nghị Véc-xai năm 1919?',opts:['Tuyên ngôn Quốc tế Nhân quyền.','Yêu sách của nhân dân An Nam.','Đường Kách mệnh.','Bản án chế độ thực dân Pháp.'],ans:1},
+  {q:'Năm 1911, Nguyễn Tất Thành có hoạt động nào sau đây?',opts:['Phát động phong trào Đông du.','Tham gia phong trào chống thuế.','Ra đi tìm đường cứu nước.','Thành lập Hội Duy tân.'],ans:2},
+  {q:'Năm 1908, Nguyễn Tất Thành có hoạt động nào sau đây?',opts:['Ra Lời kêu gọi toàn quốc kháng chiến.','Tham gia phong trào chống thuế ở Huế.','Tham gia Hội Liên hiệp thuộc địa ở Pa-ri.','Bắt đầu hành trình tìm đường cứu nước.'],ans:1},
+  {q:'Nguyễn Ái Quốc tìm ra con đường cứu nước, giải phóng dân tộc Việt Nam khi đang hoạt động ở quốc gia nào sau đây?',opts:['Anh.','Pháp.','Mỹ.','Trung Quốc.'],ans:1},
+  {q:'Năm 1920, Nguyễn Ái Quốc tìm ra con đường cứu nước, giải phóng dân tộc Việt Nam, đó là con đường',opts:['dân chủ tư sản.','cách mạng vô sản.','duy tân, cải cách.','thương lượng hợp pháp.'],ans:1},
+  {q:'Hoạt động của Nguyễn Ái Quốc trong những năm 1921-1930 có ý nghĩa nào sau đây?',opts:['Khảo nghiệm con đường cứu nước mới cho Việt Nam.','Chuẩn bị điều kiện cho Việt Nam thực hiện cách mạng vô sản.','Truyền bá con đường cứu nước mới đến với dân tộc Việt Nam.','Chuẩn bị lực lượng và căn cứ địa cho cách mạng Việt Nam.'],ans:2},
+  {q:'Đầu năm 1930, Nguyễn Ái Quốc phải tiến hành triệu tập hội nghị để hợp nhất các tổ chức cộng sản do',opts:['cách mạng Việt Nam đứng trước nguy cơ chia rẽ.','thực hiện chỉ đạo trực tiếp của Quốc tế cộng sản.','thực hiện yêu cầu của nhân dân ba nước Đông Dương.','thực hiện yêu cầu của đại diện ba tổ chức cộng sản.'],ans:0},
+  {q:'Yếu tố nào sau đây quyết định đến sự lựa chọn khuynh hướng cứu nước của Nguyễn Ái Quốc năm 1920?',opts:['Hoàn cảnh đất nước mất độc lập, chủ quyền.','Tác động của thế kỉ giải trừ chủ nghĩa thực dân.','Sự thất bại của khuynh hướng cứu nước tư sản.','Tầm nhìn, trí tuệ và bản lĩnh của Nguyễn Ái Quốc.'],ans:3},
+  {q:'Năm 1917, Nguyễn Tất Thành có hoạt động nào sau đây?',opts:['Thành lập Đảng xã hội Pháp và trở thành người lãnh đạo chủ chốt.','Tham gia lãnh đạo Hội những người Việt Nam yêu nước tại Pháp.','Tham dự Đại hội toàn quốc lần thứ XVIII của Đảng Xã hội Pháp.','Sang Liên Xô học tập kinh nghiệm xây dựng đảng kiểu mới.'],ans:1},
+  {q:'Nguyễn Ái Quốc lấy tên gọi Hồ Chí Minh lần đầu tiên khi',opts:['sang Xiêm hoạt động trong Việt kiều yêu nước (1928).','bị chính quyền Anh bắt giam ở Hồng Công (1931).','từ Liên Xô về Trung Quốc để chuẩn bị về nước (1938).','sang Trung Quốc để vận động ngoại giao (1942).'],ans:3},
+  {q:'Từ năm 1945 đến năm 1969, Hồ Chí Minh đảm nhận cương vị nào sau đây?',opts:['Chủ tịch nước Cộng hòa xã hội chủ nghĩa Việt Nam.','Tổng Bí thư nước Việt Nam Dân chủ Cộng hòa.','Tổng Bí thư nước Cộng hòa xã hội chủ nghĩa Việt Nam.','Chủ tịch nước Việt Nam Dân chủ Cộng hòa.'],ans:3},
+  {q:'Sự kiện nào sau đây đánh dấu Nguyễn Tất Thành – Nguyễn Ái Quốc tìm được con đường cứu nước?',opts:['Tham gia thành lập Hội Liên hiệp thuộc địa ở Pari (1921).','Tham dự và sáng lập Đảng Cộng sản Pháp (12/1920).','Ủng hộ Quốc tế III và trở thành người cộng sản VN đầu tiên (12/1920).','Đọc Sơ thảo Luận cương của Lê-nin về vấn đề dân tộc và thuộc địa (7/1920).'],ans:3},
+  {q:'Trong thời gian hoạt động ở Liên Xô (1923-1924), Nguyễn Ái Quốc đã tham dự hội nghị nào sau đây?',opts:['Hội nghị Quốc tế Nông dân.','Hội nghị thành lập Đảng Cộng sản Pháp.','Hội nghị thành lập Đảng Thanh niên.','Hội nghị thành lập Đảng Cộng sản Việt Nam.'],ans:0},
+  {q:'Trong thời gian hoạt động ở Pháp (1917-1923), Nguyễn Ái Quốc đã tham gia thành lập tổ chức nào sau đây?',opts:['Hội Liên hiệp thuộc địa.','Hội Việt Nam Cách mạng Thanh niên.','Đảng Cộng sản Đông Dương.','Đảng Cộng sản Việt Nam.'],ans:0},
+  {q:'Trong thời gian hoạt động ở Liên Xô (1923-1924), Nguyễn Ái Quốc đã tham dự đại hội nào sau đây?',opts:['Đại hội thành lập Đảng Thanh niên.','Đại hội thành lập Đảng Cộng sản Việt Nam.','Đại hội thành lập Đảng Lao động Việt Nam.','Đại hội lần thứ V Quốc tế Cộng sản.'],ans:3},
+  {q:'Địa phương nào sau đây là quê hương của Chủ tịch Hồ Chí Minh?',opts:['Nghệ An.','Hà Tĩnh.','Hà Nội.','Thanh Hoá.'],ans:0},
+  {q:'Cuối thế kỉ XIX, thế lực nào sau đây đã đặt ách cai trị trên toàn lãnh thổ Việt Nam?',opts:['Nhật Bản.','Hà Lan.','Pháp.','Mỹ.'],ans:2},
+  {q:'Vào đầu thế kỉ XX, cuộc khai thác thuộc địa của tư bản Pháp đã dẫn đến hình thành khu công nghiệp nào sau đây ở Nghệ An?',opts:['Sóng Thần.','Vinh – Bến Thuỷ.','Hoà Cầm.','Dung Quất.'],ans:1},
+  {q:'Tháng 12 – 1920, Nguyễn Ái Quốc tham gia sáng lập tổ chức chính trị nào sau đây?',opts:['Đảng Cộng sản Việt Nam.','Đảng Xã hội Pháp.','Việt Nam Quang phục Hội.','Đảng Cộng sản Pháp.'],ans:3},
+  {q:'Địa điểm nào sau đây là nơi Nguyễn Tất Thành ra đi tìm đường cứu nước từ năm 1911?',opts:['Bãi biển Đà Nẵng.','Sân bay Tân Sơn Nhất.','Bến cảng Nhà Rồng.','Cửa khẩu Hữu Nghị.'],ans:2}
+];
+
+const bai14_tf = [
+  {
+    id:'tf1', passage:`"Vì lẽ từ khi bị Pháp chiếm, đất nước chúng tôi hầu như luôn luôn sống lay lắt ngày này qua ngày khác, không biết chính quyền muốn dẫn mình đi đến đâu… Còn công lý đối với người bản xứ, nó tồn tại như thế này đây: người Âu nào đã giết chết, tàn sát hoặc cưỡng dâm người bản xứ, thì trong trường hợp vụ án không thể được ỉm hoàn toàn, anh ta chắc mẩm rằng mình được toà án tha bổng…"<br><strong>(Hồ Chí Minh, Vấn đề bản xứ, Hồ Chí Minh toàn tập, tập 1)</strong>`,
+    subs:[
+      {text:'Đoạn tư liệu đề cập về chính sách của thực dân Pháp ở Việt Nam.',ans:'Đ'},
+      {text:'Hồ Chí Minh phê phán chính sách cai trị bình đẳng của Pháp đối với nhân dân Việt Nam.',ans:'S'},
+      {text:'Trong chính sách cai trị của Pháp mà Hồ Chí Minh đề cập đã tác động tiêu cực đến sự phát triển của dân tộc Việt Nam.',ans:'Đ'},
+      {text:'Những chính sách cai trị của thực dân Pháp thực thi ở Việt Nam bị tác động bởi cục diện Chiến tranh lạnh, cục diện hai cực hai phe.',ans:'S'}
+    ]
+  },
+  {
+    id:'tf2', passage:`"Cuối năm 1917, Người từ nước Anh trở lại nước Pháp, chọn Pari làm điểm dừng chân. Năm 1919, Người gia nhập Đảng Xã hội Pháp. Tháng 6-1919, nhân các nước thắng trận họp Hội nghị Vécxai, thay mặt những người Việt Nam yêu nước tại Pháp, Người gửi tới Hội nghị Bản yêu sách của nhân dân Việt Nam. Tháng 7-1920, Nguyễn Ái Quốc đã đọc Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa của V.I. Lê-nin."<br><strong>(Nguyễn Quang Ngọc, Tiến trình lịch sử Việt Nam)</strong>`,
+    subs:[
+      {text:'Nguyễn Ái Quốc gửi tới Hội nghị Vécxai Bản yêu sách của nhân dân Việt Nam khi đang hoạt động cách mạng tại Trung Quốc.',ans:'S'},
+      {text:'Bản Sơ thảo lần thứ nhất những luận cương về vấn đề dân tộc và vấn đề thuộc địa của Lênin đã giúp Nguyễn Ái Quốc lựa chọn đúng con đường giải phóng dân tộc Việt Nam.',ans:'Đ'},
+      {text:'Bản yêu sách của Nguyễn Ái Quốc gửi tới Hội nghị Vécxai năm 1919 đã đòi quyền bình đẳng về chế độ pháp lý và một số quyền dân tộc cơ bản cho người bản xứ.',ans:'S'},
+      {text:'Nguyễn Ái Quốc đọc Sơ thảo luận cương về vấn đề dân tộc và thuộc địa của Lê-nin (1920) đã tạo ra sự chuyển biến về nhận thức, kéo theo sự chuyển biến về hành động sau đó.',ans:'Đ'}
+    ]
+  },
+  {
+    id:'tf3', passage:`"… Luận cương của Lê-nin làm cho tôi rất cảm động, phấn khởi, sáng tỏ, tin tưởng biết bao! Tôi vui mừng đến phát khóc lên. Ngồi một mình trong buồng mà tôi nói to lên như đang nói trước quần chúng đông đảo: 'Hỡi đồng bào bị đoạ đày đau khổ. Đây là cái cần thiết cho chúng ta, đây là con đường giải phóng chúng ta!'. Từ đó tôi hoàn toàn tin theo Lê-nin, tin theo Quốc tế thứ ba."<br><strong>(Hồ Chí Minh, "Con đường dẫn tôi đến chủ nghĩa Mác – Lê-nin", Hồ Chí Minh Toàn tập, Tập 12)</strong>`,
+    subs:[
+      {text:'Tư liệu trên đề cập đến sự kiện Nguyễn Ái Quốc đọc Luận cương của Lênin.',ans:'Đ'},
+      {text:'Với việc tiếp cận Luận cương của Lê-nin, Nguyễn Ái Quốc đã trở thành người cộng sản Việt Nam đầu tiên.',ans:'S'},
+      {text:'Sự kiện này đã giải quyết khủng hoảng của cách mạng Việt Nam đầu thế kỉ XX về con đường cứu nước và hoàn chỉnh lý luận cách mạng giải phóng dân tộc.',ans:'S'},
+      {text:'Trong giai đoạn này, Nguyễn Ái Quốc có vai trò quan trọng chuẩn bị về tư tưởng, lí luận cho sự thành lập Đảng cộng sản Việt Nam.',ans:'Đ'}
+    ]
+  },
+  {
+    id:'tf4', passage:`"Sinh ra và lớn lên trong bối cảnh đất nước đã trở thành thuộc địa, nhân dân phải chịu cuộc sống lầm than, tiếp thu truyền thống yêu nước của dân tộc, gia đình và quê hương, Nguyễn Tất Thành sớm có ý chí đánh đuổi thực dân, giải phóng đồng bào… Ngày 5-6-1911, lấy tên là Nguyễn Văn Ba, làm phụ bếp cho một tàu buôn của Pháp, Nguyễn Tất Thành rời Bến cảng Nhà Rồng, bắt đầu cuộc hành trình tìm đường cứu nước."<br><strong>(Vũ Quang Hiên, Tuyên ngôn Độc lập: Những khát vọng về quyền dân tộc và quyền con người)</strong>`,
+    subs:[
+      {text:'Đoạn tư liệu đề cập đến hoạt động của Nguyễn Tất Thành giai đoạn 1945–1954.',ans:'S'},
+      {text:'Điểm mới trong quyết định tìm đường cứu nước của Nguyễn Tất Thành là xác định mục đích và hướng đi.',ans:'Đ'},
+      {text:'Hướng đi và con đường cứu nước của Nguyễn Tất Thành – Nguyễn Ái Quốc có giá trị thực tiễn đối với cách mạng Việt Nam.',ans:'Đ'},
+      {text:'Sự kiện này đánh dấu bước đầu tiên hình thành tư tưởng Hồ Chí Minh gắn cách mạng giải phóng dân tộc với xây dựng chủ nghĩa xã hội, giải quyết khủng hoảng về con đường cứu nước của Việt Nam đầu thế kỉ XX.',ans:'S'}
+    ]
+  }
+];
+
+const bai14_essays = [
+  {q:'Đánh giá vai trò của Nguyễn Ái Quốc trong giai đoạn 1911–1930 đối với cách mạng Việt Nam.',
+   ans:`<h4>1. Tìm ra con đường cứu nước đúng đắn (1911–1920)</h4><ul>
+<li>Ngày 5/6/1911, Nguyễn Tất Thành rời Bến Nhà Rồng, bắt đầu hành trình tìm đường cứu nước.</li>
+<li>Đến nhiều châu lục, tìm hiểu bản chất của chủ nghĩa thực dân và thực tiễn các cuộc cách mạng tư sản.</li>
+<li>Tháng 7/1920: Đọc <strong>Sơ thảo Luận cương của Lê-nin</strong> → xác định con đường cách mạng vô sản là con đường đúng đắn cho dân tộc Việt Nam.</li>
+<li>Tháng 12/1920: Bỏ phiếu tán thành QTCS III, tham gia sáng lập Đảng Cộng sản Pháp → trở thành người cộng sản Việt Nam đầu tiên.</li>
+</ul>
+<h4>2. Chuẩn bị về tư tưởng, lý luận (1921–1925)</h4><ul>
+<li>Tham gia thành lập <strong>Hội Liên hiệp các dân tộc thuộc địa</strong> (1921).</li>
+<li>Viết báo <strong>Người cùng khổ</strong>, tác phẩm <strong>Bản án chế độ thực dân Pháp</strong> (1925) vạch trần tội ác của chủ nghĩa thực dân.</li>
+<li>Năm 1927: Xuất bản <strong>Đường Kách mệnh</strong> – văn kiện lý luận đầu tiên về con đường cách mạng Việt Nam.</li>
+</ul>
+<h4>3. Chuẩn bị về tổ chức (1925–1930)</h4><ul>
+<li>Tháng 6/1925: Thành lập <strong>Hội Việt Nam Cách mạng Thanh niên</strong> tại Quảng Châu; mở các lớp huấn luyện chính trị đào tạo cán bộ.</li>
+<li>Tháng 7/1925: Thành lập Hội Liên hiệp các dân tộc bị áp bức Á Đông.</li>
+<li>Đầu năm 1930: Chủ trì Hội nghị hợp nhất ba tổ chức Cộng sản → thành lập <strong>Đảng Cộng sản Việt Nam</strong> (3/2/1930).</li>
+<li>Soạn thảo <strong>Cương lĩnh chính trị đầu tiên</strong> – xác định đường lối cách mạng đúng đắn, sáng tạo, phù hợp thực tiễn Việt Nam.</li>
+</ul>
+<h4>4. Đánh giá</h4><ul>
+<li>Nguyễn Ái Quốc là người <strong>chấm dứt khủng hoảng về đường lối</strong> cứu nước đầu thế kỉ XX.</li>
+<li>Đặt nền móng tư tưởng, lý luận và tổ chức cho cách mạng Việt Nam.</li>
+<li>Là người sáng lập Đảng Cộng sản Việt Nam, mở ra một kỷ nguyên mới cho lịch sử dân tộc.</li>
+</ul>`},
+  {q:'Phân tích những yếu tố tác động đến việc ra đi tìm đường cứu nước của Nguyễn Tất Thành.',
+   ans:`<h4>1. Yếu tố lịch sử – xã hội</h4><ul>
+<li>Cuối thế kỉ XIX, <strong>thực dân Pháp hoàn thành xâm lược</strong>, đặt ách cai trị khắc nghiệt trên toàn lãnh thổ Việt Nam.</li>
+<li>Nhân dân mất tự do, sống trong cảnh lầm than, bóc lột nặng nề.</li>
+<li>Nhiệm vụ cấp bách của dân tộc là giành lại độc lập.</li>
+</ul>
+<h4>2. Yếu tố gia đình và quê hương</h4><ul>
+<li>Xuất thân trong gia đình <strong>nhà nho yêu nước</strong> (cha là Nguyễn Sinh Sắc).</li>
+<li>Quê hương Nghệ An có truyền thống đấu tranh bất khuất; có khu công nghiệp Vinh–Bến Thuỷ, tiếp xúc sớm với tư tưởng tiến bộ.</li>
+<li>Từ nhỏ đã chứng kiến cảnh nước mất nhà tan, hình thành ý chí cứu nước từ sớm.</li>
+</ul>
+<h4>3. Ảnh hưởng của phong trào yêu nước đương thời</h4><ul>
+<li>Khâm phục tinh thần yêu nước của Phan Bội Châu, Phan Châu Trinh nhưng không tán thành con đường của họ.</li>
+<li>Nhận thấy sự hạn chế của phong trào Đông du (dựa vào Nhật), phong trào duy tân (cải cách ôn hòa).</li>
+<li>Quyết tâm tìm một con đường cứu nước mới, toàn diện và khoa học hơn.</li>
+</ul>
+<h4>4. Định hướng tìm đường</h4><ul>
+<li>Hướng sang <strong>phương Tây</strong> – nơi có khoa học kỹ thuật phát triển và tư tưởng dân chủ tự do.</li>
+<li>Ngày 5/6/1911: Rời Bến cảng Nhà Rồng với tên Nguyễn Văn Ba, bắt đầu hành trình lịch sử.</li>
+</ul>
+<h4>5. Ý nghĩa</h4><ul>
+<li>Việc chọn hướng đi sang phương Tây là điểm mới, khác với các bậc tiền bối (sang Nhật, Trung Quốc).</li>
+<li>Đặt nền tảng cho việc tiếp cận Chủ nghĩa Mác–Lênin và tìm ra con đường cứu nước đúng đắn.</li>
+</ul>`}
+];
+
+/* ── BÀI 15 ── */
+const bai15_mc = [
+  {q:'Tháng 6 năm 1925 đánh dấu sự ra đời của tổ chức cách mạng nào ở Việt Nam?',opts:['Tân Việt Cách mạng đảng.','Việt Nam Quốc dân đảng.','Đông Dương Cộng sản đảng.','Hội Việt Nam Cách mạng Thanh niên.'],ans:3},
+  {q:'Tháng 7 năm 1925, Nguyễn Ái Quốc cùng với một số nhà yêu nước Triều Tiên, In-đô-nê-xia đã',opts:['thành lập Hội Liên hiệp thuộc địa ở Pa-ri.','thành lập Hội Liên hiệp các dân tộc bị áp bức Á Đông.','xây dựng cơ sở cách mạng để tập hợp các dân tộc bị áp bức.','lãnh đạo phong trào của giai cấp công nhân phát triển mạnh ở các nước.'],ans:1},
+  {q:'Nguyễn Ái Quốc đã tập hợp những bài giảng tại các lớp huấn luyện cho hội viên Hội Việt Nam Cách mạng Thanh niên xuất bản thành tác phẩm nào sau đây?',opts:['Người cùng khổ.','Bản án chế độ thực dân Pháp.','Báo Thanh niên.','Đường Kách mệnh.'],ans:3},
+  {q:'Sự kiện quốc tế nào sau đây ảnh hưởng tích cực đến cách mạng Việt Nam từ sau Chiến tranh thế giới nhất?',opts:['Sự thành công của Cách mạng tháng Mười Nga năm 1917.','Nước Pháp lâm vào khủng hoảng kinh tế, chính trị trầm trọng.','Những tổn thất lớn của Pháp trong Chiến tranh thế giới thứ nhất.','Sự vươn lên mạnh mẽ của Mĩ sau Chiến tranh thế giới thứ nhất.'],ans:0},
+  {q:'Tại Hội nghị thành lập Đảng Cộng sản Việt Nam (đầu năm 1930), vai trò nào sau đây của Nguyễn Ái Quốc thể hiện sự vận dụng sáng tạo chủ nghĩa Mác – Lê-nin ở Việt Nam?',opts:['Xác định lực lượng nòng cốt.','Xác định giai cấp lãnh đạo.','Xác định phương hướng tiến lên.','Xác định lực lượng cách mạng.'],ans:3},
+  {q:'Những vấn đề cơ bản về chiến lược và sách lược của cách mạng Việt Nam được Nguyễn Ái Quốc hoạch định hoàn chỉnh trong tài liệu nào sau đây?',opts:['Cương lĩnh chính trị đầu tiên của Đảng (1930).','Tác phẩm Đường Kách mệnh (1927).','Luận cương chính trị của Đảng (10-1930).','Cuốn Bản án chế độ thực dân Pháp (1925).'],ans:0},
+  {q:'Một trong những vai trò của Nguyễn Ái Quốc đối với cuộc chuẩn bị cho giải phóng dân tộc Việt Nam (1941-1945) là',opts:['thành lập mặt trận dân tộc thống nhất của riêng Việt Nam.','thống nhất các tổ chức cộng sản thành một đảng duy nhất.','xác định nhiệm vụ duy nhất của cách mạng tư sản dân quyền.','hoàn chỉnh lí luận cách mạng giải phóng dân tộc Việt Nam.'],ans:0},
+  {q:'Mục đích cao nhất của mặt trận Việt Minh do Nguyễn Ái Quốc sáng lập là',opts:['tập hợp lực lượng chống phong kiến.','tập hợp lực lực chống phát xít.','giành độc lập cho Việt Nam.','giành độc lập cho các nước ở Đông Dương.'],ans:2},
+  {q:'Trong việc giải quyết mối quan hệ Việt – Pháp (từ đầu tháng 3 đến trước ngày 19-12-1946), Chủ tịch Hồ Chí Minh và Ban Thường vụ Trung ương Đảng đã',opts:['nhận viện trợ của các nước xã hội chủ nghĩa.','thực hiện chủ trương "hoà để tiến".','đối đầu quân sự với thực dân Pháp.','từ chối thiết lập quan hệ với phương Tây.'],ans:1},
+  {q:'Những hoạt động của Chủ tịch Hồ Chí Minh (từ đầu tháng 3 đến tháng 12-1946) có tác dụng như thế nào đối với cách mạng Việt Nam?',opts:['Buộc thực dân Pháp thi hành nghiêm chỉnh Hiệp định Sơ bộ.','Đã tránh được cuộc chiến tranh với thực dân Pháp sau này.','Kéo dài thời gian hoà bình để chuẩn bị kháng chiến lâu dài.','Chuẩn bị trực tiếp cho Đại hội đại biểu lần thứ II của Đảng.'],ans:2},
+  {q:'Các hoạt động của Chủ tịch Hồ Chí Minh trong những năm 1945 – 1946 có ý nghĩa quan trọng nào sau đây?',opts:['Hoàn chỉnh đường lối kháng chiến chống thực dân Pháp.','Buộc thực dân Pháp phải công nhận Việt Nam độc lập.','Củng cố khối đại đoàn kết dân tộc trong kháng chiến.','Giúp Việt Nam nhận được nhiều viện trợ từ các nước.'],ans:2},
+  {q:'Nội dung nào sau đây là vai trò của Hồ Chí Minh trong giai đoạn 1945 - 1946?',opts:['Kí với Mỹ Hiệp ước Việt – Mỹ.','Kí với Pháp Hiệp định Giơ-ne-vơ.','Kí với Mỹ Hiệp định Pa-ri.','Kí với Pháp Hiệp định Sơ bộ.'],ans:3},
+  {q:'Ngày 19-12-1946, Chủ tịch Hồ Chí Minh đã đưa ra',opts:['Lời kêu gọi toàn quốc chống Mỹ.','Lời kêu gọi toàn quốc kháng chiến.','Quân lệnh số 1.','Tuyên ngôn Độc lập.'],ans:1},
+  {q:'Nội dung nào sau đây thể hiện vai trò của Hồ Chí Minh trong hoạt động ngoại giao từ năm 1954 đến năm 1969?',opts:['Giữ vững quan điểm tự do, tự chủ của cách mạng Đông Dương.','Khéo léo trong việc cân bằng quan hệ Mỹ – Trung Quốc.','Khéo léo trong việc cân bằng quan hệ Liên Xô – Mỹ.','Giữ vững đường lối độc lập, tự chủ của cách mạng Việt Nam.'],ans:3},
+  {q:'Chủ tịch Hồ Chí Minh cùng Trung ương Đảng Lao động Việt Nam đã hoạch định đường lối chiến lược cho cách mạng miền Nam thời kì 1954 – 1975 là',opts:['tiếp tục hoàn thành cuộc cách mạng dân tộc dân chủ nhân dân.','hoàn thành cuộc cách mạng ruộng đất và khôi phục kinh tế.','tiến lên xây dựng chủ nghĩa xã hội, hàn gắn vết thương chiến tranh.','hoàn thành giải phóng miền Nam, thống nhất đất nước.'],ans:0},
+  {q:'Trong cuộc kháng chiến chống Mĩ cứu nước 1954 – 1969, Chủ tịch Hồ Chí Minh luôn đề cao chân lí',opts:['không có gì quý hơn độc lập tự do.','đem sức ta mà tự giải phóng cho ta.','tranh thủ ủng hộ của bạn bè quốc tế.','biết người biết ta trăm trận trăm thắng.'],ans:0},
+  {q:'Chủ tịch Hồ Chí Minh có đóng góp nào sau đây đối với sự nghiệp chống Mỹ, cứu nước (1954 – 1975) của nhân dân Việt Nam?',opts:['Tranh thủ sự ủng hộ và giúp đỡ của Quốc tế Cộng sản.','Hoạch định đường lối của Đảng với tư cách là Tổng Bí thư.','Trực tiếp chỉ đạo các cuộc tổng tiến công và nổi dậy.','Tranh thủ sự ủng hộ, giúp đỡ của các quốc gia dân chủ.'],ans:3},
+  {q:'Năm 1925, Nguyễn Ái Quốc là người sáng lập tờ báo nào sau đây?',opts:['Thanh niên.','Tuổi trẻ.','Hoa học trò.','Dân trí.'],ans:0},
+  {q:'Tổ chức nào sau đây là một trong ba tổ chức cộng sản ra đời năm 1929 ở Việt Nam?',opts:['Tân Việt cách mạng đảng.','Đông Dương Cộng sản đảng.','Việt Nam Quốc dân đảng.','Đảng Cộng sản Đông Dương.'],ans:1},
+  {q:'Nguyễn Ái Quốc chọn địa phương nào sau đây làm nơi thí điểm để xây dựng căn cứ địa đầu tiên của cách mạng Việt Nam?',opts:['Thái Nguyên.','Tuyên Quang.','Hà Giang.','Cao Bằng.'],ans:3},
+  {q:'Lực lượng nào sau đây được xem là tiền thân của Quân đội Nhân dân Việt Nam?',opts:['Quân Giải phóng miền Nam Việt Nam.','Hội Việt Nam Cách mạng Thanh niên.','Đội Việt Nam Tuyên truyền Giải phóng quân.','Mặt trận Việt Nam Độc lập Đồng minh.'],ans:2},
+  {q:'Chủ tịch Hồ Chí Minh đã thay mặt Chính phủ Việt Nam Dân chủ Cộng hoà chủ động kí với Pháp văn bản nào sau đây vào năm 1946?',opts:['Tạm ước Việt – Pháp.','Hiệp định Giơ-ne-vơ.','Hiệp ước Pa-tơ-nốt.','Hiệp định Pa-ri.'],ans:0}
+];
+
+const bai15_tf = [
+  {
+    id:'tf5', passage:`"…Cuốn sách không đề tên tác giả và được lưu hành trong Việt kiều ở Quảng Châu… cuốn sách tóm tắt những bài giảng của đồng chí ấy về chủ nghĩa Mác - Lê-nin và nhiệm vụ của cách mạng Việt Nam. Cuốn 'Đường Kách mệnh' là sự tiếp theo một cách lô-gic cuốn 'Bản án chế độ thực dân Pháp'. Nếu trong cuốn 'Bản án chế độ thực dân Pháp', Nguyễn Ái Quốc thẳng tay vạch trần những tội ác của đế quốc Pháp thì trong cuốn 'Đường Kách mệnh', Nguyễn Ái Quốc vạch ra con đường cụ thể giải phóng dân tộc."<br><strong>(E. Cô-bê-lép, Đồng chí Hồ Chí Minh, NXB Tiến bộ, Mát-xcơ-va, 1985)</strong>`,
+    subs:[
+      {text:'Đoạn tư liệu đề cập đến nội dung của tác phẩm Đường Kách mệnh của Nguyễn Ái Quốc.',ans:'Đ'},
+      {text:'Tác phẩm Đường Kách mệnh về sau trở thành Cương lĩnh chính trị đầu tiên của Đảng Cộng sản Việt Nam.',ans:'S'},
+      {text:'Đường Kách mệnh và báo Thanh niên đóng vai trò quan trọng trong tuyên truyền lí luận của chủ nghĩa Mác Lê-nin về Việt Nam, là sự chuẩn bị về tư tưởng cho thành lập Đảng cộng sản Việt Nam.',ans:'Đ'},
+      {text:'Phương hướng cách mạng, con đường giải phóng dân tộc, xây dựng đất nước Việt Nam sau này được định hình ngay trong các tác phẩm như Bản án chế độ thực dân Pháp và Đường Kách mệnh.',ans:'S'}
+    ]
+  },
+  {
+    id:'tf6', passage:`"…Chúng tôi họp vào ngày mồng 6-1. Với tư cách là phái viên của Quốc tế Cộng sản có đầy đủ quyền quyết định mọi vấn đề liên quan đến phong trào cách mạng ở Đông Dương, tôi nói cho họ biết những sai lầm và họ phải làm gì. Họ đồng ý thống nhất vào một đảng. Chúng tôi cùng nhau xác định cương lĩnh và chiến lược theo đường lối của Quốc tế Cộng sản. Các đại biểu phải tổ chức một Trung ương lâm thời gồm 7 uỷ viên chính thức và 7 uỷ viên dự khuyết."<br><strong>(Hồ Chí Minh, Báo cáo gửi Quốc tế Cộng sản, Hồ Chí Minh toàn tập, tập 3)</strong>`,
+    subs:[
+      {text:'Đoạn tư liệu trên đề cập vai trò của Nguyễn Ái Quốc trong Hội nghị thành lập Đảng Cộng sản Việt Nam.',ans:'Đ'},
+      {text:'Sự ra đời của Đảng cộng sản Việt Nam cùng với sự lãnh đạo của Nguyễn Ái Quốc thể hiện sự thắng thế của xu thế cách mạng theo khuynh hướng vô sản.',ans:'Đ'},
+      {text:'Cương lĩnh chính trị đầu tiên do Nguyễn Ái Quốc soạn thảo đã vạch ra đường lối đúng đắn cho cách mạng Việt Nam, nhằm xây dựng một Việt Nam giàu mạnh, dân chủ.',ans:'S'},
+      {text:'Cương lĩnh chính trị do Nguyễn Ái Quốc soạn thảo bổ sung, phát triển chủ nghĩa Mác - Lênin trên phương diện lý luận về các mô hình vận động, phát triển của cuộc cách mạng vô sản.',ans:'Đ'}
+    ]
+  },
+  {
+    id:'tf7', isTable:true,
+    tableData:[
+      ['Thời gian','Nội dung'],
+      ['28 – 2 – 1946','Hiệp ước Hoa – Pháp (quân Pháp được ra miền Bắc Việt Nam làm nhiệm vụ giải giáp quân đội Nhật Bản thay cho quân Trung Hoa Dân quốc)'],
+      ['3 – 3 – 1946','Cùng Ban Thường vụ Trung ương Đảng họp bàn, chọn giải pháp "hòa để tiến"'],
+      ['6 – 3 – 1946','Thay mặt Chính phủ Việt Nam Dân chủ Cộng hòa kí với đại diện Chính phủ Pháp bản Hiệp định Sơ bộ'],
+      ['14 – 9 – 1946','Kí với Chính phủ Pháp bản Tạm ước trong chuyến thăm nước Pháp'],
+      ['19 – 12 – 1946','Ra Lời kêu gọi toàn quốc kháng chiến; cùng với Ban Chấp hành Trung ương Đảng phát động và đề ra đường lối kháng chiến toàn quốc chống Pháp']
+    ],
+    subs:[
+      {text:'Bảng thông tin đề cập đến hoạt động đối ngoại của Chủ tịch Hồ Chí Minh từ đầu tháng 3-1946 đến trước Toàn quốc kháng chiến.',ans:'Đ'},
+      {text:'Trong năm 1946, những hoạt động ngoại giao của Hồ Chí Minh đã giúp Việt Nam tránh một lúc đối đầu với nhiều kẻ thù.',ans:'Đ'},
+      {text:'Những hoạt động của Chủ tịch Hồ Chí Minh trong giai đoạn này đã hoạch định chính sách, đường lối kháng chiến thực hiện nhiều nhiệm vụ chiến lược đồng thời trong cả nước.',ans:'S'},
+      {text:'Dưới sự lãnh đạo của Chủ tịch Hồ Chí Minh trong giai đoạn này, nước Việt Nam Dân chủ Cộng hoà đã xác định được đường lối và phương pháp cách mạng giải phóng dân tộc.',ans:'S'}
+    ]
+  },
+  {
+    id:'tf8', passage:`"Chiến tranh có thể kéo dài 5 năm, 10 năm, 20 năm hoặc lâu hơn nữa. Hà Nội, Hải Phòng và một số thành phố, xí nghiệp có thể bị tàn phá, song nhân dân Việt Nam quyết không sợ! Không có gì quý hơn độc lập, tự do. Đến ngày thắng lợi, nhân dân ta sẽ xây dựng lại đất nước ta đàng hoàng hơn, to đẹp hơn!"<br><strong>(Hồ Chí Minh, Lời kêu gọi toàn quốc chống Mĩ, 17-7-1966)</strong>`,
+    subs:[
+      {text:'Đoạn tư liệu đề cập đến quyết tâm của nhân dân Việt Nam trong kháng chiến chống Mỹ.',ans:'Đ'},
+      {text:'Chủ tịch Hồ Chí Minh luôn phân tích và dự báo tình hình đưa ra chỉ đạo kịp thời với tiến trình cuộc chiến.',ans:'Đ'},
+      {text:'Lời kêu gọi của Chủ tịch Hồ Chí Minh đưa đến cuộc vận động lớn, tạo sự thống nhất toàn Đảng, toàn dân và toàn quân.',ans:'Đ'},
+      {text:'Bài học kinh nghiệm rút ra trong hoạt động này của Chủ tịch Hồ Chí Minh là xây dựng chính quyền mạnh mẽ, kết hợp sức mạnh của lực lượng quốc tế.',ans:'S'}
+    ]
+  },
+  {
+    id:'tf9', passage:`"Dân tộc ta, nhân dân ta, non sông đất nước ta đã sinh ra Hồ Chủ Tịch, người anh hùng dân tộc vĩ đại, và chính Người đã làm rạng rỡ dân tộc ta, nhân dân ta và non sông đất nước ta."<br><strong>(Điếu văn của Ban Chấp hành Trung ương Đảng Lao động Việt Nam tại Lễ truy điệu Chủ tịch Hồ Chí Minh ngày 9-9-1969)</strong>`,
+    subs:[
+      {text:'Đoạn tư liệu đề cập Chủ tịch Hồ Chí Minh là niềm tự hào của dân tộc Việt Nam.',ans:'Đ'},
+      {text:'Trong quá trình hoạt động của mình, Chủ tịch Hồ Chí Minh đóng góp tích cực cho công cuộc đổi mới.',ans:'S'},
+      {text:'Công lao lớn nhất của Hồ Chí Minh đối với dân tộc Việt Nam là đã đề ra được đường lối phát triển kinh tế xã hội để Việt Nam bước vào kỉ nguyên vươn mình.',ans:'S'},
+      {text:'Hồ Chí Minh đã để lại di sản lớn lao cho nhân dân Việt Nam đó là tư tưởng Hồ Chí Minh và ý chí giành độc lập tự do, hạnh phúc.',ans:'Đ'}
+    ]
+  },
+  {
+    id:'tf10', passage:`"Trung ương đã quyết định cần tích cực chuẩn bị cho cuộc họp Hội nghị toàn quốc của Đảng và Quốc dân đại hội đại biểu. Bác giục chuẩn bị cho kịp họp hai hội nghị quan trọng này từ tháng 7. Giữa lúc công việc bộn bề như thế, Bác bỗng bị mệt. Lúc nào tỉnh, Bác chỉ nói chuyện tình hình: 'Lúc này thời cơ thuận lợi đã tới, dù hi sinh tới đâu, dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập.'"<br><strong>(Đại tướng Võ Nguyên Giáp, Tổng tập hồi kí)</strong>`,
+    subs:[
+      {text:'Đoạn tư liệu đề cập đến hoạt động của Hồ Chí Minh trong giai đoạn kháng chiến chống Pháp.',ans:'S'},
+      {text:'Thời cơ thuận lợi mà Bác nhắc đến trong đoạn trích là khi Nhật đảo chính lật đổ thực dân Pháp.',ans:'S'},
+      {text:'Câu "dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập" thể hiện quyết tâm giành độc lập của dân tộc Việt Nam.',ans:'Đ'},
+      {text:'Công lao của Hồ Chí Minh trong thời kì này là đã nhận định đúng thời cơ, tạo thời cơ, chớp thời cơ giành độc lập cho dân tộc khi quân đồng minh vào Việt Nam.',ans:'S'}
+    ]
+  }
+];
+
+const bai15_essays = [
+  {q:'Phân tích vai trò của Nguyễn Ái Quốc với Hội nghị thành lập Đảng Cộng sản Việt Nam đầu năm 1930.',
+   ans:`<h4>1. Hoàn cảnh</h4><ul>
+<li>Cuối năm 1929, ba tổ chức Cộng sản ra đời ở Việt Nam (Đông Dương Cộng sản đảng, An Nam Cộng sản đảng, Đông Dương Cộng sản liên đoàn) nhưng hoạt động rời rạc, gây nguy cơ chia rẽ.</li>
+<li>Quốc tế Cộng sản và yêu cầu của cách mạng đòi hỏi phải có một đảng thống nhất.</li>
+</ul>
+<h4>2. Vai trò của Nguyễn Ái Quốc</h4><ul>
+<li><strong>Sáng kiến và chủ trì hội nghị:</strong> Chủ động triệu tập và chủ trì Hội nghị hợp nhất tại Cửu Long (Hương Cảng), ngày 6/1/1930.</li>
+<li><strong>Phê phán sai lầm, thống nhất nhận thức:</strong> Phê phán quan điểm cục bộ, bảo thủ của các tổ chức; thuyết phục đại diện các tổ chức Cộng sản đồng ý hợp nhất thành một đảng.</li>
+<li><strong>Soạn thảo Cương lĩnh chính trị đầu tiên:</strong> Vận dụng sáng tạo chủ nghĩa Mác–Lênin vào điều kiện Việt Nam: xác định lực lượng cách mạng rộng rãi (công nhân, nông dân, tiểu tư sản, trí thức…), đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.</li>
+<li><strong>Lập Ban Chấp hành Trung ương lâm thời</strong> gồm 7 uỷ viên chính thức và 7 uỷ viên dự khuyết.</li>
+</ul>
+<h4>3. Ý nghĩa</h4><ul>
+<li>Đảng Cộng sản Việt Nam ra đời (3/2/1930) là bước ngoặt vĩ đại trong lịch sử cách mạng Việt Nam.</li>
+<li>Chấm dứt khủng hoảng về đường lối và tổ chức lãnh đạo cách mạng.</li>
+<li>Cương lĩnh đầu tiên thể hiện sự vận dụng sáng tạo chủ nghĩa Mác–Lênin vào thực tiễn Việt Nam.</li>
+</ul>`},
+  {q:'Phân tích vai trò của Chủ tịch Hồ Chí Minh đối với Cách mạng Việt Nam trong thời gian từ ngày 2/9/1945 đến ngày 19/12/1946.',
+   ans:`<h4>1. Bối cảnh lịch sử</h4><ul>
+<li>Sau Cách mạng tháng Tám, nước Việt Nam Dân chủ Cộng hòa đứng trước ba thù trong một lúc: Tưởng (miền Bắc), Pháp (miền Nam), cùng bọn phản động.</li>
+<li>Nền kinh tế kiệt quệ; "giặc đói, giặc dốt" hoành hành.</li>
+</ul>
+<h4>2. Vai trò của Chủ tịch Hồ Chí Minh</h4><ul>
+<li><strong>Lãnh đạo xây dựng chính quyền mới:</strong> Bầu cử Quốc hội (6/1/1946), ban hành Hiến pháp 1946, xây dựng bộ máy nhà nước dân chủ.</li>
+<li><strong>Giải quyết nạn đói, nạn dốt:</strong> Phát động "Hũ gạo cứu đói", "Tuần lễ vàng", thành lập Bình dân học vụ diệt giặc dốt.</li>
+<li><strong>Thực hiện chủ trương "hoà để tiến":</strong>
+  <ul>
+  <li>6/3/1946: Ký <strong>Hiệp định Sơ bộ</strong> với Pháp → gạt 20 vạn quân Tưởng về nước, tránh đối phó hai kẻ thù cùng lúc.</li>
+  <li>14/9/1946: Ký <strong>Tạm ước</strong> với Pháp trong chuyến thăm nước Pháp → kéo dài thời gian hòa bình chuẩn bị kháng chiến.</li>
+  </ul>
+</li>
+<li><strong>Ra Lời kêu gọi Toàn quốc kháng chiến (19/12/1946):</strong> Khi hòa bình không thể giữ được, phát động kháng chiến toàn quốc, hoạch định đường lối kháng chiến toàn dân, toàn diện, trường kỳ.</li>
+</ul>
+<h4>3. Ý nghĩa</h4><ul>
+<li>Giữ vững chính quyền nhân dân non trẻ trong hoàn cảnh cực kỳ khó khăn.</li>
+<li>Tranh thủ thời gian để chuẩn bị lực lượng cho kháng chiến lâu dài.</li>
+<li>Thể hiện tài năng ngoại giao kiệt xuất và bản lĩnh chính trị vững vàng của Hồ Chí Minh.</li>
+</ul>`},
+  {q:'Nhận xét vai trò của Chủ tịch Hồ Chí Minh trong Cách mạng tháng Tám năm 1945.',
+   ans:`<h4>1. Chuẩn bị lực lượng và căn cứ địa (1941–1945)</h4><ul>
+<li>Tháng 5/1941: Chủ trì Hội nghị BCHTW lần thứ 8 → đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.</li>
+<li>Thành lập <strong>Mặt trận Việt Minh</strong> (19/5/1941) – lực lượng chính trị rộng rãi đoàn kết toàn dân.</li>
+<li>Xây dựng căn cứ địa Cao Bằng, thành lập <strong>Đội Việt Nam Tuyên truyền Giải phóng quân</strong> (22/12/1944).</li>
+</ul>
+<h4>2. Phát động và lãnh đạo tổng khởi nghĩa</h4><ul>
+<li>Nhận định đúng thời cơ khi Nhật đầu hàng Đồng minh (8/1945): "Thời cơ thuận lợi đã tới, dù hi sinh tới đâu… cũng phải kiên quyết giành cho được độc lập."</li>
+<li>Triệu tập <strong>Hội nghị toàn quốc của Đảng</strong> (13–15/8/1945) và <strong>Quốc dân Đại hội Tân Trào</strong> → quyết định Tổng khởi nghĩa.</li>
+<li>Gửi thư kêu gọi đồng bào, kêu gọi tổng khởi nghĩa trên cả nước.</li>
+</ul>
+<h4>3. Tuyên bố độc lập</h4><ul>
+<li>Ngày 2/9/1945: Đọc <strong>Tuyên ngôn Độc lập</strong> tại Quảng trường Ba Đình, khai sinh nước Việt Nam Dân chủ Cộng hòa.</li>
+</ul>
+<h4>4. Đánh giá</h4><ul>
+<li>Hồ Chí Minh là <strong>linh hồn</strong> của Cách mạng tháng Tám – người chuẩn bị, tổ chức và lãnh đạo thắng lợi của cuộc cách mạng.</li>
+<li>Sự nhạy bén trong đánh giá thời cơ và quyết đoán trong chỉ đạo là nhân tố quyết định thành công.</li>
+</ul>`},
+  {q:'Đánh giá vai trò của Hồ Chí Minh trong Cuộc kháng chiến chống Pháp (1946–1954).',
+   ans:`<h4>1. Hoạch định đường lối kháng chiến</h4><ul>
+<li>Ngày 19/12/1946: Ra <strong>Lời kêu gọi Toàn quốc kháng chiến</strong>, phát động cuộc kháng chiến toàn quốc.</li>
+<li>Xây dựng đường lối kháng chiến: <strong>toàn dân, toàn diện, trường kỳ, tự lực cánh sinh</strong>, tranh thủ sự ủng hộ quốc tế.</li>
+</ul>
+<h4>2. Lãnh đạo xây dựng lực lượng và tổ chức kháng chiến</h4><ul>
+<li>Chỉ đạo xây dựng hậu phương vững chắc ở Việt Bắc.</li>
+<li>Lãnh đạo phát triển lực lượng vũ trang nhân dân; tổ chức chiến tranh nhân dân.</li>
+<li>Chỉ đạo Chiến dịch Biên giới (1950), Chiến dịch Tây Bắc (1952), và đặc biệt <strong>Chiến dịch Điện Biên Phủ</strong> (1954) – "chấn động địa cầu".</li>
+</ul>
+<h4>3. Hoạt động ngoại giao</h4><ul>
+<li>Tranh thủ sự ủng hộ của Liên Xô, Trung Quốc và phong trào hòa bình thế giới.</li>
+<li>Khôn khéo trong ngoại giao, kiên định mục tiêu độc lập dân tộc.</li>
+</ul>
+<h4>4. Đánh giá</h4><ul>
+<li>Hồ Chí Minh là người lãnh đạo tối cao, linh hồn của cuộc kháng chiến chống Pháp.</li>
+<li>Chiến thắng Điện Biên Phủ (7/5/1954) buộc Pháp ký Hiệp định Giơ-ne-vơ, kết thúc chiến tranh.</li>
+<li>Để lại bài học quý về phát huy sức mạnh toàn dân và kết hợp sức mạnh dân tộc với sức mạnh thời đại.</li>
+</ul>`},
+  {q:'Đánh giá đóng góp của Chủ tịch Hồ Chí Minh trong Cuộc kháng chiến chống Mỹ, cứu nước (1954–1969).',
+   ans:`<h4>1. Hoạch định đường lối chiến lược</h4><ul>
+<li>Cùng Trung ương Đảng xác định: Miền Nam tiếp tục hoàn thành cách mạng dân tộc dân chủ nhân dân; miền Bắc xây dựng CNXH làm hậu phương vững chắc.</li>
+<li>Đề ra phương châm: vừa xây dựng miền Bắc, vừa giải phóng miền Nam, thống nhất đất nước.</li>
+</ul>
+<h4>2. Lãnh đạo xây dựng miền Bắc</h4><ul>
+<li>Lãnh đạo cải cách ruộng đất, khôi phục kinh tế, xây dựng CNXH ở miền Bắc.</li>
+<li>Đưa miền Bắc trở thành hậu phương lớn, chi viện cho miền Nam.</li>
+</ul>
+<h4>3. Đường lối đối ngoại độc lập tự chủ</h4><ul>
+<li>Giữ vững đường lối <strong>độc lập, tự chủ</strong> trong quan hệ với Liên Xô và Trung Quốc (khi hai nước này có mâu thuẫn).</li>
+<li>Tranh thủ tối đa sự ủng hộ, giúp đỡ của các quốc gia dân chủ và phong trào phản chiến ở Mỹ.</li>
+<li>Đề cao chân lý: <strong>"Không có gì quý hơn độc lập, tự do"</strong> (17/7/1966).</li>
+</ul>
+<h4>4. Vai trò tinh thần và chính trị</h4><ul>
+<li>Là nguồn cổ vũ tinh thần vô giá cho toàn dân, toàn quân.</li>
+<li>Qua đời ngày 2/9/1969, để lại Di chúc lịch sử – định hướng cho sự nghiệp xây dựng đất nước sau chiến tranh.</li>
+</ul>
+<h4>5. Đánh giá</h4><ul>
+<li>Đóng góp của Chủ tịch Hồ Chí Minh là to lớn và toàn diện: từ hoạch định chiến lược đến lãnh đạo chính trị, ngoại giao và cổ vũ tinh thần.</li>
+<li>UNESCO công nhận Hồ Chí Minh là <strong>Anh hùng Giải phóng dân tộc, danh nhân văn hóa thế giới</strong> (1987).</li>
+</ul>`}
+];
+
+/* ═══════════════════════════════════════════
+   RENDER FUNCTIONS
+═══════════════════════════════════════════ */
+
+let mcCounters = {}; // sectionId → {total, correct}
+
+function renderMC(questions, sectionId, startNum) {
+  mcCounters[sectionId] = {total: questions.length, correct: 0, answered: 0};
+  return questions.map((q, i) => {
+    const qNum = startNum + i;
+    const eid = `${sectionId}-mc-${i}`;
+    const opts = q.opts.map((o, j) => {
+      const letter = LABELS[j];
+      return `<button class="mc-opt" id="${eid}-opt-${j}" onclick="checkMC('${eid}',${j},${q.ans},'${sectionId}')" data-idx="${j}">
+        <span class="opt-label">${letter}.</span><span>${o}</span>
+      </button>`;
+    }).join('');
+    return `<div class="mc-item" id="${eid}">
+      <div class="mc-num">Câu ${qNum}</div>
+      <div class="mc-q">${q.q}</div>
+      <div class="mc-opts">${opts}</div>
+      <div class="mc-feedback" id="${eid}-fb"></div>
+    </div>`;
+  }).join('');
+}
+
+function checkMC(eid, chosen, ans, sectionId) {
+  const item = document.getElementById(eid);
+  if (item.classList.contains('answered')) return;
+  item.classList.add('answered');
+  const opts = item.querySelectorAll('.mc-opt');
+  opts.forEach(b => b.disabled = true);
+  const fb = document.getElementById(`${eid}-fb`);
+  if (chosen === ans) {
+    opts[chosen].classList.add('correct');
+    fb.textContent = '✓ Chính xác!';
+    fb.className = 'mc-feedback show ok';
+    mcCounters[sectionId].correct++;
+  } else {
+    opts[chosen].classList.add('wrong');
+    opts[ans].classList.add('reveal');
+    fb.textContent = `✗ Sai. Đáp án đúng: ${LABELS[ans]}.`;
+    fb.className = 'mc-feedback show fail';
+  }
+  mcCounters[sectionId].answered++;
+  updateScore(sectionId);
+}
+
+function updateScore(sectionId) {
+  const c = mcCounters[sectionId];
+  if (!c) return;
+  const el = document.getElementById(`score-${sectionId}`);
+  if (el) el.textContent = `${c.correct}/${c.answered}`;
+}
+
+function resetMC(sectionId) {
+  const container = document.getElementById(`mc-container-${sectionId}`);
+  container.querySelectorAll('.mc-item').forEach(item => {
+    item.classList.remove('answered');
+    item.querySelectorAll('.mc-opt').forEach(b => {
+      b.disabled = false;
+      b.className = 'mc-opt';
+    });
+    const fb = item.querySelector('.mc-feedback');
+    if (fb) { fb.className = 'mc-feedback'; fb.textContent = ''; }
+  });
+  mcCounters[sectionId] = {total: mcCounters[sectionId].total, correct: 0, answered: 0};
+  updateScore(sectionId);
+}
+
+function renderTF(questions, sectionId) {
+  return questions.map((q, qi) => {
+    const passage = q.isTable ? renderTable(q.tableData) :
+      `<div class="tf-passage">${q.passage}</div>`;
+    const subs = q.subs.map((s, si) => {
+      const eid = `${sectionId}-tf-${qi}-${si}`;
+      return `<div class="tf-sub" id="${eid}-wrap">
+        <span class="tf-sub-label">${['a','b','c','d'][si]})</span>
+        <span class="tf-sub-text">${s.text}</span>
+        <div class="tf-btns">
+          <button class="tf-btn" id="${eid}-d" onclick="checkTF('${eid}','Đ','${s.ans}')">Đúng</button>
+          <button class="tf-btn" id="${eid}-s" onclick="checkTF('${eid}','S','${s.ans}')">Sai</button>
+        </div>
+      </div>`;
+    }).join('');
+    const qNum = qi + 1;
+    return `<div class="tf-item" id="${sectionId}-tf-${qi}">
+      <div class="tf-num">Câu ${qNum}</div>
+      ${passage}
+      <div class="tf-sub-list">${subs}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderTable(data) {
+  const header = `<tr>${data[0].map(h=>`<th>${h}</th>`).join('')}</tr>`;
+  const rows = data.slice(1).map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+  return `<table class="tf-table"><thead>${header}</thead><tbody>${rows}</tbody></table>`;
+}
+
+function checkTF(eid, chosen, ans) {
+  const dBtn = document.getElementById(`${eid}-d`);
+  const sBtn = document.getElementById(`${eid}-s`);
+  if (dBtn.disabled) return;
+  dBtn.disabled = true; sBtn.disabled = true;
+  const isCorrect = chosen === ans;
+  if (isCorrect) {
+    (chosen === 'Đ' ? dBtn : sBtn).classList.add('correct');
+  } else {
+    (chosen === 'Đ' ? dBtn : sBtn).classList.add('wrong');
+    (ans === 'Đ' ? dBtn : sBtn).classList.add('reveal');
+  }
+}
+
+function resetTF(sectionId) {
+  document.querySelectorAll(`[id^="${sectionId}-tf-"]`).forEach(el => {
+    el.querySelectorAll('.tf-btn').forEach(b => {
+      b.disabled = false;
+      b.className = 'tf-btn';
+    });
+  });
+}
+
+function renderEssays(essays, sectionId) {
+  return essays.map((e, i) => {
+    const eid = `${sectionId}-essay-${i}`;
+    return `<div class="essay-item" id="${eid}">
+      <div class="essay-q" onclick="toggleEssay('${eid}')">
+        <span class="essay-num">TL ${i+1}</span>
+        <span class="essay-q-text">${e.q}</span>
+        <span class="essay-arrow">▶</span>
+      </div>
+      <div class="essay-answer">
+        <div class="essay-answer-content">${e.ans}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleEssay(eid) {
+  document.getElementById(eid).classList.toggle('open');
+}
+
+function resetEssays(sectionId) {
+  document.querySelectorAll(`[id^="${sectionId}-essay-"]`).forEach(el => el.classList.remove('open'));
+}
+
+
+/* ═══════════════════════════════════════════
+   BUILD PAGE
+═══════════════════════════════════════════ */
+function buildPage() {
+  const main = document.getElementById('main-content');
+
+  // Score IDs need to match mc-container IDs and mcCounters keys
+  // sectionId pattern: bai12-mc, bai13-mc, bai14-mc, bai15-mc
+
+  const lessons = [
+    {
+      id:'bai12', num:'Bài 12', color:'#f472b6',
+      title:'Hoạt động đối ngoại của Việt Nam từ đầu thế kỉ XX đến năm 1975',
+      hasTF: false,
+      mc: bai12_mc, mcStart: 1,
+      tf: [],
+      essays: bai12_essays
+    },
+    {
+      id:'bai13', num:'Bài 13', color:'#f472b6',
+      title:'Hoạt động đối ngoại của Việt Nam từ năm 1975 đến nay',
+      hasTF: false,
+      mc: bai13_mc, mcStart: 9,
+      tf: [],
+      essays: bai13_essays
+    },
+    {
+      id:'bai14', num:'Bài 14', color:'#f472b6',
+      title:'Khái quát về cuộc đời và sự nghiệp của Hồ Chí Minh',
+      hasTF: true,
+      mc: bai14_mc, mcStart: 12,
+      tf: bai14_tf,
+      essays: bai14_essays
+    },
+    {
+      id:'bai15', num:'Bài 15', color:'#f472b6',
+      title:'Hồ Chí Minh – Anh hùng Giải phóng dân tộc',
+      hasTF: true,
+      mc: bai15_mc, mcStart: 34,
+      tf: bai15_tf,
+      essays: bai15_essays
+    }
+  ];
+
+  let html = '';
+
+  lessons.forEach((lesson, li) => {
+    const mcSid = `${lesson.id}-mc`;
+    const tfSid = `${lesson.id}-tf`;
+    const essaySid = `${lesson.id}-essay`;
+
+    // MC section
+    const mcHtml = renderMC(lesson.mc, mcSid, lesson.mcStart);
+
+    // TF section
+    let tfHtml = '';
+    if (lesson.hasTF) {
+      tfHtml = `
+      <div class="section-block" id="${lesson.id}-tf">
+        <div class="section-heading">
+          <div class="section-title">
+            <div class="section-title-icon icon-tf">⚖</div>
+            Trắc nghiệm Đúng – Sai
+          </div>
+          <button class="reset-btn" onclick="resetTF('${lesson.id}-tf')">↺ Làm lại</button>
+        </div>
+        <div id="tf-container-${lesson.id}">${renderTF(lesson.tf, `${lesson.id}-tf`)}</div>
+      </div>`;
+    }
+
+    // Essay section
+    const essayHtml = `
+    <div class="section-block" id="${lesson.id}-essay">
+      <div class="section-heading">
+        <div class="section-title">
+          <div class="section-title-icon icon-essay">✍</div>
+          Tự luận
+        </div>
+        <button class="reset-btn" onclick="resetEssays('${lesson.id}-essay')">↺ Thu gọn</button>
+      </div>
+      <div id="essay-container-${lesson.id}">${renderEssays(lesson.essays, `${lesson.id}-essay`)}</div>
+    </div>`;
+
+    html += `
+    <div class="lesson-block" id="${lesson.id}">
+      <div class="lesson-header">
+        <span class="lesson-num">${lesson.num}</span>
+        <div class="lesson-title-text">${lesson.title}</div>
+      </div>
+
+      <div class="section-block" id="${lesson.id}-mc">
+        <div class="section-heading">
+          <div class="section-title">
+            <div class="section-title-icon icon-mc">☑</div>
+            Trắc nghiệm nhiều lựa chọn
+            <span class="score-chip" id="score-${mcSid}">–/–</span>
+          </div>
+          <button class="reset-btn" onclick="resetMC('${mcSid}')">↺ Làm lại</button>
+        </div>
+        <div id="mc-container-${mcSid}">${mcHtml}</div>
+      </div>
+
+      ${tfHtml}
+      ${essayHtml}
+    </div>
+    ${li < lessons.length - 1 ? '<hr class="lesson-divider">' : ''}`;
+  });
+
+  main.innerHTML = html;
+
+  // Init score displays (mcCounters is now populated from renderMC calls above)
+  ['bai12-mc','bai13-mc','bai14-mc','bai15-mc'].forEach(sid => {
+    const el = document.getElementById(`score-${sid}`);
+    if (el && mcCounters[sid]) el.textContent = `0/${mcCounters[sid].total}`;
+  });
+}
+
+/* ─── SCROLL SPY ────────────────────────── */
+function setupScrollSpy() {
+  const IDS = [
+    'bai12','bai12-mc','bai12-essay',
+    'bai13','bai13-mc','bai13-essay',
+    'bai14','bai14-mc','bai14-tf','bai14-essay',
+    'bai15','bai15-mc','bai15-tf','bai15-essay'
+  ];
+  window.addEventListener('scroll', () => {
+    const navLinks = document.querySelectorAll('.nav-sub');
+    let current = '';
+    IDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    navLinks.forEach(a => {
+      const target = (a.getAttribute('href') || '').replace('#','');
+      a.classList.toggle('active', target === current);
+    });
+  }, {passive:true});
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildPage();
+  setupScrollSpy();
+});
+</script>
+</body>
+</html>
