@@ -6,6 +6,7 @@
 <title>Ôn Tập GDKT-PL 12 – Kết nối tri thức</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 <style>
 :root{
   --bg:#0a0e1a;--bg2:#0f1525;--panel:#141c2e;--border:#1e2d4a;
@@ -141,7 +142,7 @@ a{text-decoration:none;color:inherit;}
 .section-panel.active{display:block;}
 
 .sec-header{
-  display:flex;align-items:center;gap:14px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--border);
 }
 .sec-icon{
@@ -154,11 +155,18 @@ a{text-decoration:none;color:inherit;}
 .sec-info h3{font-size:17px;font-weight:700;}
 .sec-info p{font-size:12px;color:var(--text2);margin-top:2px;}
 .sec-reset{
-  margin-left:auto;background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.18);
+  background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.18);
   color:#ef4444;padding:7px 13px;border-radius:8px;font-size:12px;font-weight:600;
   cursor:pointer;transition:.18s;white-space:nowrap;
 }
 .sec-reset:hover{background:rgba(239,68,68,0.14);}
+.sec-actions{margin-left:auto;display:flex;gap:8px;align-items:center;flex-shrink:0;flex-wrap:wrap;}
+.sec-solve{
+  background:rgba(56,217,169,0.09);border:1px solid rgba(56,217,169,0.28);
+  color:var(--acc3);padding:7px 13px;border-radius:8px;font-size:12px;font-weight:700;
+  cursor:pointer;transition:.18s;white-space:nowrap;
+}
+.sec-solve:hover{background:rgba(56,217,169,0.17);}
 
 /* CONTEXT */
 .ctx-box{
@@ -322,7 +330,10 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:12px;border-t
           <h3>Dạng 1: Trắc nghiệm nhiều lựa chọn</h3>
           <p id="secInfo1">Chọn đáp án đúng cho mỗi câu hỏi</p>
         </div>
-        <button class="sec-reset" onclick="resetSection(1)">↺ Đặt lại tất cả</button>
+        <div class="sec-actions">
+          <button class="sec-solve" onclick="solveSection(1)">✓ Xem đáp án</button>
+          <button class="sec-reset" onclick="resetSection(1)">↺ Đặt lại</button>
+        </div>
       </div>
       <div id="s1Content"></div>
     </div>
@@ -333,7 +344,10 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:12px;border-t
           <h3>Dạng 2: Trắc nghiệm tình huống</h3>
           <p id="secInfo2">Đọc thông tin tình huống, trả lời câu hỏi</p>
         </div>
-        <button class="sec-reset" onclick="resetSection(2)">↺ Đặt lại tất cả</button>
+        <div class="sec-actions">
+          <button class="sec-solve" onclick="solveSection(2)">✓ Xem đáp án</button>
+          <button class="sec-reset" onclick="resetSection(2)">↺ Đặt lại</button>
+        </div>
       </div>
       <div id="s2Content"></div>
     </div>
@@ -344,7 +358,10 @@ footer{text-align:center;padding:20px;color:var(--text3);font-size:12px;border-t
           <h3>Dạng 3: Đúng / Sai</h3>
           <p id="secInfo3">Xác định từng ý đúng hoặc sai</p>
         </div>
-        <button class="sec-reset" onclick="resetSection(3)">↺ Đặt lại tất cả</button>
+        <div class="sec-actions">
+          <button class="sec-solve" onclick="solveSection(3)">✓ Xem đáp án</button>
+          <button class="sec-reset" onclick="resetSection(3)">↺ Đặt lại</button>
+        </div>
       </div>
       <div id="s3Content"></div>
     </div>
@@ -545,6 +562,45 @@ function resetMCQ(qid, ans) {
   const chk = document.getElementById('chk_' + qid);
   if (chk) chk.disabled = true;
   delete mcqState[qid];
+}
+
+// ── SOLVE ALL ──
+function solveMCQ(qid, ans) {
+  if (!ans) return;
+  const card = document.getElementById('qcard_' + qid);
+  if (!card) return;
+  if (card.classList.contains('ok') || card.classList.contains('bad')) return;
+  // reset any prior selection
+  card.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  const correctOpt = document.getElementById('opt_' + qid + '_' + ans);
+  if (correctOpt) correctOpt.classList.add('sel');
+  const chk = document.getElementById('chk_' + qid);
+  if (chk) chk.disabled = false;
+  mcqState[qid] = { selected: ans, done: false };
+  checkMCQ(qid, ans);
+}
+
+function solveTFItem(qnum, letter, correct) {
+  if (correct === null || correct === undefined) return;
+  const key = qnum + '_' + letter;
+  const item = document.getElementById('tfi_' + key);
+  if (!item) return;
+  if (item.classList.contains('ok') || item.classList.contains('bad')) return;
+  const val = correct ? 'dung' : 'sai';
+  selectTF(qnum, letter, val, correct);
+  checkTFItem(qnum, letter, correct);
+}
+
+function solveSection(n) {
+  if (n === 1) {
+    currentLesson.s1.forEach(q => solveMCQ('s1_' + q.n, q.ans));
+  } else if (n === 2) {
+    currentLesson.s2.forEach(q => solveMCQ('s2_' + q.n, q.ans));
+  } else {
+    currentLesson.s3.forEach(tf => {
+      tf.items.forEach(it => solveTFItem(tf.n, it.l, it.c));
+    });
+  }
 }
 
 function resetSection(n) {
